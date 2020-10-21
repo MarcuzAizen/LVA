@@ -29,9 +29,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return response()->json([
-            'data' => new UserResource($user->load('role'))
-        ]);
+        return new UserResource($user->load('role'));
     }
 
     public function update(UpdateUserRequest $request, User $user)

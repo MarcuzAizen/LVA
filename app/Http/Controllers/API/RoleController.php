@@ -27,9 +27,7 @@ class RoleController extends Controller
 
     public function show(Role $role)
     {
-        return response()->json([
-            'data' => new RoleResource($role)
-        ]);
+        return new RoleResource($role);
     }
 
     public function update(UpdateRoleRequest $request, Role $role)

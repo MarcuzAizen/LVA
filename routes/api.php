@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\StudentRemarkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::get('users/teachers/search', [UserController::class, 'searchTeachers'])->
 
 Route::apiResource('roles', RoleController::class);
 Route::apiResource('users', UserController::class);
+Route::apiResource('student-remarks', StudentRemarkController::class);

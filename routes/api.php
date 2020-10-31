@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\StudentRemarkController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\GuardianController;
 
@@ -29,5 +30,6 @@ Route::post('students/{student}/add-guardian', [StudentController::class, 'addGu
 
 Route::apiResource('roles', RoleController::class);
 Route::apiResource('users', UserController::class);
+Route::apiResource('student-remarks', StudentRemarkController::class);
 Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);

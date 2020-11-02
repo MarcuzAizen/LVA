@@ -16,6 +16,7 @@ class CreateGuardianStudentTable extends Migration
         Schema::create('guardian_student', function (Blueprint $table) {
             $table->foreignId('guardian_id')->constrained();
             $table->foreignId('student_id')->constrained();
+            $table->string('relationship');
         });
     }
 

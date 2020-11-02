@@ -29,8 +29,7 @@ class GuardianFactory extends Factory
             'birthdate' => $this->faker->date(),
             'contact_number' => '0'.rand(9000000000, 9999999999),
             'religion' => ucfirst($this->faker->word()),
-            'occupation' => $this->faker->jobTitle,
-            'relationship' => ucfirst($this->faker->word())
+            'occupation' => $this->faker->jobTitle
         ];
     }
 }

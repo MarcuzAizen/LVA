@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Faker\Factory;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,14 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::factory()->count(10)->create();
+        $faker = Factory::create();
+        Student::factory()
+            ->count(10)
+            ->create()
+            ->each(function ($student) use ($faker) {
+                $student->guardians()->sync([
+                    rand(1, 10) => ['relationship' => $faker->word()]
+                ]);
+            });
     }
 }

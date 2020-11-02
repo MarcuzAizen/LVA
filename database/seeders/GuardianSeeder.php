@@ -14,11 +14,6 @@ class GuardianSeeder extends Seeder
      */
     public function run()
     {
-        Guardian::factory()
-            ->count(10)
-            ->create()
-            ->each(function($guardian) {
-                $guardian->students()->sync(rand(1, 10));
-            });
+        Guardian::factory()->count(10)->create();
     }
 }

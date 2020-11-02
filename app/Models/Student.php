@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Guardian;
-use App\Models\StudentRemark;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,7 +25,8 @@ class Student extends Authenticatable
 
     public function guardians()
     {
-        return $this->belongsToMany(Guardian::class);
+        return $this->belongsToMany(Guardian::class)
+            ->withPivot('relationship');
     }
 
     public function setUsernameAttribute($value)

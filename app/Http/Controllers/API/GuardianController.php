@@ -41,7 +41,7 @@ class GuardianController extends Controller
 
     public function destroy(Guardian $guardian)
     {
-        $guardian->students()->sync([]);
+        $guardian->students()->detach();
         if ($guardian->delete()) {
             return response()->json([
                 'success' => true,

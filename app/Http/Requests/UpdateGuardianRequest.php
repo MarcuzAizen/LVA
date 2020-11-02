@@ -25,16 +25,15 @@ class UpdateGuardianRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_id' => ['nullable', 'integer', 'min:1'],
             'first_name' => ['required', 'string', 'min:4', 'max:45'],
             'last_name' => ['required', 'string', 'min:4', 'max:45'],
             'suffix' => ['nullable', 'string', 'min:1', 'max:10'],
-            'sex' => ['required', 'string', 'min:1', Rule::in(['M', 'F'])],
+            'sex' => ['required', 'string', 'min:1', 'max:1', Rule::in(['M', 'F'])],
             'birthdate' => ['required', 'date'],
             'contact_number' => ['required', 'string', 'min:11', 'max:11'],
-            'religion' => ['required', 'string', 'min:4', 'max:45'],
-            'occupation' => ['required', 'string', 'min:4', 'max:45'],
-            'relationship' => ['required', 'string', 'min:4', 'max:45']
+            'religion' => ['required', 'string', 'max:45'],
+            'occupation' => ['required', 'string', 'max:45'],
+            'relationship' => ['required', 'string', 'max:45']
         ];
     }
 }

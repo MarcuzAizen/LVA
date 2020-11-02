@@ -23,7 +23,6 @@ class CreateGuardiansTable extends Migration
             $table->string('contact_number', 11);
             $table->string('religion', 45);
             $table->string('occupation', 45);
-            $table->string('relationship', 45);
             $table->timestamps();
             $table->softDeletes();
         });

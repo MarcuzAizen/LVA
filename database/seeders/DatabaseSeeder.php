@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             GuardianSeeder::class,
             StudentSeeder::class,
             AcadYearSeeder::class,
+            SubjectSeeder::class,
         ]);
     }
 }

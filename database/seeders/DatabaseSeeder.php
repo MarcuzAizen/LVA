@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             StudentRemarkSeeder::class,
             GuardianSeeder::class,
             StudentSeeder::class,
+            AcadYearSeeder::class,
         ]);
     }
 }

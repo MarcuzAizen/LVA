@@ -7,6 +7,7 @@ use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\StudentRemarkController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\GuardianController;
+use App\Http\Controllers\API\AcadYearController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,4 @@ Route::apiResource('users', UserController::class);
 Route::apiResource('student-remarks', StudentRemarkController::class);
 Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);
+Route::apiResource('acad-years', AcadYearController::class);

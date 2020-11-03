@@ -21,10 +21,10 @@ class AcadYearFactory extends Factory
      */
     public function definition()
     {
-        $year = $this->faker->date();
+        $year = $this->faker->year();
         return [
             'start' => $year,
-            'end' => $year + 1
+            'end' => $year + 1,
         ];
     }
 }

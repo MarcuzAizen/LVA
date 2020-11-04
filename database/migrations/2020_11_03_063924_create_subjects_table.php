@@ -10,7 +10,7 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code', 25);
             $table->string('description');
             $table->integer('unit');
             $table->timestamps();

@@ -12,7 +12,7 @@ class SubjectFactory extends Factory
     public function definition()
     {
         return [
-            'code' => $this->faker->ean8(),
+            'code' => $this->faker->unique()->ean8(),
             'description' => $this->faker->sentence,
             'unit' => $this->faker->randomDigit(),
         ];

@@ -15,9 +15,9 @@ class StoreSubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => ['required', 'string', Rule::unique('subjects')->whereNull('deleted_at')],
-            'description' => ['required', 'string', 'max:50'],
-            'unit' => ['required', 'integer', 'min:1', 'max:2'],
+            'code' => ['required', 'string', 'min:4', 'max:25', Rule::unique('subjects')->whereNull('deleted_at')],
+            'description' => ['required', 'string', 'min:4'],
+            'unit' => ['required', 'integer', 'min:1'],
         ];
     }
 }

@@ -9,6 +9,9 @@ use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\GuardianController;
 use App\Http\Controllers\API\AcadYearController;
 use App\Http\Controllers\API\SubjectController;
+use App\Http\Controllers\API\TrackController;
+use App\Http\Controllers\API\SectionController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,6 +32,9 @@ Route::get('users/teachers/search', [UserController::class, 'searchTeachers'])->
 
 Route::post('students/{student}/add-guardian', [StudentController::class, 'addGuardian'])->name('students.add_guardian');
 Route::delete('students/{student}/remove-guardian/{guardian}', [StudentController::class, 'removeGuardian'])->name('students.remove_guardian');
+Route::post('tracks/{track}/add-section', [TrackController::class, 'addSection'])->name('tracks.add_section');
+Route::delete('tracks/{track}/remove-section/{section}', [TrackController::class, 'removeSection'])->name('tracks.remove_section');
+
 
 Route::apiResource('roles', RoleController::class);
 Route::apiResource('users', UserController::class);
@@ -37,3 +43,5 @@ Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);
 Route::apiResource('acad-years', AcadYearController::class);
 Route::apiResource('subjects', SubjectController::class);
+Route::apiResource('tracks', TrackController::class);
+Route::apiResource('sections', SectionController::class);

@@ -15,19 +15,14 @@ class CreateTracksTable extends Migration
     {
         Schema::create('tracks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 45);
             $table->string('description');
-            $table->integer('grade_level');
+            $table->unsignedInteger('grade_level');
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tracks');

@@ -15,18 +15,14 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('capacity');
+            $table->foreignId('track_id')->nullable()->constrained();
+            $table->string('name', 45);
+            $table->unsignedInteger('capacity');
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('sections');

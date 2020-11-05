@@ -12,9 +12,4 @@ class Track extends Model
 
     protected $fillable = ['name', 'description', 'grade_level'];
 
-    public function sections()
-    {
-        return $this->belongsToMany(Section::class)
-            ->withPivot('relationship');
-    }
 }

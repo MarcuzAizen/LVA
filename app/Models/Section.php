@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Track;
 
 class Section extends Model
 {
@@ -15,9 +14,8 @@ class Section extends Model
     
     protected $hidden = ['track_id'];
 
-    public function tracks()
+    public function track()
     {
-        return $this->belongsToMany(Track::class)
-            ->withPivot('relationship');
+        return $this->belongsTo(Track::class);
     }
 }

@@ -13,13 +13,14 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $sections = Section::with('tracks')->latest()->paginate(10);
+        $sections = Section::with('track')->latest()->paginate(10);
         return SectionResource::collection($sections);
     }
 
     public function store(StoreSectionRequest $request)
     {
-        Section::create($request->validated());
+        $data = $request->validated();
+        Section::create($data);
         return response()->json([
             'success' => true,
             'message' => 'Section successfully created!'
@@ -28,7 +29,7 @@ class SectionController extends Controller
 
     public function show(Section $section)
     {
-        return new SectionResource($section->load('tracks'));
+        return new SectionResource($section->load('track'));
     }
 
     public function update(UpdateSectionRequest $request, Section $section)

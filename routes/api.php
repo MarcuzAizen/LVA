@@ -32,9 +32,6 @@ Route::get('users/teachers/search', [UserController::class, 'searchTeachers'])->
 
 Route::post('students/{student}/add-guardian', [StudentController::class, 'addGuardian'])->name('students.add_guardian');
 Route::delete('students/{student}/remove-guardian/{guardian}', [StudentController::class, 'removeGuardian'])->name('students.remove_guardian');
-Route::post('tracks/{track}/add-section', [TrackController::class, 'addSection'])->name('tracks.add_section');
-Route::delete('tracks/{track}/remove-section/{section}', [TrackController::class, 'removeSection'])->name('tracks.remove_section');
-
 
 Route::apiResource('roles', RoleController::class);
 Route::apiResource('users', UserController::class);

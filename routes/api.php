@@ -11,6 +11,7 @@ use App\Http\Controllers\API\AcadYearController;
 use App\Http\Controllers\API\SubjectController;
 use App\Http\Controllers\API\TrackController;
 use App\Http\Controllers\API\SectionController;
+use App\Http\Controllers\API\ProspectusController;
 use App\Http\Controllers\API\EnrollController;
 
 /*
@@ -43,4 +44,5 @@ Route::apiResource('acad-years', AcadYearController::class);
 Route::apiResource('subjects', SubjectController::class);
 Route::apiResource('tracks', TrackController::class);
 Route::apiResource('sections', SectionController::class);
+Route::apiResource('prospectuses', ProspectusController::class);
 Route::apiResource('enrolls', EnrollController::class);

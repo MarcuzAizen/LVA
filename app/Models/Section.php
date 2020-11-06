@@ -10,7 +10,7 @@ class Section extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'capacity'];
+    protected $fillable = ['track_id', 'name', 'capacity'];
     
     protected $hidden = ['track_id'];
 

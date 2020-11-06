@@ -9,6 +9,9 @@ use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\GuardianController;
 use App\Http\Controllers\API\AcadYearController;
 use App\Http\Controllers\API\SubjectController;
+use App\Http\Controllers\API\TrackController;
+use App\Http\Controllers\API\SectionController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -37,3 +40,5 @@ Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);
 Route::apiResource('acad-years', AcadYearController::class);
 Route::apiResource('subjects', SubjectController::class);
+Route::apiResource('tracks', TrackController::class);
+Route::apiResource('sections', SectionController::class);

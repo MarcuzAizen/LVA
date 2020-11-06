@@ -15,7 +15,7 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('track_id')->nullable()->constrained();
+            $table->foreignId('track_id')->constrained();
             $table->string('name', 45);
             $table->unsignedInteger('capacity');
             $table->timestamps();

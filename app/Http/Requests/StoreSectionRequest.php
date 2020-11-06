@@ -14,7 +14,7 @@ class StoreSectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'track_id'=> ['nullable', 'integer', 'min:1'],
+            'track_id'=> ['required', 'integer', 'min:1'],
             'name' => ['required', 'string', 'min:3', 'max:45'],
             'capacity' => ['required', 'integer', 'min:1', 'max:50'],
         ];

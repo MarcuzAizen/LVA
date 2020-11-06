@@ -12,9 +12,9 @@ class SectionFactory extends Factory
     public function definition()
     {
         return [
-            'track_id' => $this->faker->randomElement([null, rand(1, 4)]),
+            'track_id' => rand(1, 4),
             'name' => $this->faker->name,
-            'capacity' => $this->faker->randomDigit(),
+            'capacity' => rand(45, 50),
         ];
     }
 }

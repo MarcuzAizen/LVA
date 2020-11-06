@@ -14,7 +14,7 @@ class TrackFactory extends Factory
         return [
             'name' => $this->faker->name,
             'description' => $this->faker->sentence,
-            'grade_level' => $this->faker->randomDigit(7, 12),
+            'grade_level' => rand(7, 12),
         ];
     }
 }

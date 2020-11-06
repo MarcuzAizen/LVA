@@ -42,8 +42,6 @@ class ProspectusController extends Controller
 
     public function destroy(Prospectus $prospectus)
     {
-        $prospectus->tracks()->detach();
-        $prospectus->subjects()->detach();
         if ($prospectus->delete()) {
             return response()->json([
                 'success' => true,

@@ -11,8 +11,6 @@ class Prospectus extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['track_id', 'subject_id', 'sem_to_offer'];
-    
-    protected $hidden = ['track_id', 'subject_id'];
 
     public function track()
     {

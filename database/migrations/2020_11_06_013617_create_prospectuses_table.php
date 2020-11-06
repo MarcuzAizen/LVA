@@ -17,7 +17,7 @@ class CreateProspectusesTable extends Migration
             $table->id();
             $table->foreignId('track_id')->constrained();
             $table->foreignId('subject_id')->constrained();
-            $table->unsignedInteger('sem_to_offer');
+            $table->unsignedInteger('sem_to_offer')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

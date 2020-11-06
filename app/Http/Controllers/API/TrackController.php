@@ -42,7 +42,7 @@ class TrackController extends Controller
 
     public function destroy(Track $track)
     {
-        if ($student->delete()) {
+        if ($track->delete()) {
             return response()->json([
                 'success' => true,
                 'message' => 'Track successfully deleted!'

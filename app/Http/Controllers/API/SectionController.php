@@ -19,8 +19,7 @@ class SectionController extends Controller
 
     public function store(StoreSectionRequest $request)
     {
-        $data = $request->validated();
-        Section::create($data);
+        Section::create($request->validated());
         return response()->json([
             'success' => true,
             'message' => 'Section successfully created!'

@@ -14,7 +14,7 @@ class ProspectusFactory extends Factory
         return [
             'track_id' => rand(1, 4),
             'subject_id' => rand(1, 4),
-            'sem_to_offer' => $this->faker->randomDigit(),
+            'sem_to_offer' => $this->faker->randomElement([null, rand(1, 2)]),
         ];
     }
 }

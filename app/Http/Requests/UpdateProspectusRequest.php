@@ -26,7 +26,7 @@ class UpdateProspectusRequest extends FormRequest
         return [
             'track_id'=> ['required', 'integer', 'min:1'],
             'subject_id'=> ['required', 'integer', 'min:1'],
-            'sem_to_offer' => ['required', 'integer', 'min:1', 'max:50'],
+            'sem_to_offer' => ['nullable', 'integer', 'min:1', 'max:2'],
         ];
     }
 }

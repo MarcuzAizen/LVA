@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Track;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TrackResource;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Requests\UpdateTrackRequest;
+use App\Http\Requests\StoreTrackSubjectRequest;
 
 class TrackController extends Controller
 {
@@ -48,5 +48,19 @@ class TrackController extends Controller
                 'message' => 'Track successfully deleted!'
             ]); 
         }
+    }
+
+    public function addSubjectOfferings(StoreTrackSubjectRequest $request, Track $track)
+    {
+        $subjects = [];
+        foreach ($request->subjects as $subject) {
+            $subjects[$subject['id']] = ['sem_to_offer' => $request->sem_to_offer];
+        }
+
+        $track->subjects()->sync($subjects);
+        return response()->json([
+            'success' => true,
+            'message' => 'Subject offerings added!'
+        ]);
     }
 }

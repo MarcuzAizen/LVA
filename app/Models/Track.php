@@ -12,4 +12,8 @@ class Track extends Model
 
     protected $fillable = ['name', 'description', 'grade_level'];
 
+    public function subjects()
+    {
+        return $this->belongsToMany(Subject::class);
+    }
 }

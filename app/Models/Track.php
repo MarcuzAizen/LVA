@@ -14,6 +14,8 @@ class Track extends Model
 
     public function subjects()
     {
-        return $this->belongsToMany(Subject::class);
+        return $this->belongsToMany(Subject::class, 'prospectuses')
+            ->withPivot('sem_to_offer')
+            ->withTimestamps();
     }
 }

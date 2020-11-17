@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             SectionSeeder::class,
             ProspectusSeeder::class,
             EnrollSeeder::class,
+            ScheduleSeeder::class,
         ]);
     }
 }

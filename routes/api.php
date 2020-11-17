@@ -13,6 +13,7 @@ use App\Http\Controllers\API\TrackController;
 use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ProspectusController;
 use App\Http\Controllers\API\EnrollController;
+use App\Http\Controllers\API\ScheduleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,4 @@ Route::apiResource('tracks', TrackController::class);
 Route::apiResource('sections', SectionController::class);
 Route::apiResource('prospectuses', ProspectusController::class);
 Route::apiResource('enrolls', EnrollController::class);
+Route::apiResource('schedules', ScheduleController::class); 

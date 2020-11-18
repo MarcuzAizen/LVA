@@ -16,8 +16,8 @@ class StoreGradeRequest extends FormRequest
         return [
             'enroll_id'=> ['required', 'integer', 'min:1'],
             'schedule_id'=> ['required', 'integer', 'min:1'],
-            'mark' => ['integer', 'min:1', 'max:4'],
-            'quarter_sem' => ['integer', 'min:1', 'max:4'],
+            'mark' => ['required', 'integer', 'min:1', 'max:4'],
+            'quarter_sem' => ['required', 'integer', 'min:1', 'max:4'],
         ];
     }
 }

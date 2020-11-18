@@ -13,7 +13,7 @@ class AttendanceFactory extends Factory
     {
         return [
             'schedule_id' => rand(1, 4),
-            'remarks' => $this->faker->sentence,
+            'remarks' => $this->faker->randomElement(['present', 'late', 'absent']),
         ];
     }
 }

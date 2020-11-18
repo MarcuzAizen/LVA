@@ -14,6 +14,7 @@ use App\Http\Controllers\API\SectionController;
 use App\Http\Controllers\API\ProspectusController;
 use App\Http\Controllers\API\EnrollController;
 use App\Http\Controllers\API\ScheduleController;
+use App\Http\Controllers\API\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,4 @@ Route::apiResource('sections', SectionController::class);
 Route::apiResource('prospectuses', ProspectusController::class);
 Route::apiResource('enrolls', EnrollController::class);
 Route::apiResource('schedules', ScheduleController::class); 
+Route::apiResource('grades', GradeController::class);

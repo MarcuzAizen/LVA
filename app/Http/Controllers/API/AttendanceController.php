@@ -12,7 +12,7 @@ class AttendanceController extends Controller
 {
     public function index()
     {
-        $attendances = Attendance::with(['schedule'])->latest()->paginate(10);
+        $attendances = Attendance::with(['schedule.prospectus.subject'])->latest()->paginate(10);
         return AttendanceResource::collection($attendances);
     }
 
@@ -27,7 +27,7 @@ class AttendanceController extends Controller
 
     public function show(Attendance $attendance)
     {
-        return new AttendanceResource($attendance->load(['schedule']));
+        return new AttendanceResource($attendance->load(['schedule.prospectus.subject']));
     }
 
     public function update(UpdateAttendanceRequest $request, Attendance $attendance)

@@ -17,9 +17,10 @@ class CreateGradesTable extends Migration
             $table->id();
             $table->foreignId('enroll_id')->constrained();
             $table->foreignId('schedule_id')->constrained();
-            $table->unsignedInteger('mark')->nullable();
-            $table->unsignedInteger('quarter_sem')->nullable();
+            $table->unsignedInteger('mark');
+            $table->unsignedInteger('quarter_sem');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

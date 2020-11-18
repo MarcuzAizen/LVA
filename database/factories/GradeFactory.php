@@ -14,8 +14,8 @@ class GradeFactory extends Factory
         return [
             'enroll_id' => rand(1, 4),
             'schedule_id' => rand(1, 4),
-            'mark' => $this->faker->randomElement([null, rand(1, 4)]),
-            'quarter_sem' => $this->faker->randomElement([null, rand(1, 4)]),
+            'mark' => $this->faker->randomElement([rand(1, 4)]),
+            'quarter_sem' => $this->faker->randomElement([rand(1, 4)]),
         ];
     }
 }

@@ -16,8 +16,10 @@ class CreateAttendancesTable extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('schedule_id')->constrained();
-            $table->string('remarks');
-            $table->timestamps();
+            $table->string('remarks', 10);
+            $table->timestamp('date');
+            $table->timestamp('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 

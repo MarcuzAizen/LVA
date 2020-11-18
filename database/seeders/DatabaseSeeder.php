@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             ProspectusSeeder::class,
             EnrollSeeder::class,
             ScheduleSeeder::class,
+            GradeSeeder::class,
         ]);
     }
 }

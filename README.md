@@ -15,12 +15,11 @@ npm run production
 ```
 
 ## Quick Installation
-1. Clone this repo
-2. `cd LVA`
-3. `composer install`
-4. Copy __.env.example__ file to __.env__ and edit database credentials there
-5. Run __composer install__
-6. Run __php artisan key:generate__
-7. Run __php artisan migrate --seed__
-8. Run __npm install__ 
-9. Run __php artisan migrate --seed__ to create and populate tables
+- Clone this repo
+- `cd LVA`
+- Copy __.env.example__ file to __.env__ and edit database credentials there
+- Run __composer install__
+- Run __php artisan key:generate__
+- Run __php artisan migrate --seed__ to create and populate tables
+- Run __npm install__ 
+- Run __php artisan serve__

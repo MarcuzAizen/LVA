@@ -15,7 +15,7 @@ use App\Http\Controllers\API\ProspectusController;
 use App\Http\Controllers\API\EnrollController;
 use App\Http\Controllers\API\ScheduleController;
 use App\Http\Controllers\API\GradeController;
-
+use App\Http\Controllers\API\AttendanceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -51,3 +51,4 @@ Route::apiResource('prospectuses', ProspectusController::class);
 Route::apiResource('enrolls', EnrollController::class);
 Route::apiResource('schedules', ScheduleController::class); 
 Route::apiResource('grades', GradeController::class);
+Route::apiResource('attendances', AttendanceController::class);

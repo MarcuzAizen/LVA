@@ -7,3 +7,4 @@ Route::get('/', function () {
     return redirect()->route('registrar.home');
 });
 Route::get('home', [HomeController::class, 'registrar'])->name('home');
+Route::get('/{any}', [HomeController::class, 'registrar'])->where('any', '.*');

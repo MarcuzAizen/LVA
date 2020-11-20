@@ -46,6 +46,41 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+
+            Route::middleware(['web', 'admin'])
+                ->prefix('admin')
+                ->name('admin.')
+                ->group(base_path('routes/admin.php'));
+
+            // todo Add admin_api routes here
+
+            Route::middleware(['web', 'registrar'])
+                ->prefix('registrar')
+                ->name('registrar.')
+                ->group(base_path('routes/registrar.php'));
+
+            // todo Add registrar_api routes here
+
+            Route::middleware(['web', 'enrollmentOfficer'])
+                ->prefix('enrollment-officer')
+                ->name('enrollment_officer.')
+                ->group(base_path('routes/enrollment_officer.php'));
+
+            // todo Add enrollment_officer_api routes here
+
+            Route::middleware(['web', 'principal'])
+                ->prefix('principal')
+                ->name('principal.')
+                ->group(base_path('routes/principal.php'));
+
+            // todo Add principal_api routes here
+
+            Route::middleware(['web', 'teacher'])
+                ->prefix('teacher')
+                ->name('teacher.')
+                ->group(base_path('routes/teacher.php'));
+
+            // todo Add teacher_api routes here
         });
     }
 

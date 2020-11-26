@@ -9,3 +9,9 @@ export const subject = {
     name: 'registrar.subject',
     component: () => import('../../pages/registrar/Subject.vue')
 };
+
+export const track = {
+    path: '/registrar/track',
+    name: 'registrar.track',
+    component: () => import('../../pages/registrar/Track.vue')
+};

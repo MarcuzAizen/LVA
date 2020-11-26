@@ -23,6 +23,17 @@
                 </li>
                 {{-- /.Dashboard --}}
                 
+                {{-- Subjects --}}
+                <li class="nav-item">
+                    <router-link :to="{ name: 'registrar.subject' }" class="nav-link">
+                        <i class="nav-icon fas fa-chalkboard"></i>
+                        <p>
+                            Subjects
+                        </p>
+                    </router-link>
+                </li>
+                {{-- /.Subjects --}}
+                
             </ul>
         </nav>{{-- /.sidebar-menu --}}
     </div>{{-- /.sidebar --}}

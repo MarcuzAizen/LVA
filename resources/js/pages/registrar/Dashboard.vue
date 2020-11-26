@@ -31,6 +31,12 @@
 
 <script>
 export default {
-    name: 'Dashboard'
+    name: 'Dashboard',
+    created() {
+        this.$Progress.start();
+    },
+    mounted() {
+        this.$Progress.finish();
+    }
 }
 </script>

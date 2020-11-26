@@ -41,7 +41,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Dashboard'
+  name: 'Dashboard',
+  created: function created() {
+    this.$Progress.start();
+  },
+  mounted: function mounted() {
+    this.$Progress.finish();
+  }
 });
 
 /***/ }),

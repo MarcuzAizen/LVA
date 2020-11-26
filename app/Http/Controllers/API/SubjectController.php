@@ -50,4 +50,13 @@ class SubjectController extends Controller
             ]);
         }
     }
+
+    public function search(Request $request)
+    {
+        $subjects = Subject::where('code', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('description', 'LIKE', '%'.$request->input('query').'%')
+            ->paginate(10);
+
+        return SubjectResource::collection($subjects);
+    }
 }

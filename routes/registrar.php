@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\HomeController;
+use App\Http\Controllers\API\SubjectController;
+
+Route::prefix('api')->group(function () {
+    Route::get('subjects/search', [SubjectController::class, 'search'])->name('subjects.search');
+
+    Route::apiResource('subjects', SubjectController::class); 
+});
 
 Route::get('/', function () {
     return redirect()->route('registrar.home');

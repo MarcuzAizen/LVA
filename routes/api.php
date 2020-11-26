@@ -44,7 +44,6 @@ Route::apiResource('student-remarks', StudentRemarkController::class);
 Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);
 Route::apiResource('acad-years', AcadYearController::class);
-Route::apiResource('subjects', SubjectController::class);
 Route::apiResource('tracks', TrackController::class);
 Route::apiResource('sections', SectionController::class);
 Route::apiResource('prospectuses', ProspectusController::class);

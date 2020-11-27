@@ -6,6 +6,7 @@ use App\Models\Section;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SectionResource;
+use Illuminate\Database\Eloquent\Builder;
 use App\Http\Requests\StoreSectionRequest;
 use App\Http\Requests\UpdateSectionRequest;
 
@@ -42,12 +43,25 @@ class SectionController extends Controller
 
     public function destroy(Section $section)
     {
-        $section->tracks()->detach();
         if ($section->delete()) {
             return response()->json([
                 'success' => true,
                 'message' => 'Section successfully deleted!'
             ]);
         }
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $sections = Section::where('name', 'LIKE', '%'.$query.'%')
+            ->orWhereHas('track', function(Builder $builder) use ($query) {
+                $builder->where('name', 'LIKE', '%'.$query.'%')
+                    ->orWhere('name', 'LIKE', '%'.$query.'%');
+            })
+            ->with('track')
+            ->paginate(10);
+        
+        return SectionResource::collection($sections);
     }
 }

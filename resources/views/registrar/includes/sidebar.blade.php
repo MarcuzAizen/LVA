@@ -23,6 +23,17 @@
                 </li>
                 {{-- /.Dashboard --}}
                 
+                {{-- Track --}}
+                <li class="nav-item">
+                    <router-link :to="{ name: 'registrar.track' }" class="nav-link">
+                        <i class="nav-icon fas fa-book-reader"></i>
+                        <p>
+                            Track
+                        </p>
+                    </router-link>
+                </li>
+                {{-- /.Track --}}
+                
                 {{-- Subjects --}}
                 <li class="nav-item">
                     <router-link :to="{ name: 'registrar.subject' }" class="nav-link">

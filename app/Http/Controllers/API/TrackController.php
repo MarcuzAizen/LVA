@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Track;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TrackResource;
 use App\Http\Requests\StoreTrackRequest;
@@ -62,5 +63,15 @@ class TrackController extends Controller
             'success' => true,
             'message' => 'Subject offerings added!'
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $tracks = Track::where('name', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('description', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('grade_level', 'LIKE', '%'.$request->input('query').'%')
+            ->paginate(10);
+
+        return TrackResource::collection($tracks);
     }
 }

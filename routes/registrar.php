@@ -3,11 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\HomeController;
 use App\Http\Controllers\API\SubjectController;
+use App\Http\Controllers\API\TrackController;
 
 Route::prefix('api')->group(function () {
     Route::get('subjects/search', [SubjectController::class, 'search'])->name('subjects.search');
+    Route::get('tracks/search', [TrackController::class, 'search'])->name('tracks.search');
 
     Route::apiResource('subjects', SubjectController::class); 
+    Route::apiResource('tracks', TrackController::class);
 });
 
 Route::get('/', function () {

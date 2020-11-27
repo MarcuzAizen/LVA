@@ -19,4 +19,11 @@ class StoreSectionRequest extends FormRequest
             'capacity' => ['required', 'integer', 'min:1', 'max:50'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'track_id.required' => 'The grade_level and track field is required'
+        ];
+    }
 }

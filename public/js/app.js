@@ -64565,7 +64565,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["subject"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["track"], _modules_teacher__WEBPACK_IMPORTED_MODULE_3__["teacherHome"]];
+var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["subject"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["track"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["section"], _modules_teacher__WEBPACK_IMPORTED_MODULE_3__["teacherHome"]];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: routes,
@@ -64578,7 +64578,7 @@ var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], 
 /*!**************************************************!*\
   !*** ./resources/js/router/modules/registrar.js ***!
   \**************************************************/
-/*! exports provided: registrarHome, subject, track */
+/*! exports provided: registrarHome, subject, track, section */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -64586,6 +64586,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "registrarHome", function() { return registrarHome; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subject", function() { return subject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "track", function() { return track; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "section", function() { return section; });
 var registrarHome = {
   path: '/registrar/home',
   name: 'registrar.home',
@@ -64607,6 +64608,13 @@ var track = {
     return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Track.vue */ "./resources/js/pages/registrar/Track.vue"));
   }
 };
+var section = {
+  path: '/registrar/section',
+  name: 'registrar.section',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Section.vue */ "./resources/js/pages/registrar/Section.vue"));
+  }
+};
 
 /***/ }),
 
@@ -64624,7 +64632,7 @@ var teacherHome = {
   path: '/teacher/home',
   name: 'teacher.home',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../../pages/teacher/Dashboard.vue */ "./resources/js/pages/teacher/Dashboard.vue"));
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../../pages/teacher/Dashboard.vue */ "./resources/js/pages/teacher/Dashboard.vue"));
   }
 };
 

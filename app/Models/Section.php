@@ -12,7 +12,7 @@ class Section extends Model
 
     protected $fillable = ['track_id', 'name', 'capacity'];
     
-    protected $hidden = ['track_id'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
     public function track()
     {

@@ -15,3 +15,9 @@ export const track = {
     name: 'registrar.track',
     component: () => import('../../pages/registrar/Track.vue')
 };
+
+export const section = {
+    path: '/registrar/section',
+    name: 'registrar.section',
+    component: () => import('../../pages/registrar/Section.vue')
+};

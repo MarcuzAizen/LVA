@@ -23,6 +23,17 @@
                 </li>
                 {{-- /.Dashboard --}}
                 
+                {{-- Section --}}
+                <li class="nav-item">
+                    <router-link :to="{ name: 'registrar.section' }" class="nav-link">
+                        <i class="nav-icon fas fa-door-open"></i>
+                        <p>
+                            Section
+                        </p>
+                    </router-link>
+                </li>
+                {{-- /.Section --}}
+                
                 {{-- Track --}}
                 <li class="nav-item">
                     <router-link :to="{ name: 'registrar.track' }" class="nav-link">

@@ -74,4 +74,9 @@ class TrackController extends Controller
 
         return TrackResource::collection($tracks);
     }
+
+    public function getTracksNoPagination()
+    {
+        return TrackResource::collection(Track::all());
+    }
 }

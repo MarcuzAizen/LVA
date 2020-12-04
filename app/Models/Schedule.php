@@ -31,4 +31,14 @@ class Schedule extends Model
     {
         return $this->belongsTo(Prospectus::class);
     }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
+    public function grades()
+    {
+        return $this->hasMany(Grade::class);
+    }
 }

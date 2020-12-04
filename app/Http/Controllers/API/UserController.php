@@ -72,4 +72,14 @@ class UserController extends Controller
         
         return UserResource::collection($teachers);
     }
+
+    public function getTeacherScheduleWithGrade(Request $request)
+    {
+        return $request->user()->load([
+            'schedules.grades', 
+            'schedules.acadYear', 
+            'schedules.section.track',
+            'schedules.prospectus.subject'
+        ]);
+    }
 }

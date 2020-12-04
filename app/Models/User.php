@@ -25,6 +25,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'teacher_id');
+    }
+
     public function setLastNameAttribute($value)
     {
         $this->attributes['last_name'] = strtoupper($value);

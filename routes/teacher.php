@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\HomeController;
+use App\Http\Controllers\API\UserController;
+
+Route::prefix('api')->group(function() {
+    Route::get('/schedule-grade', [UserController::class, 'getTeacherScheduleWithGrade']);
+});
 
 Route::get('/', function () {
     return redirect()->route('teacher.home');

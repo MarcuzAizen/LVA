@@ -11,4 +11,6 @@ class Subject extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['code', 'description', 'unit'];
+
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 }

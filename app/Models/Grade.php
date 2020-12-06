@@ -12,7 +12,7 @@ class Grade extends Model
 
     protected $fillable = ['enroll_id', 'schedule_id', 'mark', 'quarter_sem'];
 
-    protected $hidden = ['enroll_id', 'schedule_id'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
     public function enroll()
     {

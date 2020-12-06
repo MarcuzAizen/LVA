@@ -12,6 +12,8 @@ class Track extends Model
 
     protected $fillable = ['name', 'description', 'grade_level'];
 
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
     public function subjects()
     {
         return $this->belongsToMany(Subject::class, 'prospectuses')

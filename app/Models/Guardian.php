@@ -15,7 +15,7 @@ class Guardian extends Model
 
     protected $appends = ['full_name'];
 
-    protected $hidden = ['student_id'];
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
     public function students()
     {

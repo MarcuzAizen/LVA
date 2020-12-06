@@ -79,6 +79,7 @@ class UserController extends Controller
             'schedules.grades', 
             'schedules.acadYear', 
             'schedules.section.track',
+            'schedules.section.enrolls.student',
             'schedules.prospectus.subject'
         ]);
     }

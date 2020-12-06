@@ -13,11 +13,14 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
     protected $hidden = [
         'password',
         'remember_token',
+        'created_at', 
+        'updated_at', 
+        'deleted_at'
     ];
 
     public function role()

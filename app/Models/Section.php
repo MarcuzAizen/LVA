@@ -18,4 +18,9 @@ class Section extends Model
     {
         return $this->belongsTo(Track::class);
     }
+
+    public function enrolls()
+    {
+        return $this->hasMany(Enroll::class);
+    }
 }

@@ -12,6 +12,8 @@ class Schedule extends Model
 
     protected $guarded = ['id'];
 
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
     public function acadYear()
     {
         return $this->belongsTo(AcadYear::class);

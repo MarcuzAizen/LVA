@@ -16,7 +16,7 @@ class Student extends Authenticatable
 
     protected $appends = ['full_name'];
 
-    protected $hidden = ['student_remark_id', 'password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token', 'created_at', 'updated_at', 'deleted_at'];
 
     public function studentRemark()
     {

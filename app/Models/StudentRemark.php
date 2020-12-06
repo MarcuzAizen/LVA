@@ -11,4 +11,6 @@ class StudentRemark extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = ['code', 'indicator'];
+
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 }

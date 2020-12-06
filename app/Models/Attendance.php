@@ -12,7 +12,7 @@ class Attendance extends Model
 
     protected $fillable = ['schedule_id', 'remarks', 'date'];
 
-    protected $hidden = ['schedule_id', 'updated_at', 'deleted_at'];
+    protected $hidden = ['updated_at', 'deleted_at'];
 
     const CREATED_AT = 'date';
 

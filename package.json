@@ -32,6 +32,7 @@
         "overlayscrollbars": "^1.13.0",
         "sweetalert2": "^10.10.3",
         "vform": "^1.0.1",
+        "vue-bootstrap-datetimepicker": "^5.0.1",
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.4.9"
     }

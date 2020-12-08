@@ -23,6 +23,17 @@
                 </li>
                 {{-- /.Dashboard --}}
                 
+                {{-- School Year --}}
+                <li class="nav-item">
+                    <router-link :to="{ name: 'registrar.school-year' }" class="nav-link">
+                        <i class="nav-icon fas fa-calendar-alt"></i>
+                        <p>
+                            School Year
+                        </p>
+                    </router-link>
+                </li>
+                {{-- /.School Year --}}
+                
                 {{-- Section --}}
                 <li class="nav-item">
                     <router-link :to="{ name: 'registrar.section' }" class="nav-link">

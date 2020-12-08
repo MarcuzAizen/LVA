@@ -19,7 +19,7 @@ class CreateAcadYearsTable extends Migration
             $table->year('end');
             $table->timestamps();
             $table->softDeletes();
-            $table->unique(['start', 'end', 'deleted_at']);
+            $table->unique(['start', 'deleted_at']);
         });
     }
 

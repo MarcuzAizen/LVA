@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/TrackModal.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/registrar/TrackModal.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/SubjectModal.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/registrar/SubjectModal.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -71,11 +71,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'TrackModal',
+  name: 'SubjectModal',
   props: {
     editMode: Boolean,
-    trackForm: Object
+    subjectForm: Object
   },
   data: function data() {
     return {
@@ -83,20 +84,20 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   beforeMount: function beforeMount() {
-    this.form = this.trackForm;
+    this.form = this.subjectForm;
   },
   methods: {
-    addTrack: function addTrack() {
+    addSubject: function addSubject() {
       var _this = this;
 
       this.$Progress.start();
-      this.form.post('/registrar/api/tracks').then(function () {
-        _this.$emit('reload-tracks');
+      this.form.post('/registrar/api/subjects').then(function () {
+        _this.$emit('reload-subjects');
 
-        $('#track-modal').modal('hide');
+        $('#subject-modal').modal('hide');
         Toast.fire({
           icon: 'success',
-          title: 'Track added'
+          title: 'Subject added'
         });
 
         _this.$Progress.finish();
@@ -106,17 +107,17 @@ __webpack_require__.r(__webpack_exports__);
         return _this.$Progress.fail();
       });
     },
-    updateTrack: function updateTrack() {
+    updateSubject: function updateSubject() {
       var _this2 = this;
 
       this.$Progress.start();
-      this.form.put("/registrar/api/tracks/".concat(this.form.id)).then(function () {
-        _this2.$emit('reload-tracks');
+      this.form.put("/registrar/api/subjects/".concat(this.form.id)).then(function () {
+        _this2.$emit('reload-subjects');
 
-        $('#track-modal').modal('hide');
+        $('#subject-modal').modal('hide');
         Toast.fire({
           icon: 'success',
-          title: 'Track updated'
+          title: 'Subject updated'
         });
 
         _this2.$Progress.finish();
@@ -131,10 +132,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Track.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/registrar/Track.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Subject.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/registrar/Subject.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -142,7 +143,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_registrar_TrackModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/registrar/TrackModal */ "./resources/js/components/registrar/TrackModal.vue");
+/* harmony import */ var _components_registrar_SubjectModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/registrar/SubjectModal */ "./resources/js/components/registrar/SubjectModal.vue");
 //
 //
 //
@@ -238,58 +239,58 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Track',
+  name: 'Subject',
   components: {
-    TrackModal: _components_registrar_TrackModal__WEBPACK_IMPORTED_MODULE_1__["default"]
+    SubjectModal: _components_registrar_SubjectModal__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
       loadingText: '',
-      tracks: {},
-      tracks_query: '',
+      subjects: {},
+      subject_query: '',
       editMode: false,
       form: new Form({
         id: '',
-        name: '',
+        code: '',
         description: '',
-        grade_level: ''
+        unit: ''
       })
     };
   },
   mounted: function mounted() {
-    this.searchTrack = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.debounce(this.searchTrack, 300);
+    this.searchSubject = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.debounce(this.searchSubject, 300);
   },
   created: function created() {
     var _this = this;
 
     this.loadingText = 'Loading...';
     this.$Progress.start();
-    this.loadTracks();
-    this.$on('reload-tracks', function () {
-      return _this.loadTracks();
+    this.loadSubjects();
+    this.$on('reload-subjects', function () {
+      return _this.loadSubjects();
     });
   },
   methods: {
-    showAddTrackModal: function showAddTrackModal() {
+    showAddSubjectModal: function showAddSubjectModal() {
       this.editMode = false;
       this.form.reset();
       this.form.clear();
-      $('#track-modal').modal('show');
+      $('#subject-modal').modal('show');
     },
-    showEditTrackModal: function showEditTrackModal(track) {
+    showEditSubjectModal: function showEditSubjectModal(subject) {
       this.editMode = true;
       this.form.reset();
       this.form.clear();
-      this.form.fill(track);
-      $('#track-modal').modal('show');
+      this.form.fill(subject);
+      $('#subject-modal').modal('show');
     },
-    loadTracks: function loadTracks() {
+    loadSubjects: function loadSubjects() {
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.loadingText = 'Loading...';
-      axios.get("/registrar/api/tracks?page=".concat(page)).then(function (response) {
-        _this2.tracks = response.data;
+      axios.get("/registrar/api/subjects?page=".concat(page)).then(function (response) {
+        _this2.subjects = response.data;
         _this2.loadingText = 'No data';
 
         _this2.$Progress.finish();
@@ -299,15 +300,15 @@ __webpack_require__.r(__webpack_exports__);
         _this2.loadingText = 'No data';
       });
     },
-    searchTrack: function searchTrack() {
+    searchSubject: function searchSubject() {
       var _this3 = this;
 
-      if (this.tracks_query) {
-        axios.get("/registrar/api/tracks/search?query=".concat(this.tracks_query)).then(function (response) {
-          return _this3.tracks = response.data;
+      if (this.subject_query) {
+        axios.get("/registrar/api/subjects/search?query=".concat(this.subject_query)).then(function (response) {
+          return _this3.subjects = response.data;
         })["catch"]();
       } else {
-        this.loadTracks();
+        this.loadSubjects();
       }
     },
     deleteSubject: function deleteSubject(id) {
@@ -325,10 +326,10 @@ __webpack_require__.r(__webpack_exports__);
         if (result.value) {
           _this4.$Progress.start();
 
-          _this4.form["delete"]("/registrar/api/tracks/".concat(id)).then(function () {
-            Swal.fire('Deleted!', 'Track is deleted.', 'success');
+          _this4.form["delete"]("/registrar/api/subjects/".concat(id)).then(function () {
+            Swal.fire('Deleted!', 'Subject is deleted.', 'success');
 
-            _this4.$emit('reload-tracks');
+            _this4.$emit('reload-subjects');
 
             _this4.$Progress.finish();
           })["catch"](function () {
@@ -348,10 +349,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/TrackModal.vue?vue&type=template&id=1d080522&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/registrar/TrackModal.vue?vue&type=template&id=1d080522& ***!
-  \***********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/SubjectModal.vue?vue&type=template&id=f7b56524&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/registrar/SubjectModal.vue?vue&type=template&id=f7b56524& ***!
+  \*************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -365,7 +366,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "modal fade", attrs: { id: "track-modal" } },
+    { staticClass: "modal fade", attrs: { id: "subject-modal" } },
     [
       _c("div", { staticClass: "modal-dialog" }, [
         _c("div", { staticClass: "modal-content" }, [
@@ -380,8 +381,8 @@ var render = function() {
             }),
             _vm._v("  \n                "),
             _vm.editMode
-              ? _c("h4", { staticClass: "p-2" }, [_vm._v("Edit Track/Strand")])
-              : _c("h4", { staticClass: "p-2" }, [_vm._v("Add Track/Strand")]),
+              ? _c("h4", { staticClass: "p-2" }, [_vm._v("Edit Subject")])
+              : _c("h4", { staticClass: "p-2" }, [_vm._v("Add Subject")]),
             _vm._v(" "),
             _vm._m(0)
           ]),
@@ -393,7 +394,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.editMode ? _vm.updateTrack() : _vm.addTrack()
+                  _vm.editMode ? _vm.updateSubject() : _vm.addSubject()
                 },
                 keydown: function($event) {
                   return _vm.form.onKeydown($event)
@@ -406,36 +407,38 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Track Name")]),
+                    _c("label", [_vm._v("Subject Code")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.form.name,
-                          expression: "form.name"
+                          value: _vm.form.code,
+                          expression: "form.code"
                         }
                       ],
                       staticClass: "form-control",
-                      class: { "is-invalid": _vm.form.errors.has("name") },
+                      class: { "is-invalid": _vm.form.errors.has("code") },
                       attrs: {
                         type: "text",
-                        placeholder: "e.g. JHS, STEM, GAS"
+                        placeholder: "e.g. Core 1",
+                        name: "code",
+                        id: "code"
                       },
-                      domProps: { value: _vm.form.name },
+                      domProps: { value: _vm.form.code },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.$set(_vm.form, "name", $event.target.value)
+                          _vm.$set(_vm.form, "code", $event.target.value)
                         }
                       }
                     }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "name" }
+                      attrs: { form: _vm.form, field: "code" }
                     })
                   ],
                   1
@@ -445,7 +448,7 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Description")]),
+                    _c("label", [_vm._v("Subject Description")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -462,7 +465,9 @@ var render = function() {
                       },
                       attrs: {
                         type: "text",
-                        placeholder: "e.g. Oral Communication in Context"
+                        placeholder: "e.g. Oral Communication in Context",
+                        name: "description",
+                        id: "description"
                       },
                       domProps: { value: _vm.form.description },
                       on: {
@@ -486,76 +491,38 @@ var render = function() {
                   "div",
                   { staticClass: "form-group" },
                   [
-                    _c("label", [_vm._v("Grade Level")]),
+                    _c("label", [_vm._v("Subject Unit(s)")]),
                     _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.grade_level,
-                            expression: "form.grade_level"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        class: {
-                          "is-invalid": _vm.form.errors.has("grade_level")
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.form,
-                              "grade_level",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.unit,
+                          expression: "form.unit"
                         }
+                      ],
+                      staticClass: "form-control",
+                      class: { "is-invalid": _vm.form.errors.has("unit") },
+                      attrs: {
+                        type: "number",
+                        placeholder: "e.g. 1",
+                        name: "unit",
+                        id: "unit-add"
                       },
-                      [
-                        _c("option", { attrs: { value: "" } }, [
-                          _vm._v("Select grade level")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "7" } }, [
-                          _vm._v("Grade 7")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "8" } }, [
-                          _vm._v("Grade 8")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "9" } }, [
-                          _vm._v("Grade 9")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "10" } }, [
-                          _vm._v("Grade 10")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "11" } }, [
-                          _vm._v("Grade 11")
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "12" } }, [
-                          _vm._v("Grade 12")
-                        ])
-                      ]
-                    ),
+                      domProps: { value: _vm.form.unit },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "unit", $event.target.value)
+                        }
+                      }
+                    }),
                     _vm._v(" "),
                     _c("has-error", {
-                      attrs: { form: _vm.form, field: "grade_level" }
+                      attrs: { form: _vm.form, field: "unit" }
                     })
                   ],
                   1
@@ -622,10 +589,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Track.vue?vue&type=template&id=24497ab0&":
-/*!*************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/registrar/Track.vue?vue&type=template&id=24497ab0& ***!
-  \*************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Subject.vue?vue&type=template&id=080926d1&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/registrar/Subject.vue?vue&type=template&id=080926d1& ***!
+  \***************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -653,11 +620,11 @@ var render = function() {
                   {
                     staticClass: "btn btn-success",
                     attrs: { type: "button" },
-                    on: { click: _vm.showAddTrackModal }
+                    on: { click: _vm.showAddSubjectModal }
                   },
                   [
                     _c("i", { staticClass: "fas fa-plus" }),
-                    _vm._v(" Add track/strand\n                        ")
+                    _vm._v(" Add Subject\n                        ")
                   ]
                 )
               ]),
@@ -675,21 +642,20 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.tracks_query,
-                          expression: "tracks_query"
-                        },
-                        { name: "focus", rawName: "v-focus" }
+                          value: _vm.subject_query,
+                          expression: "subject_query"
+                        }
                       ],
                       staticClass: "form-control float-right",
                       attrs: { type: "text", placeholder: "Search" },
-                      domProps: { value: _vm.tracks_query },
+                      domProps: { value: _vm.subject_query },
                       on: {
-                        keyup: _vm.searchTrack,
+                        keyup: _vm.searchSubject,
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.tracks_query = $event.target.value
+                          _vm.subject_query = $event.target.value
                         }
                       }
                     }),
@@ -700,7 +666,7 @@ var render = function() {
                         {
                           staticClass: "btn btn-default",
                           attrs: { type: "button" },
-                          on: { click: _vm.searchTrack }
+                          on: { click: _vm.searchSubject }
                         },
                         [_c("i", { staticClass: "fas fa-search" })]
                       )
@@ -721,18 +687,23 @@ var render = function() {
                   [
                     _vm._m(1),
                     _vm._v(" "),
-                    _vm.tracks.data != undefined && _vm.tracks.data.length >= 1
+                    _vm.subjects.data != undefined &&
+                    _vm.subjects.data.length >= 1
                       ? _c(
                           "tbody",
-                          _vm._l(_vm.tracks.data, function(track) {
-                            return _c("tr", { key: track.id }, [
+                          _vm._l(_vm.subjects.data, function(subject) {
+                            return _c("tr", { key: subject.id }, [
+                              subject == []
+                                ? _c("th", [_vm._v("no data")])
+                                : _vm._e(),
+                              _vm._v(" "),
                               _c("th", { attrs: { scope: "row" } }, [
-                                _vm._v(_vm._s(track.name))
+                                _vm._v(_vm._s(subject.code))
                               ]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(track.description))]),
+                              _c("td", [_vm._v(_vm._s(subject.description))]),
                               _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(track.grade_level))]),
+                              _c("td", [_vm._v(_vm._s(subject.unit))]),
                               _vm._v(" "),
                               _c("td", { staticClass: "text-center" }, [
                                 _c(
@@ -751,7 +722,9 @@ var render = function() {
                                       staticClass: "fas fa-edit text-info mr-2",
                                       on: {
                                         click: function($event) {
-                                          return _vm.showEditTrackModal(track)
+                                          return _vm.showEditSubjectModal(
+                                            subject
+                                          )
                                         }
                                       }
                                     })
@@ -775,7 +748,7 @@ var render = function() {
                                         "fas fa-trash text-danger mr-2",
                                       on: {
                                         click: function($event) {
-                                          return _vm.deleteSubject(track.id)
+                                          return _vm.deleteSubject(subject.id)
                                         }
                                       }
                                     })
@@ -806,17 +779,17 @@ var render = function() {
               { staticClass: "card-footer" },
               [
                 _c("pagination", {
-                  attrs: { data: _vm.tracks, limit: 1 },
-                  on: { "pagination-change-page": _vm.loadTracks }
+                  attrs: { data: _vm.subjects, limit: 1 },
+                  on: { "pagination-change-page": _vm.loadSubjects }
                 })
               ],
               1
             )
           ]),
           _vm._v(" "),
-          _c("TrackModal", {
-            attrs: { trackForm: _vm.form, editMode: _vm.editMode },
-            on: { "reload-tracks": _vm.loadTracks }
+          _c("SubjectModal", {
+            attrs: { subjectForm: _vm.form, editMode: _vm.editMode },
+            on: { "reload-subjects": _vm.loadSubjects }
           })
         ],
         1
@@ -834,8 +807,8 @@ var staticRenderFns = [
         _c("div", { staticClass: "row mb-2" }, [
           _c("div", { staticClass: "col-sm-6" }, [
             _c("h1", { staticClass: "m-0 text-dark" }, [
-              _c("i", { staticClass: "nav-icon fas fa-book-reader" }),
-              _vm._v(" Track/Strand\n                    ")
+              _c("i", { staticClass: "nav-icon fas fa-chalkboard" }),
+              _vm._v(" Subject\n                    ")
             ])
           ]),
           _vm._v(" "),
@@ -849,11 +822,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("thead", [
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("Track")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Subject Code")]),
       _vm._v(" "),
       _c("th", { attrs: { scope: "col" } }, [_vm._v("Description")]),
       _vm._v(" "),
-      _c("th", { attrs: { scope: "col" } }, [_vm._v("Grade Level")]),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Unit(s)")]),
       _vm._v(" "),
       _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
         _vm._v("Action")
@@ -979,17 +952,17 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ "./resources/js/components/registrar/TrackModal.vue":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/registrar/TrackModal.vue ***!
-  \**********************************************************/
+/***/ "./resources/js/components/registrar/SubjectModal.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/registrar/SubjectModal.vue ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _TrackModal_vue_vue_type_template_id_1d080522___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TrackModal.vue?vue&type=template&id=1d080522& */ "./resources/js/components/registrar/TrackModal.vue?vue&type=template&id=1d080522&");
-/* harmony import */ var _TrackModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TrackModal.vue?vue&type=script&lang=js& */ "./resources/js/components/registrar/TrackModal.vue?vue&type=script&lang=js&");
+/* harmony import */ var _SubjectModal_vue_vue_type_template_id_f7b56524___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SubjectModal.vue?vue&type=template&id=f7b56524& */ "./resources/js/components/registrar/SubjectModal.vue?vue&type=template&id=f7b56524&");
+/* harmony import */ var _SubjectModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SubjectModal.vue?vue&type=script&lang=js& */ "./resources/js/components/registrar/SubjectModal.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -999,9 +972,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _TrackModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _TrackModal_vue_vue_type_template_id_1d080522___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _TrackModal_vue_vue_type_template_id_1d080522___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _SubjectModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SubjectModal_vue_vue_type_template_id_f7b56524___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _SubjectModal_vue_vue_type_template_id_f7b56524___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1011,54 +984,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/registrar/TrackModal.vue"
+component.options.__file = "resources/js/components/registrar/SubjectModal.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/registrar/TrackModal.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/registrar/TrackModal.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************/
+/***/ "./resources/js/components/registrar/SubjectModal.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/registrar/SubjectModal.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TrackModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TrackModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/TrackModal.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TrackModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./SubjectModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/SubjectModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/registrar/TrackModal.vue?vue&type=template&id=1d080522&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/registrar/TrackModal.vue?vue&type=template&id=1d080522& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/components/registrar/SubjectModal.vue?vue&type=template&id=f7b56524&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/registrar/SubjectModal.vue?vue&type=template&id=f7b56524& ***!
+  \*******************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TrackModal_vue_vue_type_template_id_1d080522___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TrackModal.vue?vue&type=template&id=1d080522& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/TrackModal.vue?vue&type=template&id=1d080522&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TrackModal_vue_vue_type_template_id_1d080522___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectModal_vue_vue_type_template_id_f7b56524___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./SubjectModal.vue?vue&type=template&id=f7b56524& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/registrar/SubjectModal.vue?vue&type=template&id=f7b56524&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectModal_vue_vue_type_template_id_f7b56524___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TrackModal_vue_vue_type_template_id_1d080522___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectModal_vue_vue_type_template_id_f7b56524___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
 /***/ }),
 
-/***/ "./resources/js/pages/registrar/Track.vue":
-/*!************************************************!*\
-  !*** ./resources/js/pages/registrar/Track.vue ***!
-  \************************************************/
+/***/ "./resources/js/pages/registrar/Subject.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/pages/registrar/Subject.vue ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Track_vue_vue_type_template_id_24497ab0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Track.vue?vue&type=template&id=24497ab0& */ "./resources/js/pages/registrar/Track.vue?vue&type=template&id=24497ab0&");
-/* harmony import */ var _Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Track.vue?vue&type=script&lang=js& */ "./resources/js/pages/registrar/Track.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Subject_vue_vue_type_template_id_080926d1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Subject.vue?vue&type=template&id=080926d1& */ "./resources/js/pages/registrar/Subject.vue?vue&type=template&id=080926d1&");
+/* harmony import */ var _Subject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Subject.vue?vue&type=script&lang=js& */ "./resources/js/pages/registrar/Subject.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1068,9 +1041,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Track_vue_vue_type_template_id_24497ab0___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Track_vue_vue_type_template_id_24497ab0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Subject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Subject_vue_vue_type_template_id_080926d1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Subject_vue_vue_type_template_id_080926d1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1080,38 +1053,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/pages/registrar/Track.vue"
+component.options.__file = "resources/js/pages/registrar/Subject.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/pages/registrar/Track.vue?vue&type=script&lang=js&":
-/*!*************************************************************************!*\
-  !*** ./resources/js/pages/registrar/Track.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************/
+/***/ "./resources/js/pages/registrar/Subject.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/pages/registrar/Subject.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Track.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Track.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Subject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Subject.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Subject.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Subject_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/pages/registrar/Track.vue?vue&type=template&id=24497ab0&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/pages/registrar/Track.vue?vue&type=template&id=24497ab0& ***!
-  \*******************************************************************************/
+/***/ "./resources/js/pages/registrar/Subject.vue?vue&type=template&id=080926d1&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/pages/registrar/Subject.vue?vue&type=template&id=080926d1& ***!
+  \*********************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_template_id_24497ab0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Track.vue?vue&type=template&id=24497ab0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Track.vue?vue&type=template&id=24497ab0&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_template_id_24497ab0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Subject_vue_vue_type_template_id_080926d1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Subject.vue?vue&type=template&id=080926d1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/registrar/Subject.vue?vue&type=template&id=080926d1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Subject_vue_vue_type_template_id_080926d1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Track_vue_vue_type_template_id_24497ab0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Subject_vue_vue_type_template_id_080926d1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

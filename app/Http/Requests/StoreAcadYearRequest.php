@@ -25,7 +25,10 @@ class StoreAcadYearRequest extends FormRequest
     public function rules()
     {
         return [
-            'start' => ['required', Rule::unique('acad_years')->where('end', $this->end)->whereNull('deleted_at')],
+            'start' => [
+                'required', 
+                Rule::unique('acad_years')->whereNull('deleted_at')
+            ],
         ];
     }
 }

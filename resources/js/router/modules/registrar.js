@@ -21,3 +21,9 @@ export const section = {
     name: 'registrar.section',
     component: () => import('../../pages/registrar/Section.vue')
 };
+
+export const schoolYear = {
+    path: '/registrar/school-year',
+    name: 'registrar.school-year',
+    component: () => import('../../pages/registrar/AcadYear.vue')
+};

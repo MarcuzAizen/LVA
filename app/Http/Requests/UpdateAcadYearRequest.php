@@ -25,8 +25,10 @@ class UpdateAcadYearRequest extends FormRequest
     public function rules()
     {
         return [
-            'start' => ['required', 'before:end', Rule::unique('acad_years')->ignore($this->acad_year)->where('end', $this->end)->whereNull('deleted_at')],
-            'end' => ['required', 'after:start',Rule::unique('acad_years')->ignore($this->acad_year)->where('start', $this->start)->whereNull('deleted_at')],
+            'start' => [
+                'required', 
+                Rule::unique('acad_years')->ignore($this->acad_year)->whereNull('deleted_at')
+            ],
         ];
     }
 }

@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->char('sex', 1);
             $table->date('birthdate');
             $table->string('contact_number', 11);
+            $table->string('specialization', 45)->nullable();
+            $table->string('citizenship', 45);
+            $table->string('religion', 45);
             $table->string('purok', 45);
             $table->string('barangay', 45);
             $table->string('city', 45);

@@ -20,7 +20,10 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
-        User::create($request->validated());
+        $data = $request->validated();
+        $data['username'] = "{$request->first_name}.{$request->last_name}";
+        $data['password'] = 'password';
+        User::create($data);
         return response()->json([
             'success' => true,
             'message' => 'User successfully created!'
@@ -46,7 +49,7 @@ class UserController extends Controller
         if ($user->delete()) {
             return response()->json([
                 'success' => true,
-                'message' => 'User successfully updated!'
+                'message' => 'User successfully deleted!'
             ]);
         }
     }

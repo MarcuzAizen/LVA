@@ -28,9 +28,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('users/teachers', [UserController::class, 'getTeachers'])->name('users.teachers');
-Route::get('users/teachers/search', [UserController::class, 'searchTeachers'])->name('users.search_teachers');
-
 Route::post('students/{student}/add-guardian', [StudentController::class, 'addGuardian'])->name('students.add_guardian');
 Route::delete('students/{student}/remove-guardian/{guardian}', [StudentController::class, 'removeGuardian'])->name('students.remove_guardian');
 Route::post('tracks/{track}/add-subject-offerings', [TrackController::class, 'addSubjectOfferings'])->name('tracks.add_subject_offerings');

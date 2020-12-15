@@ -15,6 +15,8 @@ class User extends Authenticatable
 
     protected $guarded = ['id'];
 
+    protected $appends = ['full_name'];
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -41,5 +43,17 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    public function setUsernameAttribute($value)
+    {
+        $this->attributes['username'] = str_replace(' ', '', strtolower($value));
+    }
+
+    public function getFullNameAttribute()
+    {
+        $middleName = ($this->attributes['middle_name'] !== null) ? ", {$this->attributes['middle_name']}" : '';
+        $suffix = ($this->attributes['suffix'] !== null) ? ", {$this->attributes['suffix']}" : '';
+        return "{$this->attributes['last_name']}, {$this->attributes['first_name']}".$middleName.$suffix;
     }
 }

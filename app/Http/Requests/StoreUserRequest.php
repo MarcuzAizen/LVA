@@ -37,17 +37,13 @@ class StoreUserRequest extends FormRequest
             ],
             'birthdate' => 'required|date',
             'contact_number' => 'required|min:11|max:11',
+            'specialization' => 'nullable|max:45',
+            'citizenship' => 'nullable|max:45',
+            'religion' => 'nullable|max:45',
             'purok' => 'required|max:45',
             'barangay' => 'required|max:45',
             'city' => 'required|max:45',
-            'province' => 'required|max:45',
-            'username' => [
-                'required',
-                'min:4',
-                'max:25',
-                Rule::unique('users')->whereNull('deleted_at')
-            ],
-            'password' => 'required|min:8'
+            'province' => 'required|max:45'
         ];
     }
 }

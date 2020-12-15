@@ -64591,14 +64591,14 @@ var principalHome = {
   path: '/principal/home',
   name: 'principal.home',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../../pages/principal/Dashboard.vue */ "./resources/js/pages/principal/Dashboard.vue"));
+    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../../pages/principal/Dashboard.vue */ "./resources/js/pages/principal/Dashboard.vue"));
   }
 };
 var teachers = {
   path: '/principal/teachers',
   name: 'principal.teachers',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../../pages/principal/Teacher.vue */ "./resources/js/pages/principal/Teacher.vue"));
+    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../../pages/principal/Teacher.vue */ "./resources/js/pages/principal/Teacher.vue"));
   }
 };
 
@@ -64629,28 +64629,28 @@ var subject = {
   path: '/registrar/subject',
   name: 'registrar.subject',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Subject.vue */ "./resources/js/pages/registrar/Subject.vue"));
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Subject.vue */ "./resources/js/pages/registrar/Subject.vue"));
   }
 };
 var track = {
   path: '/registrar/track',
   name: 'registrar.track',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Track.vue */ "./resources/js/pages/registrar/Track.vue"));
+    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Track.vue */ "./resources/js/pages/registrar/Track.vue"));
   }
 };
 var section = {
   path: '/registrar/section',
   name: 'registrar.section',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Section.vue */ "./resources/js/pages/registrar/Section.vue"));
+    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Section.vue */ "./resources/js/pages/registrar/Section.vue"));
   }
 };
 var schoolYear = {
   path: '/registrar/school-year',
   name: 'registrar.school-year',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../../pages/registrar/AcadYear.vue */ "./resources/js/pages/registrar/AcadYear.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../../pages/registrar/AcadYear.vue */ "./resources/js/pages/registrar/AcadYear.vue"));
   }
 };
 

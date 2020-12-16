@@ -64567,7 +64567,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["subject"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["track"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["section"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["schoolYear"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["principalHome"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["teachers"], _modules_teacher__WEBPACK_IMPORTED_MODULE_4__["teacherHome"]];
+var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["subject"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["track"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["section"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["schoolYear"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["principalHome"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["teachers"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["subjectOfferings"], _modules_teacher__WEBPACK_IMPORTED_MODULE_4__["teacherHome"]];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: routes,
@@ -64580,25 +64580,33 @@ var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], 
 /*!**************************************************!*\
   !*** ./resources/js/router/modules/principal.js ***!
   \**************************************************/
-/*! exports provided: principalHome, teachers */
+/*! exports provided: principalHome, teachers, subjectOfferings */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "principalHome", function() { return principalHome; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "teachers", function() { return teachers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subjectOfferings", function() { return subjectOfferings; });
 var principalHome = {
   path: '/principal/home',
   name: 'principal.home',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../../pages/principal/Dashboard.vue */ "./resources/js/pages/principal/Dashboard.vue"));
+    return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../../pages/principal/Dashboard.vue */ "./resources/js/pages/principal/Dashboard.vue"));
   }
 };
 var teachers = {
   path: '/principal/teachers',
   name: 'principal.teachers',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../../pages/principal/Teacher.vue */ "./resources/js/pages/principal/Teacher.vue"));
+    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../../pages/principal/Teacher.vue */ "./resources/js/pages/principal/Teacher.vue"));
+  }
+};
+var subjectOfferings = {
+  path: '/principal/subject-offerings',
+  name: 'principal.subject-offerings',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../../pages/principal/SubjectOffering.vue */ "./resources/js/pages/principal/SubjectOffering.vue"));
   }
 };
 
@@ -64622,35 +64630,35 @@ var registrarHome = {
   path: '/registrar/home',
   name: 'registrar.home',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Dashboard.vue */ "./resources/js/pages/registrar/Dashboard.vue"));
+    return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Dashboard.vue */ "./resources/js/pages/registrar/Dashboard.vue"));
   }
 };
 var subject = {
   path: '/registrar/subject',
   name: 'registrar.subject',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Subject.vue */ "./resources/js/pages/registrar/Subject.vue"));
+    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Subject.vue */ "./resources/js/pages/registrar/Subject.vue"));
   }
 };
 var track = {
   path: '/registrar/track',
   name: 'registrar.track',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Track.vue */ "./resources/js/pages/registrar/Track.vue"));
+    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Track.vue */ "./resources/js/pages/registrar/Track.vue"));
   }
 };
 var section = {
   path: '/registrar/section',
   name: 'registrar.section',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Section.vue */ "./resources/js/pages/registrar/Section.vue"));
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../../pages/registrar/Section.vue */ "./resources/js/pages/registrar/Section.vue"));
   }
 };
 var schoolYear = {
   path: '/registrar/school-year',
   name: 'registrar.school-year',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2)]).then(__webpack_require__.bind(null, /*! ../../pages/registrar/AcadYear.vue */ "./resources/js/pages/registrar/AcadYear.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../../pages/registrar/AcadYear.vue */ "./resources/js/pages/registrar/AcadYear.vue"));
   }
 };
 
@@ -64670,7 +64678,7 @@ var teacherHome = {
   path: '/teacher/home',
   name: 'teacher.home',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../../pages/teacher/Dashboard.vue */ "./resources/js/pages/teacher/Dashboard.vue"));
+    return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../../pages/teacher/Dashboard.vue */ "./resources/js/pages/teacher/Dashboard.vue"));
   }
 };
 

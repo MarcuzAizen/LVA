@@ -79,4 +79,13 @@ class TrackController extends Controller
     {
         return TrackResource::collection(Track::all());
     }
+
+    public function getSubjectOfferings()
+    {
+        $subjectOfferings = Track::with('subjects')
+            ->orderBy('grade_level')
+            ->get();
+            
+        return TrackResource::collection($subjectOfferings);
+    }
 }

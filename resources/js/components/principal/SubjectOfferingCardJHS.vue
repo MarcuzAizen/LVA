@@ -50,13 +50,13 @@
                 </div>
             </div>
         </div>
-        <!-- TODO: add modal component here -->
+        <SubjectOfferingModalJHS :track="form" v-on:reload-prospectuses="$emit('reload-prospectuses')" />
     </div>
 </template>
 
 <script>
 import _ from 'lodash';
-// TODO: add modal component
+import SubjectOfferingModalJHS from '../../components/principal/SubjectOfferingModalJHS';
 
 export default {
     name: 'SubjectOfferingCardJHS',
@@ -66,9 +66,9 @@ export default {
         data: Array
     },
 
-    /**
-     * TODO: add components property here
-     */
+    components: {
+        SubjectOfferingModalJHS
+    },
 
     data() {
         return {
@@ -77,7 +77,7 @@ export default {
                 name: '',
                 grade_level: '',
                 subjects: [],
-                semester: ''
+                sem_to_offer: ''
             })
         }
     },
@@ -94,9 +94,9 @@ export default {
             this.form.clear();
             this.form.fill(track);
             if (track.subjects != undefined && track.subjects.length >= 1) {
-                this.form.semester = track.subjects[0].pivot.sem_to_offer;
+                this.form.sem_to_offer = track.subjects[0].pivot.sem_to_offer;
             } else {
-                this.form.semester = null;
+                this.form.sem_to_offer = null;
             }
             $('#subject-offering-modal-jhs').modal('show');
         }

@@ -64606,7 +64606,7 @@ var subjectOfferings = {
   path: '/principal/subject-offerings',
   name: 'principal.subject-offerings',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../../pages/principal/SubjectOffering.vue */ "./resources/js/pages/principal/SubjectOffering.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(12), __webpack_require__.e(10)]).then(__webpack_require__.bind(null, /*! ../../pages/principal/SubjectOffering.vue */ "./resources/js/pages/principal/SubjectOffering.vue"));
   }
 };
 
@@ -64658,7 +64658,7 @@ var schoolYear = {
   path: '/registrar/school-year',
   name: 'registrar.school-year',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3)]).then(__webpack_require__.bind(null, /*! ../../pages/registrar/AcadYear.vue */ "./resources/js/pages/registrar/AcadYear.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! ../../pages/registrar/AcadYear.vue */ "./resources/js/pages/registrar/AcadYear.vue"));
   }
 };
 

@@ -7,8 +7,6 @@ use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\StudentRemarkController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\GuardianController;
-use App\Http\Controllers\API\TrackController;
-use App\Http\Controllers\API\ProspectusController;
 use App\Http\Controllers\API\EnrollController;
 use App\Http\Controllers\API\ScheduleController;
 use App\Http\Controllers\API\GradeController;
@@ -30,14 +28,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('students/{student}/add-guardian', [StudentController::class, 'addGuardian'])->name('students.add_guardian');
 Route::delete('students/{student}/remove-guardian/{guardian}', [StudentController::class, 'removeGuardian'])->name('students.remove_guardian');
-Route::post('tracks/{track}/add-subject-offerings', [TrackController::class, 'addSubjectOfferings'])->name('tracks.add_subject_offerings');
 
 Route::apiResource('roles', RoleController::class);
 Route::apiResource('users', UserController::class);
 Route::apiResource('student-remarks', StudentRemarkController::class);
 Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);
-Route::apiResource('prospectuses', ProspectusController::class);
 Route::apiResource('enrolls', EnrollController::class);
 Route::apiResource('schedules', ScheduleController::class); 
 Route::apiResource('grades', GradeController::class);

@@ -55,7 +55,7 @@ class TrackController extends Controller
     {
         $subjects = [];
         foreach ($request->subjects as $subject) {
-            $subjects[$subject] = ['sem_to_offer' => $request->sem_to_offer];
+            $subjects[$subject['id']] = ['sem_to_offer' => $request->sem_to_offer];
         }
 
         $track->subjects()->sync($subjects);
@@ -78,5 +78,14 @@ class TrackController extends Controller
     public function getTracksNoPagination()
     {
         return TrackResource::collection(Track::all());
+    }
+
+    public function getSubjectOfferings()
+    {
+        $subjectOfferings = Track::with('subjects')
+            ->orderBy('grade_level')
+            ->get();
+            
+        return TrackResource::collection($subjectOfferings);
     }
 }

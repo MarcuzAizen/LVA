@@ -23,6 +23,17 @@
                 </li>
                 {{-- /.Dashboard --}}
                 
+                {{-- Subject Offerings --}}
+                <li class="nav-item">
+                    <router-link :to="{ name: 'principal.subject-offerings' }" class="nav-link">
+                        <i class="nav-icon fas fa-chalkboard"></i>
+                        <p>
+                            Subject Offerings
+                        </p>
+                    </router-link>
+                </li>
+                {{-- /.Subject Offerings --}}
+                
                 {{-- Teachers --}}
                 <li class="nav-item">
                     <router-link :to="{ name: 'principal.teachers' }" class="nav-link">

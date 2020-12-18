@@ -9,3 +9,9 @@ export const teachers = {
     name: 'principal.teachers',
     component: () => import('../../pages/principal/Teacher.vue')
 };
+
+export const subjectOfferings = {
+    path: '/principal/subject-offerings',
+    name: 'principal.subject-offerings',
+    component: () => import('../../pages/principal/SubjectOffering.vue')
+};

@@ -55,7 +55,7 @@ class SubjectController extends Controller
     {
         $subjects = Subject::where('code', 'LIKE', '%'.$request->input('query').'%')
             ->orWhere('description', 'LIKE', '%'.$request->input('query').'%')
-            ->paginate(10);
+            ->get();
 
         return SubjectResource::collection($subjects);
     }

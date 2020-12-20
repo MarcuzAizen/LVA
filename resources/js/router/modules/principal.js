@@ -15,3 +15,9 @@ export const subjectOfferings = {
     name: 'principal.subject-offerings',
     component: () => import('../../pages/principal/SubjectOffering.vue')
 };
+
+export const schedules = {
+    path: '/principal/schedules',
+    name: 'principal.schedules',
+    component: () => import('../../pages/principal/Schedules.vue')
+};

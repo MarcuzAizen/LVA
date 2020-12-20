@@ -5,7 +5,8 @@ use App\Http\Controllers\Auth\Employee\LoginController;
 
 Route::get('/', function () {
     // return view('welcome');
-    return redirect()->route('employee.showLoginForm');
+    // return redirect()->route('employee.showLoginForm');
+    return redirect()->route('admin.home');
 });
 
 Route::get('/login', function() {

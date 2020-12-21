@@ -1,7 +1,10 @@
 import Dashboard from '../../pages/principal/Dashboard';
 import Teacher from '../../pages/principal/Teacher';
 import SubjectOffering from '../../pages/principal/SubjectOffering';
-import Schedules from '../../pages/principal/Schedules';
+import Schedules from '../../pages/principal/schedules';
+import SchedulesHome from '../../pages/principal/schedules/Home';
+import SchedulesSeniorHigh from '../../pages/principal/schedules/SeniorHigh';
+import SchedulesJuniorHigh from '../../pages/principal/schedules/JuniorHigh';
 
 export const principalHome = {
     path: '/principal/home',
@@ -24,5 +27,25 @@ export const subjectOfferings = {
 export const schedules = {
     path: '/principal/schedules',
     name: 'principal.schedules',
-    component: Schedules
+    component: Schedules,
+    redirect: {
+        name: 'principal.schedules.home'
+    },
+    children: [
+        {
+            path: '/principal/schedules/home',
+            name: 'principal.schedules.home',
+            component: SchedulesHome,
+        },
+        {
+            path: '/principal/schedules/senior-high',
+            name: 'principal.schedules.senior_high',
+            component: SchedulesSeniorHigh
+        },
+        {
+            path: '/principal/schedules/junior-high',
+            name: 'principal.schedules.junior_high',
+            component: SchedulesJuniorHigh
+        }
+    ]
 };

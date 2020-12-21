@@ -1,23 +1,28 @@
+import Dashboard from '../../pages/principal/Dashboard';
+import Teacher from '../../pages/principal/Teacher';
+import SubjectOffering from '../../pages/principal/SubjectOffering';
+import Schedules from '../../pages/principal/Schedules';
+
 export const principalHome = {
     path: '/principal/home',
     name: 'principal.home',
-    component: () => import('../../pages/principal/Dashboard.vue')
+    component: Dashboard
 };
 
 export const teachers = {
     path: '/principal/teachers',
     name: 'principal.teachers',
-    component: () => import('../../pages/principal/Teacher.vue')
+    component: Teacher
 };
 
 export const subjectOfferings = {
     path: '/principal/subject-offerings',
     name: 'principal.subject-offerings',
-    component: () => import('../../pages/principal/SubjectOffering.vue')
+    component: SubjectOffering
 };
 
 export const schedules = {
     path: '/principal/schedules',
     name: 'principal.schedules',
-    component: () => import('../../pages/principal/Schedules.vue')
+    component: Schedules
 };

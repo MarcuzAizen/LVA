@@ -47,67 +47,7 @@
 </template>
 
 <script>
-import moment from 'moment';
-
 export default {
-    name: 'Index',
-
-    data() {
-        return {
-            loadingText: 'Loading...',
-            schedules: {}
-        }
-    },
-
-    // created() {
-    //     this.$Progress.start();
-    //     this.loadSchedules();
-    // },
-
-    // filters: {
-    //     time(value) {
-    //         if (!value) return '';
-    //         return moment(value, 'hh:mm').format('hh:mm A');
-    //     }
-    // },
-
-    // mounted() {
-    //     this.$Progress.finish();
-    // },
-
-    // methods: {
-    //     loadSchedules(page = 1) {
-    //         this.loadingText = 'Loading...';
-    //         axios.get(`/api/schedules?page=${page}`).then(response => {
-    //             this.schedules = response.data;
-    //             this.loadingText = 'No data';
-    //             this.$Progress.finish();
-    //         }).catch(error => {
-    //             console.log(error);
-    //             this.loadingText = 'No data';
-    //             this.$Progress.fail();
-    //         });
-    //     },
-
-    //     formatDay(day) {
-    //         switch (day) {
-    //             case 'M':
-    //                 return 'Monday';
-    //                 break;
-    //             case 'T':
-    //                 return 'Tuesday';
-    //                 break;
-    //             case 'W':
-    //                 return 'Wednesday';
-    //                 break;
-    //             case 'H':
-    //                 return 'Thursday';
-    //                 break;
-    //             case 'F':
-    //                 return 'Friday';
-    //                 break;
-    //         }
-    //     }
-    // }
+    name: 'Index'
 }
 </script>

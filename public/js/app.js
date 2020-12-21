@@ -3942,8 +3942,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -3992,61 +3990,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Index',
-  data: function data() {
-    return {
-      loadingText: 'Loading...',
-      schedules: {}
-    };
-  } // created() {
-  //     this.$Progress.start();
-  //     this.loadSchedules();
-  // },
-  // filters: {
-  //     time(value) {
-  //         if (!value) return '';
-  //         return moment(value, 'hh:mm').format('hh:mm A');
-  //     }
-  // },
-  // mounted() {
-  //     this.$Progress.finish();
-  // },
-  // methods: {
-  //     loadSchedules(page = 1) {
-  //         this.loadingText = 'Loading...';
-  //         axios.get(`/api/schedules?page=${page}`).then(response => {
-  //             this.schedules = response.data;
-  //             this.loadingText = 'No data';
-  //             this.$Progress.finish();
-  //         }).catch(error => {
-  //             console.log(error);
-  //             this.loadingText = 'No data';
-  //             this.$Progress.fail();
-  //         });
-  //     },
-  //     formatDay(day) {
-  //         switch (day) {
-  //             case 'M':
-  //                 return 'Monday';
-  //                 break;
-  //             case 'T':
-  //                 return 'Tuesday';
-  //                 break;
-  //             case 'W':
-  //                 return 'Wednesday';
-  //                 break;
-  //             case 'H':
-  //                 return 'Thursday';
-  //                 break;
-  //             case 'F':
-  //                 return 'Friday';
-  //                 break;
-  //         }
-  //     }
-  // }
-
+  name: 'Index'
 });
 
 /***/ }),

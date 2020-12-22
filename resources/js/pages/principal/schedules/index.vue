@@ -21,7 +21,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <ul class="nav nav-tabs">
+                <ul class="nav nav-tabs mb-2">
                     <li class="nav-item">
                         <router-link :to="{ name: 'principal.schedules.home' }" class="nav-link">
                             Home
@@ -48,6 +48,6 @@
 
 <script>
 export default {
-    name: 'Index'
+    name: 'Schedules'
 }
 </script>

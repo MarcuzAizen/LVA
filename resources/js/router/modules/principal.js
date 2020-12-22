@@ -4,7 +4,11 @@ import SubjectOffering from '../../pages/principal/SubjectOffering';
 import Schedules from '../../pages/principal/schedules';
 import SchedulesHome from '../../pages/principal/schedules/Home';
 import SchedulesSeniorHigh from '../../pages/principal/schedules/SeniorHigh';
-import SchedulesJuniorHigh from '../../pages/principal/schedules/JuniorHigh';
+import SchedulesJuniorHigh from '../../pages/principal/schedules/juniorHigh';
+import Grade7 from '../../pages/principal/schedules/juniorHigh/grade_7';
+import Grade8 from '../../pages/principal/schedules/juniorHigh/grade_8';
+import Grade9 from '../../pages/principal/schedules/juniorHigh/grade_9';
+import Grade10 from '../../pages/principal/schedules/juniorHigh/grade_10';
 
 export const principalHome = {
     path: '/principal/home',
@@ -45,7 +49,32 @@ export const schedules = {
         {
             path: '/principal/schedules/junior-high',
             name: 'principal.schedules.junior_high',
-            component: SchedulesJuniorHigh
+            component: SchedulesJuniorHigh,
+            redirect: {
+                name: 'principal.schedules.grade_7'
+            },
+            children: [
+                {
+                    path: '/principal/schedules/junior-high/grade-7',
+                    name: 'principal.schedules.grade_7',
+                    component: Grade7
+                },
+                {
+                    path: '/principal/schedules/junior-high/grade-8',
+                    name: 'principal.schedules.grade_8',
+                    component: Grade8
+                },
+                {
+                    path: '/principal/schedules/junior-high/grade-9',
+                    name: 'principal.schedules.grade_9',
+                    component: Grade9
+                },
+                {
+                    path: '/principal/schedules/junior-high/grade-10',
+                    name: 'principal.schedules.grade_10',
+                    component: Grade10
+                },
+            ]
         }
     ]
 };

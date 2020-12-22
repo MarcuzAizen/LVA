@@ -40,7 +40,7 @@ export default {
 
     methods: {
         loadSchedules() {
-            axios.get(`/api/schedules/junior-high/${this.grade_level}`).then(response => {
+            axios.get(`/principal/api/schedules/junior-high/${this.grade_level}`).then(response => {
                 this.track = response.data.data;
                 this.loading = false;
                 this.$Progress.finish();

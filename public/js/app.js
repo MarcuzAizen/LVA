@@ -4150,7 +4150,7 @@ __webpack_require__.r(__webpack_exports__);
     loadSchedules: function loadSchedules() {
       var _this = this;
 
-      axios.get("/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
+      axios.get("/principal/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
         _this.track = response.data.data;
         _this.loading = false;
 
@@ -4215,7 +4215,7 @@ __webpack_require__.r(__webpack_exports__);
     loadSchedules: function loadSchedules() {
       var _this = this;
 
-      axios.get("/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
+      axios.get("/principal/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
         _this.track = response.data.data;
         _this.loading = false;
 
@@ -4280,7 +4280,7 @@ __webpack_require__.r(__webpack_exports__);
     loadSchedules: function loadSchedules() {
       var _this = this;
 
-      axios.get("/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
+      axios.get("/principal/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
         _this.track = response.data.data;
         _this.loading = false;
 
@@ -4345,7 +4345,7 @@ __webpack_require__.r(__webpack_exports__);
     loadSchedules: function loadSchedules() {
       var _this = this;
 
-      axios.get("/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
+      axios.get("/principal/api/schedules/junior-high/".concat(this.grade_level)).then(function (response) {
         _this.track = response.data.data;
         _this.loading = false;
 

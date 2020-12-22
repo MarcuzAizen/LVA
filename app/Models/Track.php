@@ -20,4 +20,9 @@ class Track extends Model
             ->withPivot('sem_to_offer')
             ->withTimestamps();
     }
+
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
 }

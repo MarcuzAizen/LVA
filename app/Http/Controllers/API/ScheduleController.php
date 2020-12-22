@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Track;
 use App\Models\Schedule;
 use App\Services\ScheduleService;
 use App\Http\Controllers\Controller;
@@ -53,5 +54,20 @@ class ScheduleController extends Controller
                 'message' => 'Schedule successfully deleted!'
             ]);
         }
+    }
+    
+    public function getJuniorHighSched(int $gradeLevel = 7)
+    {
+        $schedules = Track::with([
+            'sections.schedules.acadYear',
+            'sections.schedules.teacher',
+            'sections.schedules.prospectus.subject',
+        ])
+        ->where('name', 'JHS')
+        ->where('grade_level', $gradeLevel)
+        ->latest()
+        ->first();
+
+        return new ScheduleResource($schedules);
     }
 }

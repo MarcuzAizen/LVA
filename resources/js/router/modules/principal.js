@@ -2,13 +2,15 @@ import Dashboard from '../../pages/principal/Dashboard';
 import Teacher from '../../pages/principal/Teacher';
 import SubjectOffering from '../../pages/principal/SubjectOffering';
 import Schedules from '../../pages/principal/schedules';
-import SchedulesHome from '../../pages/principal/schedules/Home';
-import SchedulesSeniorHigh from '../../pages/principal/schedules/SeniorHigh';
+import SchedulesHome from '../../pages/principal/schedules/home';
+import SchedulesSeniorHigh from '../../pages/principal/schedules/seniorHigh';
 import SchedulesJuniorHigh from '../../pages/principal/schedules/juniorHigh';
 import Grade7 from '../../pages/principal/schedules/juniorHigh/grade_7';
 import Grade8 from '../../pages/principal/schedules/juniorHigh/grade_8';
 import Grade9 from '../../pages/principal/schedules/juniorHigh/grade_9';
 import Grade10 from '../../pages/principal/schedules/juniorHigh/grade_10';
+import Grade11 from '../../pages/principal/schedules/seniorHigh/grade_11';
+import Grade12 from '../../pages/principal/schedules/seniorHigh/grade_12';
 
 export const principalHome = {
     path: '/principal/home',
@@ -44,7 +46,22 @@ export const schedules = {
         {
             path: '/principal/schedules/senior-high',
             name: 'principal.schedules.senior_high',
-            component: SchedulesSeniorHigh
+            component: SchedulesSeniorHigh,
+            redirect: {
+                name: 'principal.schedules.grade_11'
+            },
+            children: [
+                {
+                    path: '/principal/schedules/senior-high/grade-11',
+                    name: 'principal.schedules.grade_11',
+                    component: Grade11
+                },
+                {
+                    path: '/principal/schedules/senior-high/grade-12',
+                    name: 'principal.schedules.grade_12',
+                    component: Grade12
+                }
+            ]
         },
         {
             path: '/principal/schedules/junior-high',

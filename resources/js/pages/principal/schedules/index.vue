@@ -28,13 +28,13 @@
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{ name: 'principal.schedules.senior_high' }" class="nav-link">
-                            Senior High
+                        <router-link :to="{ name: 'principal.schedules.junior_high' }" class="nav-link">
+                            Junior High
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{ name: 'principal.schedules.junior_high' }" class="nav-link">
-                            Junior High
+                        <router-link :to="{ name: 'principal.schedules.senior_high' }" class="nav-link">
+                            Senior High
                         </router-link>
                     </li>
                 </ul>

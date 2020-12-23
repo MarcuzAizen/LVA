@@ -13,6 +13,7 @@ Route::prefix('api')->group(function() {
     Route::get('subjects/search', [SubjectController::class, 'search'])->name('subjects.search');
     Route::get('tracks/subject-offerings', [TrackController::class, 'getSubjectOfferings'])->name('tracks.subject_offerings');
     Route::get('schedules/junior-high/{gradeLevel}', [ScheduleController::class, 'getJuniorHighSched'])->name('schedules.junior_high');
+    Route::get('schedules/senior-high/{gradeLevel}', [ScheduleController::class, 'getSeniorHighSched'])->name('schedules.senior_high');
     Route::post('tracks/{track}/add-subject-offerings', [TrackController::class, 'addSubjectOfferings'])->name('tracks.add_subject_offerings');
     Route::post('users', [UserController::class, 'store'])->name('users.store');
     Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');

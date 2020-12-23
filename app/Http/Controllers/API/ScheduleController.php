@@ -70,4 +70,19 @@ class ScheduleController extends Controller
 
         return new ScheduleResource($schedules);
     }
+    
+    public function getSeniorHighSched(int $gradeLevel = 11)
+    {
+        $schedules = Track::with([
+            'sections.schedules.acadYear',
+            'sections.schedules.teacher',
+            'sections.schedules.prospectus.subject',
+        ])
+        ->where('name', '!=', 'JHS')
+        ->where('grade_level', $gradeLevel)
+        ->latest()
+        ->get();
+
+        return ScheduleResource::collection($schedules);
+    }
 }

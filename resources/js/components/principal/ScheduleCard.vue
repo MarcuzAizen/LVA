@@ -1,65 +1,95 @@
 <template>
-    <div class="card card-purple card-outline mb-4">
-        <div class="card-header">
-            <h3 class="card-title">
-                {{ section.name }}
-            </h3>
-            <div class="card-tools">
-                <ul class="nav nav-pills ml-auto">
-                    <li class="nav-item">
-                        <button type="button" class="btn btn-success btn-sm">
-                            <i class="fas fa-plus"></i> Set schedule
+    <div>
+        <div class="card card-purple card-outline mb-4">
+            <div class="card-header">
+                <h3 class="card-title">
+                    {{ section.name }}
+                </h3>
+                <div class="card-tools">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">
+                            <i class="fas fa-wrench" />
                         </button>
-                    </li>
-                </ul>
+                        <div class="dropdown-menu dropdown-menu-right" role="menu">
+                            <a href="#" class="dropdown-item" @click="showSetScheduleModal">
+                                Add new schedule
+                            </a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus" />
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times" />
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-head-fixed">
+                        <thead>
+                            <th scope="col">Time</th>
+                            <th scope="col">Day</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Teacher</th>
+                            <th scope="col" class="text-center">Action</th>
+                        </thead>
+                        <tbody v-if="section.schedules != undefined && section.schedules.length >= 1">
+                            <tr v-for="sched in section.schedules" :key="sched.id">
+                                <td>
+                                    {{ sched.time_start | time }} - {{ sched.time_end | time }}
+                                </td>
+                                <td>
+                                    {{ formatDay(sched.day) }}
+                                </td>
+                                <td>
+                                    {{ sched.prospectus.subject.code }}
+                                </td>
+                                <td>
+                                    {{ sched.teacher.full_name }}
+                                </td>
+                                <td class="text-center">
+                                    <a role="button" style="cursor: pointer" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <i class="fas fa-edit text-info mr-2" @click="showEditScheduleModal" />
+                                    </a>
+                                    <a role="button" style="cursor: pointer" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <i class="fas fa-trash text-danger mr-2" />
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody v-else>
+                            <th colspan="5" class="text-center">No Data</th>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover table-head-fixed">
-                    <thead>
-                        <th scope="col">Time</th>
-                        <th scope="col">Day</th>
-                        <th scope="col">Subject</th>
-                        <th scope="col">Teacher</th>
-                        <th scope="col" class="text-center">Action</th>
-                    </thead>
-                    <tbody v-if="section.schedules != undefined && section.schedules.length >= 1">
-                        <tr v-for="sched in section.schedules" :key="sched.id">
-                            <td>
-                                {{ sched.time_start | time }} - {{ sched.time_end | time }}
-                            </td>
-                            <td>
-                                {{ formatDay(sched.day) }}
-                            </td>
-                            <td>
-                                {{ sched.prospectus.subject.code }}
-                            </td>
-                            <td>
-                                {{ sched.teacher.full_name }}
-                            </td>
-                            <td>
-                                Add action here
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tbody v-else>
-                        <th colspan="5" class="text-center">No Data</th>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <!-- /.card -->
+
+        <ScheduleModal :name="section.name" :editMode="editMode" />
     </div>
 </template>
 
 <script>
 import moment from 'moment';
+import ScheduleModal from './ScheduleModal';
 
 export default {
     name: 'ScheduleCard',
 
     props: {
         section: Object
+    },
+
+    data() {
+        return {
+            editMode: false,
+        }
+    },
+
+    components: {
+        ScheduleModal
     },
 
     filters: {
@@ -88,7 +118,17 @@ export default {
                     return 'Friday';
                     break;
             }
-        }
+        },
+
+        showSetScheduleModal() {
+            this.editMode = false;
+            $(`#schedule-modal-${this.section.name}`).modal('show');
+        },
+        
+        showEditScheduleModal() {
+            this.editMode = true;
+            $(`#schedule-modal-${this.section.name}`).modal('show');
+        },
     }
 }
 </script>

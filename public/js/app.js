@@ -1933,16 +1933,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Loading',
-  props: {
-    text: String
-  }
+  name: 'Loading'
 });
 
 /***/ }),
@@ -4235,9 +4227,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4289,9 +4278,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_principal_Loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../components/principal/Loading */ "./resources/js/components/principal/Loading.vue");
 /* harmony import */ var _components_principal_ScheduleCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../components/principal/ScheduleCard */ "./resources/js/components/principal/ScheduleCard.vue");
-//
-//
-//
 //
 //
 //
@@ -4365,9 +4351,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4419,9 +4402,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_principal_Loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../components/principal/Loading */ "./resources/js/components/principal/Loading.vue");
 /* harmony import */ var _components_principal_ScheduleCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../components/principal/ScheduleCard */ "./resources/js/components/principal/ScheduleCard.vue");
-//
-//
-//
 //
 //
 //
@@ -4554,6 +4534,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4604,6 +4587,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_principal_Loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../components/principal/Loading */ "./resources/js/components/principal/Loading.vue");
 /* harmony import */ var _components_principal_ScheduleCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../components/principal/ScheduleCard */ "./resources/js/components/principal/ScheduleCard.vue");
+//
+//
+//
 //
 //
 //
@@ -78329,23 +78315,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card card-purple card-outline mt-3" }, [
-    _c("div", { staticClass: "card-body" }, [
-      _c("h2", { staticClass: "text-center" }, [
-        _vm._v("\n            " + _vm._s(_vm.text) + "\n        ")
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(0)
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "overlay dark" }, [
-      _c("i", { staticClass: "fas fa-2x fa-sync-alt fa-spin" })
+    return _c("div", { staticClass: "d-flex justify-content-center m-3" }, [
+      _c(
+        "div",
+        {
+          staticClass: "spinner-border text-secondary",
+          staticStyle: { width: "3rem", height: "3rem" },
+          attrs: { role: "status" }
+        },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+      )
     ])
   }
 ]
@@ -82208,9 +82194,7 @@ var render = function() {
     "div",
     { staticClass: "container-fluid mt-3" },
     [
-      _vm.loading
-        ? _c("Loading", { attrs: { text: _vm.loadingText } })
-        : _vm._e(),
+      _vm.loading ? _c("Loading") : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.track.sections, function(section) {
         return _c("ScheduleCard", {
@@ -82248,9 +82232,7 @@ var render = function() {
     "div",
     { staticClass: "container-fluid mt-3" },
     [
-      _vm.loading
-        ? _c("Loading", { attrs: { text: _vm.loadingText } })
-        : _vm._e(),
+      _vm.loading ? _c("Loading") : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.track.sections, function(section) {
         return _c("ScheduleCard", {
@@ -82288,9 +82270,7 @@ var render = function() {
     "div",
     { staticClass: "container-fluid mt-3" },
     [
-      _vm.loading
-        ? _c("Loading", { attrs: { text: _vm.loadingText } })
-        : _vm._e(),
+      _vm.loading ? _c("Loading") : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.track.sections, function(section) {
         return _c("ScheduleCard", {
@@ -82328,9 +82308,7 @@ var render = function() {
     "div",
     { staticClass: "container-fluid mt-3" },
     [
-      _vm.loading
-        ? _c("Loading", { attrs: { text: _vm.loadingText } })
-        : _vm._e(),
+      _vm.loading ? _c("Loading") : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.track.sections, function(section) {
         return _c("ScheduleCard", {
@@ -82464,59 +82442,63 @@ var render = function() {
     "div",
     [
       _vm.loading
-        ? _c("Loading", { attrs: { text: "Loading tracks..." } })
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "nav nav-tabs mb-4" },
-        _vm._l(_vm.tracks, function(track) {
-          return _c("li", { key: track.id, staticClass: "nav-item" }, [
+        ? _c("Loading")
+        : _c("div", [
             _c(
-              "a",
-              {
-                staticClass: "nav-link",
-                attrs: { "data-toggle": "tab", href: "#" + track.name }
-              },
-              [
-                _vm._v(
-                  "\n                " + _vm._s(track.name) + "\n            "
+              "ul",
+              { staticClass: "nav nav-tabs mb-4" },
+              _vm._l(_vm.tracks, function(track, index) {
+                return _c("li", { key: track.id, staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      class: { active: index === 0 },
+                      attrs: { "data-toggle": "tab", href: "#" + track.name }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(track.name) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ])
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-content" },
+              _vm._l(_vm.tracks, function(track, index) {
+                return _c(
+                  "div",
+                  {
+                    key: track.id,
+                    staticClass: "tab-pane fade",
+                    class: { "show active": index === 0 },
+                    attrs: { id: track.name }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "container-fluid mt-3" },
+                      _vm._l(track.sections, function(section) {
+                        return _c("ScheduleCard", {
+                          key: section.id,
+                          attrs: { section: section }
+                        })
+                      }),
+                      1
+                    )
+                  ]
                 )
-              ]
+              }),
+              0
             )
           ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "tab-content" },
-        _vm._l(_vm.tracks, function(track) {
-          return _c(
-            "div",
-            {
-              key: track.id,
-              staticClass: "tab-pane fade",
-              attrs: { id: track.name }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "container-fluid mt-3" },
-                _vm._l(track.sections, function(section) {
-                  return _c("ScheduleCard", {
-                    key: section.id,
-                    attrs: { section: section }
-                  })
-                }),
-                1
-              )
-            ]
-          )
-        }),
-        0
-      )
     ],
     1
   )
@@ -82547,59 +82529,63 @@ var render = function() {
     "div",
     [
       _vm.loading
-        ? _c("Loading", { attrs: { text: "Loading tracks..." } })
-        : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "nav nav-tabs mb-4" },
-        _vm._l(_vm.tracks, function(track) {
-          return _c("li", { key: track.id, staticClass: "nav-item" }, [
+        ? _c("Loading")
+        : _c("div", [
             _c(
-              "a",
-              {
-                staticClass: "nav-link",
-                attrs: { "data-toggle": "tab", href: "#" + track.name }
-              },
-              [
-                _vm._v(
-                  "\n                " + _vm._s(track.name) + "\n            "
+              "ul",
+              { staticClass: "nav nav-tabs mb-4" },
+              _vm._l(_vm.tracks, function(track, index) {
+                return _c("li", { key: track.id, staticClass: "nav-item" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      class: { active: index === 0 },
+                      attrs: { "data-toggle": "tab", href: "#" + track.name }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(track.name) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ])
+              }),
+              0
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "tab-content" },
+              _vm._l(_vm.tracks, function(track, index) {
+                return _c(
+                  "div",
+                  {
+                    key: track.id,
+                    staticClass: "tab-pane fade",
+                    class: { "show active": index === 0 },
+                    attrs: { id: track.name }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "container-fluid mt-3" },
+                      _vm._l(track.sections, function(section) {
+                        return _c("ScheduleCard", {
+                          key: section.id,
+                          attrs: { section: section }
+                        })
+                      }),
+                      1
+                    )
+                  ]
                 )
-              ]
+              }),
+              0
             )
           ])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "tab-content" },
-        _vm._l(_vm.tracks, function(track) {
-          return _c(
-            "div",
-            {
-              key: track.id,
-              staticClass: "tab-pane fade",
-              attrs: { id: track.name }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "container-fluid mt-3" },
-                _vm._l(track.sections, function(section) {
-                  return _c("ScheduleCard", {
-                    key: section.id,
-                    attrs: { section: section }
-                  })
-                }),
-                1
-              )
-            ]
-          )
-        }),
-        0
-      )
     ],
     1
   )

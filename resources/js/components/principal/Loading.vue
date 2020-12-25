@@ -1,12 +1,7 @@
 <template>
-    <div class="card card-purple card-outline mt-3">
-        <div class="card-body">
-            <h2 class="text-center">
-                {{ text }}
-            </h2>
-        </div>
-        <div class="overlay dark">
-            <i class="fas fa-2x fa-sync-alt fa-spin"></i>
+    <div class="d-flex justify-content-center m-3">
+        <div class="spinner-border text-secondary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
 </template>
@@ -14,9 +9,5 @@
 <script>
 export default {
     name: 'Loading',
-
-    props: {
-        text: String
-    }
 }
 </script>

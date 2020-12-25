@@ -1,9 +1,6 @@
 <template>
     <div class="container-fluid mt-3">
-        <Loading 
-            v-if="loading" 
-            :text="loadingText" 
-        />
+        <Loading v-if="loading" />
         <ScheduleCard 
             v-for="section in track.sections"
             :key="section.id"

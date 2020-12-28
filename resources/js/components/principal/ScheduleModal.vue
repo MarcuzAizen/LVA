@@ -1,5 +1,5 @@
 <template>
-    <div :id="`schedule-modal-${name}`" class="modal fade">
+    <div :id="`schedule-modal-${section.name}`" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-gradient-purple">
@@ -10,7 +10,7 @@
                         width="50"
                     />&nbsp;&nbsp;
                     <h4 class="p-2" v-if="editMode">Edit schedule</h4>
-                    <h4 class="p-2" v-else>Set schedule for {{ name }}</h4>
+                    <h4 class="p-2" v-else>Set schedule for {{ section.name }}</h4>
                     <button
                         type="button"
                         class="close"
@@ -27,19 +27,29 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Time Start</label>
-                                    <input type="time" class="form-control">
+                                    <input type="time" 
+                                        class="form-control" 
+                                        v-model="form.time_start"
+                                        :class="{ 'is-invalid': form.errors.has('time_start') }" />
+                                    <has-error :form="form" field="time_start" />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Time End</label>
-                                    <input type="time" class="form-control">
+                                    <input type="time" 
+                                        class="form-control" 
+                                        v-model="form.time_end"
+                                        :class="{ 'is-invalid': form.errors.has('time_end') }" />
+                                    <has-error :form="form" field="time_end" />
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
                                     <label>Day</label>
-                                    <select class="form-control">
+                                    <select class="form-control" 
+                                        v-model="form.day"
+                                        :class="{ 'is-invalid': form.errors.has('day') }">
                                         <option value="">Select day</option>
                                         <option value="M">Monday</option>
                                         <option value="T">Tuesday</option>
@@ -47,6 +57,7 @@
                                         <option value="H">Thursday</option>
                                         <option value="F">Friday</option>
                                     </select>
+                                    <has-error :form="form" field="day" />
                                 </div>
                             </div>
                         </div>
@@ -56,13 +67,44 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label>Subject</label>
-                                    <input type="text" class="form-control">
+                                    <select class="form-control"
+                                        v-model="form.prospectus_id"
+                                        :class="{ 'is-invalid': form.errors.has('prospectus_id') }">
+                                        <option value="">Select subject</option>
+                                        <option v-for="prospectus in prospectuses" :key="prospectus.id" :value="prospectus.id">
+                                            {{ prospectus.subject.code }} - {{ prospectus.subject.description }}
+                                        </option>
+                                    </select>
+                                    <has-error :form="form" field="prospectus_id" />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
+                                    <label>School Year</label>
+                                    <select class="form-control" 
+                                        v-model="form.acad_year_id"
+                                        :class="{ 'is-invalid': form.errors.has('acad_year_id') }">
+                                        <option value="">Select school year</option>
+                                        <option v-for="acadYear in acadYears" :key="acadYear.id" :value="acadYear.id">
+                                            {{ acadYear.start }} - {{ acadYear.end }}
+                                        </option>
+                                    </select>
+                                    <has-error :form="form" field="acad_year_id" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label>Teacher</label>
-                                    <input type="text" class="form-control">
+                                    <select class="form-control" v-model="form.teacher_id">
+                                        <option value="">Select teacher</option>
+                                        <option v-for="teacher in teachers" :key="teacher.id" :value="teacher.id">
+                                            {{ teacher.full_name }} - {{ teacher.specialization }}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +133,25 @@ export default {
     name: 'ScheduleModal',
 
     props: {
-        name: String,
-        editMode: Boolean
+        section: Object,
+        editMode: Boolean,
+        acadYears: Array,
+        prospectuses: Array,
+        teachers: Array,
+    },
+
+    data() {
+        return {
+            form: new Form({
+                acad_year_id: '',
+                teacher_id: '',
+                section_id: this.section.id,
+                prospectus_id: '',
+                day: '',
+                time_start: '',
+                time_end: ''
+            })
+        }
     }
 }
 </script>

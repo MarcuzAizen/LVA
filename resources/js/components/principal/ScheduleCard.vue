@@ -67,7 +67,12 @@
         </div>
         <!-- /.card -->
 
-        <ScheduleModal :name="section.name" :editMode="editMode" />
+        <ScheduleModal 
+            :editMode="editMode" 
+            :section="section" 
+            :acad-years="acadYears"
+            :prospectuses="prospectuses"
+            :teachers="teachers" />
     </div>
 </template>
 
@@ -79,7 +84,10 @@ export default {
     name: 'ScheduleCard',
 
     props: {
-        section: Object
+        section: Object,
+        acadYears: Array,
+        prospectuses: Array,
+        teachers: Array
     },
 
     data() {

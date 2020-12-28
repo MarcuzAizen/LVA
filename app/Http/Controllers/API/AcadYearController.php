@@ -59,4 +59,10 @@ class AcadYearController extends Controller
 
         return AcadYearResource::collection($acadYears);
     }
+
+    public function getAllAcadYears()
+    {
+        $acadYears = AcadYear::latest()->get();
+        return AcadYearResource::collection($acadYears);
+    }
 }

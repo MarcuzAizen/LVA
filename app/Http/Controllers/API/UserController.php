@@ -86,4 +86,13 @@ class UserController extends Controller
             'schedules.prospectus.subject'
         ]);
     }
+
+    public function getTeachersAll()
+    {
+        $teachers = User::whereHas('role', function(Builder $query) {
+            $query->where('name', 'teacher');
+        })->latest()->get();
+
+        return UserResource::collection($teachers);
+    }
 }

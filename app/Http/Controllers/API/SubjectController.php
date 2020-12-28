@@ -4,10 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Subject;
+use App\Models\Prospectus;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
 use App\Http\Resources\SubjectResource;
+use Illuminate\Database\Eloquent\Builder;
 
 class SubjectController extends Controller
 {
@@ -57,6 +59,18 @@ class SubjectController extends Controller
             ->orWhere('description', 'LIKE', '%'.$request->input('query').'%')
             ->get();
 
+        return SubjectResource::collection($subjects);
+    }
+
+    public function getGradeLevelSubjects(string $track_name, int $grade_level)
+    {
+        $subjects = Prospectus::with(['track', 'subject'])
+            ->whereHas('track', function(Builder $query) use ($track_name, $grade_level) {
+                $query->where('name', $track_name)
+                    ->where('grade_level', $grade_level);
+            })
+            ->get();
+        
         return SubjectResource::collection($subjects);
     }
 }

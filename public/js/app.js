@@ -2036,16 +2036,21 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     section: Object,
     acadYears: Array,
-    prospectuses: Array,
+    trackName: String,
+    gradeLevel: Number,
     teachers: Array
   },
   data: function data() {
     return {
-      editMode: false
+      editMode: false,
+      prospectuses: []
     };
   },
   components: {
     ScheduleModal: _ScheduleModal__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  created: function created() {
+    this.loadSubjects(this.trackName, this.gradeLevel);
   },
   filters: {
     time: function time(value) {
@@ -2084,6 +2089,15 @@ __webpack_require__.r(__webpack_exports__);
     showEditScheduleModal: function showEditScheduleModal() {
       this.editMode = true;
       $("#schedule-modal-".concat(this.section.name)).modal('show');
+    },
+    loadSubjects: function loadSubjects(track_name, grade_level) {
+      var _this = this;
+
+      axios.get("/principal/api/subjects/".concat(track_name, "/").concat(grade_level)).then(function (response) {
+        _this.prospectuses = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -4296,6 +4310,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4311,14 +4326,12 @@ __webpack_require__.r(__webpack_exports__);
       grade_level: 10,
       track: {},
       acadYears: [],
-      prospectuses: [],
       teachers: []
     };
   },
   created: function created() {
     this.$Progress.start();
     this.loadAcadYears();
-    this.loadSubjects();
     this.loadTeachers();
     this.loadSchedules();
   },
@@ -4348,26 +4361,15 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$Progress.fail();
       });
     },
-    loadSubjects: function loadSubjects() {
+    loadTeachers: function loadTeachers() {
       var _this3 = this;
 
-      axios.get("/principal/api/subjects/JHS/".concat(this.grade_level)).then(function (response) {
-        _this3.prospectuses = response.data.data;
+      axios.get("/principal/api/users/teachers/all").then(function (response) {
+        _this3.teachers = response.data.data;
       })["catch"](function (error) {
         console.log(error);
 
         _this3.$Progress.fail();
-      });
-    },
-    loadTeachers: function loadTeachers() {
-      var _this4 = this;
-
-      axios.get("/principal/api/users/teachers/all").then(function (response) {
-        _this4.teachers = response.data.data;
-      })["catch"](function (error) {
-        console.log(error);
-
-        _this4.$Progress.fail();
       });
     }
   }
@@ -4400,6 +4402,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4415,14 +4418,12 @@ __webpack_require__.r(__webpack_exports__);
       grade_level: 7,
       track: {},
       acadYears: [],
-      prospectuses: [],
       teachers: []
     };
   },
   created: function created() {
     this.$Progress.start();
     this.loadAcadYears();
-    this.loadSubjects();
     this.loadTeachers();
     this.loadSchedules();
   },
@@ -4452,26 +4453,15 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$Progress.fail();
       });
     },
-    loadSubjects: function loadSubjects() {
+    loadTeachers: function loadTeachers() {
       var _this3 = this;
 
-      axios.get("/principal/api/subjects/JHS/".concat(this.grade_level)).then(function (response) {
-        _this3.prospectuses = response.data.data;
+      axios.get("/principal/api/users/teachers/all").then(function (response) {
+        _this3.teachers = response.data.data;
       })["catch"](function (error) {
         console.log(error);
 
         _this3.$Progress.fail();
-      });
-    },
-    loadTeachers: function loadTeachers() {
-      var _this4 = this;
-
-      axios.get("/principal/api/users/teachers/all").then(function (response) {
-        _this4.teachers = response.data.data;
-      })["catch"](function (error) {
-        console.log(error);
-
-        _this4.$Progress.fail();
       });
     }
   }
@@ -4504,6 +4494,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4519,14 +4510,12 @@ __webpack_require__.r(__webpack_exports__);
       grade_level: 8,
       track: {},
       acadYears: [],
-      prospectuses: [],
       teachers: []
     };
   },
   created: function created() {
     this.$Progress.start();
     this.loadAcadYears();
-    this.loadSubjects();
     this.loadTeachers();
     this.loadSchedules();
   },
@@ -4556,26 +4545,15 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$Progress.fail();
       });
     },
-    loadSubjects: function loadSubjects() {
+    loadTeachers: function loadTeachers() {
       var _this3 = this;
 
-      axios.get("/principal/api/subjects/JHS/".concat(this.grade_level)).then(function (response) {
-        _this3.prospectuses = response.data.data;
+      axios.get("/principal/api/users/teachers/all").then(function (response) {
+        _this3.teachers = response.data.data;
       })["catch"](function (error) {
         console.log(error);
 
         _this3.$Progress.fail();
-      });
-    },
-    loadTeachers: function loadTeachers() {
-      var _this4 = this;
-
-      axios.get("/principal/api/users/teachers/all").then(function (response) {
-        _this4.teachers = response.data.data;
-      })["catch"](function (error) {
-        console.log(error);
-
-        _this4.$Progress.fail();
       });
     }
   }
@@ -4608,6 +4586,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4623,14 +4602,12 @@ __webpack_require__.r(__webpack_exports__);
       grade_level: 9,
       track: {},
       acadYears: [],
-      prospectuses: [],
       teachers: []
     };
   },
   created: function created() {
     this.$Progress.start();
     this.loadAcadYears();
-    this.loadSubjects();
     this.loadTeachers();
     this.loadSchedules();
   },
@@ -4660,26 +4637,15 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$Progress.fail();
       });
     },
-    loadSubjects: function loadSubjects() {
+    loadTeachers: function loadTeachers() {
       var _this3 = this;
 
-      axios.get("/principal/api/subjects/JHS/".concat(this.grade_level)).then(function (response) {
-        _this3.prospectuses = response.data.data;
+      axios.get("/principal/api/users/teachers/all").then(function (response) {
+        _this3.teachers = response.data.data;
       })["catch"](function (error) {
         console.log(error);
 
         _this3.$Progress.fail();
-      });
-    },
-    loadTeachers: function loadTeachers() {
-      var _this4 = this;
-
-      axios.get("/principal/api/users/teachers/all").then(function (response) {
-        _this4.teachers = response.data.data;
-      })["catch"](function (error) {
-        console.log(error);
-
-        _this4.$Progress.fail();
       });
     }
   }
@@ -4771,6 +4737,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4783,11 +4753,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       loading: true,
       grade_level: 11,
-      tracks: []
+      tracks: [],
+      acadYears: [],
+      teachers: []
     };
   },
   created: function created() {
     this.$Progress.start();
+    this.loadAcadYears();
+    this.loadTeachers();
     this.loadSchedules();
   },
   methods: {
@@ -4803,6 +4777,28 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
 
         _this.$Progress.fail();
+      });
+    },
+    loadAcadYears: function loadAcadYears() {
+      var _this2 = this;
+
+      axios.get("/principal/api/acad-years").then(function (response) {
+        _this2.acadYears = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this2.$Progress.fail();
+      });
+    },
+    loadTeachers: function loadTeachers() {
+      var _this3 = this;
+
+      axios.get("/principal/api/users/teachers/all").then(function (response) {
+        _this3.teachers = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this3.$Progress.fail();
       });
     }
   }
@@ -4851,6 +4847,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4863,11 +4863,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       loading: true,
       grade_level: 12,
-      tracks: []
+      tracks: [],
+      acadYears: [],
+      teachers: []
     };
   },
   created: function created() {
     this.$Progress.start();
+    this.loadAcadYears();
+    this.loadTeachers();
     this.loadSchedules();
   },
   methods: {
@@ -4883,6 +4887,28 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
 
         _this.$Progress.fail();
+      });
+    },
+    loadAcadYears: function loadAcadYears() {
+      var _this2 = this;
+
+      axios.get("/principal/api/acad-years").then(function (response) {
+        _this2.acadYears = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this2.$Progress.fail();
+      });
+    },
+    loadTeachers: function loadTeachers() {
+      var _this3 = this;
+
+      axios.get("/principal/api/users/teachers/all").then(function (response) {
+        _this3.teachers = response.data.data;
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this3.$Progress.fail();
       });
     }
   }
@@ -82755,7 +82781,8 @@ var render = function() {
           attrs: {
             section: section,
             "acad-years": _vm.acadYears,
-            prospectuses: _vm.prospectuses,
+            "track-name": _vm.track.name,
+            "grade-level": _vm.track.grade_level,
             teachers: _vm.teachers
           }
         })
@@ -82798,7 +82825,8 @@ var render = function() {
           attrs: {
             section: section,
             "acad-years": _vm.acadYears,
-            prospectuses: _vm.prospectuses,
+            "track-name": _vm.track.name,
+            "grade-level": _vm.track.grade_level,
             teachers: _vm.teachers
           }
         })
@@ -82841,7 +82869,8 @@ var render = function() {
           attrs: {
             section: section,
             "acad-years": _vm.acadYears,
-            prospectuses: _vm.prospectuses,
+            "track-name": _vm.track.name,
+            "grade-level": _vm.track.grade_level,
             teachers: _vm.teachers
           }
         })
@@ -82884,7 +82913,8 @@ var render = function() {
           attrs: {
             section: section,
             "acad-years": _vm.acadYears,
-            prospectuses: _vm.prospectuses,
+            "track-name": _vm.track.name,
+            "grade-level": _vm.track.grade_level,
             teachers: _vm.teachers
           }
         })
@@ -83061,7 +83091,13 @@ var render = function() {
                       _vm._l(track.sections, function(section) {
                         return _c("ScheduleCard", {
                           key: section.id,
-                          attrs: { section: section }
+                          attrs: {
+                            section: section,
+                            "acad-years": _vm.acadYears,
+                            "track-name": track.name,
+                            "grade-level": track.grade_level,
+                            teachers: _vm.teachers
+                          }
                         })
                       }),
                       1
@@ -83148,7 +83184,13 @@ var render = function() {
                       _vm._l(track.sections, function(section) {
                         return _c("ScheduleCard", {
                           key: section.id,
-                          attrs: { section: section }
+                          attrs: {
+                            section: section,
+                            "acad-years": _vm.acadYears,
+                            "track-name": track.name,
+                            "grade-level": track.grade_level,
+                            teachers: _vm.teachers
+                          }
                         })
                       }),
                       1

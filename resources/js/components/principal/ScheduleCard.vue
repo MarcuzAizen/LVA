@@ -86,18 +86,24 @@ export default {
     props: {
         section: Object,
         acadYears: Array,
-        prospectuses: Array,
+        trackName: String,
+        gradeLevel: Number,
         teachers: Array
     },
 
     data() {
         return {
             editMode: false,
+            prospectuses: []
         }
     },
 
     components: {
         ScheduleModal
+    },
+
+    created() {
+        this.loadSubjects(this.trackName, this.gradeLevel);
     },
 
     filters: {
@@ -137,6 +143,14 @@ export default {
             this.editMode = true;
             $(`#schedule-modal-${this.section.name}`).modal('show');
         },
+
+        loadSubjects(track_name, grade_level) {
+            axios.get(`/principal/api/subjects/${track_name}/${grade_level}`).then(response => {
+                this.prospectuses = response.data.data;
+            }).catch(error => {
+                console.log(error);
+            });
+        }
     }
 }
 </script>

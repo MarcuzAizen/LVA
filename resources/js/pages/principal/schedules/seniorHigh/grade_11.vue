@@ -19,7 +19,11 @@
                         <ScheduleCard 
                             v-for="section in track.sections"
                             :key="section.id"
-                            :section="section" 
+                            :section="section"
+                            :acad-years="acadYears"
+                            :track-name="track.name"
+                            :grade-level="track.grade_level"
+                            :teachers="teachers"
                         />
                     </div>
                 </div>
@@ -44,12 +48,16 @@ export default {
         return {
             loading: true,
             grade_level: 11,
-            tracks: []
+            tracks: [],
+            acadYears: [],
+            teachers: []
         }
     },
 
     created() {
         this.$Progress.start();
+        this.loadAcadYears();
+        this.loadTeachers();
         this.loadSchedules();
     },
 
@@ -59,6 +67,24 @@ export default {
                 this.tracks = response.data.data;
                 this.loading = false;
                 this.$Progress.finish();
+            }).catch(error => {
+                console.log(error);
+                this.$Progress.fail();
+            });
+        },
+
+        loadAcadYears() {
+            axios.get(`/principal/api/acad-years`).then(response => {
+                this.acadYears = response.data.data;
+            }).catch(error => {
+                console.log(error);
+                this.$Progress.fail();
+            });
+        },
+
+        loadTeachers() {
+            axios.get(`/principal/api/users/teachers/all`).then(response => {
+                this.teachers = response.data.data;
             }).catch(error => {
                 console.log(error);
                 this.$Progress.fail();

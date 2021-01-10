@@ -6,7 +6,8 @@
             :key="section.id"
             :section="section" 
             :acad-years="acadYears"
-            :prospectuses="prospectuses"
+            :track-name="track.name"
+            :grade-level="track.grade_level"
             :teachers="teachers"
         />
     </div>
@@ -31,7 +32,6 @@ export default {
             grade_level: 9,
             track: {},
             acadYears: [],
-            prospectuses: [],
             teachers: []
         }
     },
@@ -39,7 +39,6 @@ export default {
     created() {
         this.$Progress.start();
         this.loadAcadYears();
-        this.loadSubjects();
         this.loadTeachers();
         this.loadSchedules();
     },
@@ -59,15 +58,6 @@ export default {
         loadAcadYears() {
             axios.get(`/principal/api/acad-years`).then(response => {
                 this.acadYears = response.data.data;
-            }).catch(error => {
-                console.log(error);
-                this.$Progress.fail();
-            });
-        },
-
-        loadSubjects() {
-            axios.get(`/principal/api/subjects/JHS/${this.grade_level}`).then(response => {
-                this.prospectuses = response.data.data;
             }).catch(error => {
                 console.log(error);
                 this.$Progress.fail();

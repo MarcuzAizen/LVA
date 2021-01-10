@@ -64,7 +64,7 @@ class SubjectController extends Controller
 
     public function getGradeLevelSubjects(string $track_name, int $grade_level)
     {
-        $subjects = Prospectus::with(['track', 'subject'])
+        $subjects = Prospectus::with('subject')
             ->whereHas('track', function(Builder $query) use ($track_name, $grade_level) {
                 $query->where('name', $track_name)
                     ->where('grade_level', $grade_level);

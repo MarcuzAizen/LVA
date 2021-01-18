@@ -24,6 +24,7 @@
                             :track-name="track.name"
                             :grade-level="track.grade_level"
                             :teachers="teachers"
+                            v-on:reload-schedules="loadSchedules"
                         />
                     </div>
                 </div>

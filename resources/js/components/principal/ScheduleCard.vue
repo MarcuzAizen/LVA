@@ -72,7 +72,8 @@
             :section="section" 
             :acad-years="acadYears"
             :prospectuses="prospectuses"
-            :teachers="teachers" />
+            :teachers="teachers"
+            v-on:reload-schedules="$emit('reload-schedules', 'reload-schedules')" />
     </div>
 </template>
 

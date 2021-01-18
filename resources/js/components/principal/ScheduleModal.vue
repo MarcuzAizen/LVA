@@ -21,7 +21,7 @@
                 </div>
                 <!-- /.modal-header -->
                 
-                <form>
+                <form @submit.prevent="addSchedule" @keydown="form.onKeydown($event)" autocomplete="off">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-4">
@@ -99,12 +99,15 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label>Teacher</label>
-                                    <select class="form-control" v-model="form.teacher_id">
+                                    <select class="form-control"
+                                        v-model="form.teacher_id"
+                                        :class="{ 'is-invalid': form.errors.has('teacher_id') }">
                                         <option value="">Select teacher</option>
                                         <option v-for="teacher in teachers" :key="teacher.id" :value="teacher.id">
                                             {{ teacher.full_name }} - {{ teacher.specialization }}
                                         </option>
                                     </select>
+                                    <has-error :form="form" field="teacher_id" />
                                 </div>
                             </div>
                         </div>
@@ -151,6 +154,25 @@ export default {
                 time_start: '',
                 time_end: ''
             })
+        }
+    },
+
+    methods: {
+        addSchedule() {
+            this.$Progress.start();
+            this.form.post('/principal/api/schedules').then(() => {
+                this.$emit('reload-schedules');
+                $(`#schedule-modal-${this.section.name}`).modal('hide');
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Schedule added'
+                });
+                this.$Progress.finish();
+                this.form.reset();
+            }).catch(error => {
+                console.log(error);
+                this.$Progress.fail()
+            });
         }
     }
 }

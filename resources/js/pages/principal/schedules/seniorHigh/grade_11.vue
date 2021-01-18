@@ -24,6 +24,7 @@
                             :track-name="track.name"
                             :grade-level="track.grade_level"
                             :teachers="teachers"
+                            v-on:reload-schedules="loadSchedules"
                         />
                     </div>
                 </div>
@@ -89,6 +90,10 @@ export default {
                 console.log(error);
                 this.$Progress.fail();
             });
+        },
+
+        test() {
+            console.log('Event received from grandchild');
         }
     }
 }

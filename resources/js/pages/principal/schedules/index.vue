@@ -23,11 +23,6 @@
             <div class="container-fluid">
                 <ul class="nav nav-tabs mb-2">
                     <li class="nav-item">
-                        <router-link :to="{ name: 'principal.schedules.home' }" class="nav-link">
-                            Home
-                        </router-link>
-                    </li>
-                    <li class="nav-item">
                         <router-link :to="{ name: 'principal.schedules.junior_high' }" class="nav-link">
                             Junior High
                         </router-link>

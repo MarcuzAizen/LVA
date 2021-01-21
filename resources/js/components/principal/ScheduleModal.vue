@@ -170,8 +170,13 @@ export default {
                 this.$Progress.finish();
                 this.form.reset();
             }).catch(error => {
-                console.log(error);
-                this.$Progress.fail()
+                const message = error.response.data.message;
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: message
+                });
+                this.$Progress.fail();
             });
         }
     }

@@ -53,7 +53,7 @@
                                         <i class="fas fa-edit text-info mr-2" @click="showEditScheduleModal" />
                                     </a>
                                     <a role="button" style="cursor: pointer" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <i class="fas fa-trash text-danger mr-2" />
+                                        <i class="fas fa-trash text-danger mr-2" @click="deleteSchedule(sched.id)" />
                                     </a>
                                 </td>
                             </tr>
@@ -151,7 +151,35 @@ export default {
             }).catch(error => {
                 console.log(error);
             });
-        }
+        },
+
+        deleteSchedule(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    this.$Progress.start();
+                    axios.delete(`/principal/api/schedules/${id}`).then(() => {
+                        Swal.fire('Deleted!', 'Subject schedule is deleted.','success');
+                        this.$emit('reload-schedules');
+                        this.$Progress.finish();
+                    }).catch(() => {
+                        this.$Progress.fail();
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed',
+                            text: 'Something went wrong!'
+                        });
+                    });
+                }
+            });
+        },
     }
 }
 </script>

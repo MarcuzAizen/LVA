@@ -2,7 +2,6 @@ import Dashboard from '../../pages/principal/Dashboard';
 import Teacher from '../../pages/principal/Teacher';
 import SubjectOffering from '../../pages/principal/SubjectOffering';
 import Schedules from '../../pages/principal/schedules';
-import SchedulesHome from '../../pages/principal/schedules/home';
 import SchedulesSeniorHigh from '../../pages/principal/schedules/seniorHigh';
 import SchedulesJuniorHigh from '../../pages/principal/schedules/juniorHigh';
 import Grade7 from '../../pages/principal/schedules/juniorHigh/grade_7';
@@ -35,14 +34,10 @@ export const schedules = {
     name: 'principal.schedules',
     component: Schedules,
     redirect: {
-        name: 'principal.schedules.home'
+        name: 'principal.schedules.grade_7'
     },
     children: [
-        {
-            path: '/principal/schedules/home',
-            name: 'principal.schedules.home',
-            component: SchedulesHome,
-        },
+        // Senior High Routes
         {
             path: '/principal/schedules/senior-high',
             name: 'principal.schedules.senior_high',
@@ -63,13 +58,12 @@ export const schedules = {
                 }
             ]
         },
+
+        // Junior High Routes
         {
             path: '/principal/schedules/junior-high',
             name: 'principal.schedules.junior_high',
             component: SchedulesJuniorHigh,
-            redirect: {
-                name: 'principal.schedules.grade_7'
-            },
             children: [
                 {
                     path: '/principal/schedules/junior-high/grade-7',

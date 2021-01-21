@@ -21,13 +21,15 @@ class ScheduleController extends Controller
 
     public function store(StoreScheduleRequest $request)
     {
-        if (!ScheduleService::hasConflict($request->validated())) {
-            Schedule::create($request->validated());
-            return response()->json([
-                'success' => true,
-                'message' => 'Schedule successfully created!'
-            ], 201);
+        if (ScheduleService::hasConflict($request->validated())) {
+            abort(422, 'Schedule conflict in subject, time and/or day');
         }
+
+        Schedule::create($request->validated());
+        return response()->json([
+            'success' => true,
+            'message' => 'Schedule successfully created!'
+        ], 201);
     }
 
     public function show(Schedule $schedule)
@@ -37,13 +39,15 @@ class ScheduleController extends Controller
 
     public function update(UpdateScheduleRequest $request, Schedule $schedule)
     {
-        if (!ScheduleService::hasConflict($request->validated())) {
-            $schedule->update($request->validated());
-            return response()->json([
-                'success' => true,
-                'message' => 'Schedule successfully updated!'
-            ]);
+        if (ScheduleService::hasConflict($request->validated())) {
+            abort(422, 'Schedule conflict in subject, time and/or day');
         }
+
+        $schedule->update($request->validated());
+        return response()->json([
+            'success' => true,
+            'message' => 'Schedule successfully updated!'
+        ]);
     }
 
     public function destroy(Schedule $schedule)

@@ -64,6 +64,9 @@ export const schedules = {
             path: '/principal/schedules/junior-high',
             name: 'principal.schedules.junior_high',
             component: SchedulesJuniorHigh,
+            redirect: {
+                name: 'principal.schedules.grade_7'
+            },
             children: [
                 {
                     path: '/principal/schedules/junior-high/grade-7',

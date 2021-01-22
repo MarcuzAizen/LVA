@@ -102092,6 +102092,9 @@ var schedules = {
     path: '/principal/schedules/junior-high',
     name: 'principal.schedules.junior_high',
     component: _pages_principal_schedules_juniorHigh__WEBPACK_IMPORTED_MODULE_5__["default"],
+    redirect: {
+      name: 'principal.schedules.grade_7'
+    },
     children: [{
       path: '/principal/schedules/junior-high/grade-7',
       name: 'principal.schedules.grade_7',

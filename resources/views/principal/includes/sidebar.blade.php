@@ -23,6 +23,17 @@
                 </li>
                 {{-- /.Dashboard --}}
                 
+                {{-- Schedules --}}
+                <li class="nav-item">
+                    <router-link :to="{ name: 'principal.schedules' }" class="nav-link">
+                        <i class="nav-icon fas fa-calendar-week"></i>
+                        <p>
+                            Schedules
+                        </p>
+                    </router-link>
+                </li>
+                {{-- /.Schedules --}}
+                
                 {{-- Subject Offerings --}}
                 <li class="nav-item">
                     <router-link :to="{ name: 'principal.subject-offerings' }" class="nav-link">

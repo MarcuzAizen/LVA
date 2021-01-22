@@ -8,7 +8,6 @@ use App\Http\Controllers\API\StudentRemarkController;
 use App\Http\Controllers\API\StudentController;
 use App\Http\Controllers\API\GuardianController;
 use App\Http\Controllers\API\EnrollController;
-use App\Http\Controllers\API\ScheduleController;
 use App\Http\Controllers\API\GradeController;
 use App\Http\Controllers\API\AttendanceController;
 /*
@@ -35,6 +34,5 @@ Route::apiResource('student-remarks', StudentRemarkController::class);
 Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);
 Route::apiResource('enrolls', EnrollController::class);
-Route::apiResource('schedules', ScheduleController::class); 
 Route::apiResource('grades', GradeController::class);
 Route::apiResource('attendances', AttendanceController::class);

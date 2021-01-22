@@ -1,5 +1,7 @@
+import Dashboard from '../../pages/teacher/Dashboard';
+
 export const teacherHome = {
     path: '/teacher/home',
     name: 'teacher.home',
-    component: () => import('../../pages/teacher/Dashboard.vue')
+    component: Dashboard
 };

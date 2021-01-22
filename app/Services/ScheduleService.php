@@ -2,54 +2,29 @@
 
 namespace App\Services;
 
-use App\Models\Schedule;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleService
 {
     /**
      * Calculate the time conflicts of the subject and teacher
      * @param array $request
-     * @return \Illuminate\Http\JsonResponse|false
+     * @return bool
      */
     public static function hasConflict(array $request)
     {
-        if ((new self)->hasSubjectInSection(
-            $request['acad_year_id'], 
-            $request['section_id'], 
-            $request['prospectus_id']
-        )) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Subject already assigned to section'
-            ], 422);
-        }
+        $acad_year_id = $request['acad_year_id'];
+        $section_id = $request['section_id'];
+        $teacher_id = $request['teacher_id'];
+        $prospectus_id = $request['prospectus_id'];
+        $day = $request['day'];
+        $time_start = $request['time_start'];
+        $time_end = $request['time_end'];
 
-        if ((new self)->hasOccupiedTimeInSubject(
-            $request['acad_year_id'], 
-            $request['time_start'], 
-            $request['time_end'], 
-            $request['prospectus_id']
-        )) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Time already occupied to the subject'
-            ], 422);
-        }
-
-        if ((new self)->hasOccupiedDayAndTimeForTeacher(
-            $request['acad_year_id'], 
-            $request['teacher_id'], 
-            $request['day'], 
-            $request['time_start'], 
-            $request['time_end']
-        )) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Day & time of the subject already occupied for teacher'
-            ], 422);
-        }
-
-        return false;
+        return ((new self)->hasSubjectInSection($acad_year_id, $section_id, $prospectus_id) ||
+            (new self)->hasOccupiedTimeInSubject($acad_year_id, $time_start, $time_end, $prospectus_id) ||
+            (new self)->hasOccupiedDayAndTimeForTeacher($acad_year_id, $teacher_id, $day, $time_start, $time_end)) ?
+            true : false;
     }
 
     /**
@@ -61,11 +36,13 @@ class ScheduleService
      */
     private function hasSubjectInSection(int $acad_year_id, int $section_id, int $prospectus_id)
     {
-        return Schedule::where([
-            ['acad_year_id', '=', $acad_year_id],
-            ['section_id', '=', $section_id],
-            ['prospectus_id', '=', $prospectus_id]
-        ])->distinct()->exists();
+        return DB::table('schedules')
+            ->where('acad_year_id', $acad_year_id)
+            ->where('section_id', $section_id)
+            ->where('prospectus_id', $prospectus_id)
+            ->whereNull('deleted_at')
+            ->distinct()
+            ->exists();
     }
 
     /**
@@ -82,12 +59,12 @@ class ScheduleService
         string $time_end, 
         int $prospectus_id
     ) {
-        return Schedule::where([
-            ['acad_year_id', $acad_year_id],
-            ['prospectus_id', $prospectus_id],
-            ['time_start', '>=', $time_start],
-            ['time_end', '<=', $time_end]
-        ])->exists();
+        return DB::table('schedules')
+            ->where('acad_year_id', $acad_year_id)
+            ->where('prospectus_id', $prospectus_id)
+            ->whereBetween('time_start', [$time_start, $time_end])
+            ->whereNull('deleted_at')
+            ->exists();
     }
 
     /**
@@ -106,12 +83,12 @@ class ScheduleService
         string $time_start, 
         string $time_end
     ) {
-        return Schedule::where([
-            ['acad_year_id', $acad_year_id],
-            ['teacher_id', $teacher_id],
-            ['day', $day],
-            ['time_start', '>=', $time_start],
-            ['time_end', '<=', $time_end]
-        ])->exists();
+        return DB::table('schedules')
+            ->where('acad_year_id', $acad_year_id)
+            ->where('teacher_id', $teacher_id)
+            ->where('day', $day)
+            ->whereBetween('time_start', [$time_start, $time_end])
+            ->whereNull('deleted_at')
+            ->exists();
     }
 }

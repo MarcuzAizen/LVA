@@ -23,4 +23,9 @@ class Section extends Model
     {
         return $this->hasMany(Enroll::class);
     }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }

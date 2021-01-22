@@ -141,20 +141,17 @@ export default {
         acadYears: Array,
         prospectuses: Array,
         teachers: Array,
+        scheduleForm: Object
     },
 
     data() {
         return {
-            form: new Form({
-                acad_year_id: '',
-                teacher_id: '',
-                section_id: this.section.id,
-                prospectus_id: '',
-                day: '',
-                time_start: '',
-                time_end: ''
-            })
+            form: new Form()
         }
+    },
+
+    beforeMount() {
+        this.form = this.scheduleForm;
     },
 
     methods: {
@@ -176,6 +173,29 @@ export default {
                     title: 'Oops...',
                     text: message
                 });
+                this.$Progress.fail();
+            });
+        },
+
+        updateSchedule() {
+            this.$Progress.start();
+            this.form.post(`/principal/api/schedules/${this.form.id}`).then(() => {
+                this.$emit('reload-schedules');
+                $(`#schedule-modal-${this.section.name}`).modal('hide');
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Schedule updated'
+                });
+                this.$Progress.finish();
+                this.form.reset();
+            }).catch(error => {
+                const message = error.response.data.message;
+                console.log(message);
+                // Swal.fire({
+                //     icon: 'error',
+                //     title: 'Oops...',
+                //     text: message
+                // });
                 this.$Progress.fail();
             });
         }

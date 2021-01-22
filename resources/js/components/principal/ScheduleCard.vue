@@ -50,7 +50,7 @@
                                 </td>
                                 <td class="text-center">
                                     <a role="button" style="cursor: pointer" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="fas fa-edit text-info mr-2" @click="showEditScheduleModal" />
+                                        <i class="fas fa-edit text-info mr-2" @click="showEditScheduleModal(sched)" />
                                     </a>
                                     <a role="button" style="cursor: pointer" data-toggle="tooltip" data-placement="top" title="Delete">
                                         <i class="fas fa-trash text-danger mr-2" @click="deleteSchedule(sched.id)" />
@@ -73,6 +73,7 @@
             :acad-years="acadYears"
             :prospectuses="prospectuses"
             :teachers="teachers"
+            :scheduleForm="form"
             v-on:reload-schedules="$emit('reload-schedules', 'reload-schedules')" />
     </div>
 </template>
@@ -95,7 +96,17 @@ export default {
     data() {
         return {
             editMode: false,
-            prospectuses: []
+            prospectuses: [],
+            form: new Form({
+                id: '',
+                acad_year_id: '',
+                teacher_id: '',
+                section_id: this.section.id,
+                prospectus_id: '',
+                day: '',
+                time_start: '',
+                time_end: ''
+            })
         }
     },
 
@@ -137,11 +148,22 @@ export default {
 
         showSetScheduleModal() {
             this.editMode = false;
+            this.form.reset();
+            this.form.clear();
             $(`#schedule-modal-${this.section.name}`).modal('show');
         },
         
-        showEditScheduleModal() {
+        showEditScheduleModal(sched) {
             this.editMode = true;
+            this.form.reset();
+            this.form.clear();
+            this.form.id = sched.id;
+            this.form.acad_year_id = sched.acad_year_id;
+            this.form.teacher_id = sched.teacher_id;
+            this.form.prospectus_id = sched.prospectus_id
+            this.form.day = sched.day;
+            this.form.time_start = sched.time_start.slice(0, -3);
+            this.form.time_end = sched.time_end.slice(0, -3);
             $(`#schedule-modal-${this.section.name}`).modal('show');
         },
 

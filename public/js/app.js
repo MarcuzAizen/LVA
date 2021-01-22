@@ -2030,6 +2030,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2044,7 +2045,17 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       editMode: false,
-      prospectuses: []
+      prospectuses: [],
+      form: new Form({
+        id: '',
+        acad_year_id: '',
+        teacher_id: '',
+        section_id: this.section.id,
+        prospectus_id: '',
+        day: '',
+        time_start: '',
+        time_end: ''
+      })
     };
   },
   components: {
@@ -2085,10 +2096,21 @@ __webpack_require__.r(__webpack_exports__);
     },
     showSetScheduleModal: function showSetScheduleModal() {
       this.editMode = false;
+      this.form.reset();
+      this.form.clear();
       $("#schedule-modal-".concat(this.section.name)).modal('show');
     },
-    showEditScheduleModal: function showEditScheduleModal() {
+    showEditScheduleModal: function showEditScheduleModal(sched) {
       this.editMode = true;
+      this.form.reset();
+      this.form.clear();
+      this.form.id = sched.id;
+      this.form.acad_year_id = sched.acad_year_id;
+      this.form.teacher_id = sched.teacher_id;
+      this.form.prospectus_id = sched.prospectus_id;
+      this.form.day = sched.day;
+      this.form.time_start = sched.time_start.slice(0, -3);
+      this.form.time_end = sched.time_end.slice(0, -3);
       $("#schedule-modal-".concat(this.section.name)).modal('show');
     },
     loadSubjects: function loadSubjects(track_name, grade_level) {
@@ -2287,20 +2309,16 @@ __webpack_require__.r(__webpack_exports__);
     editMode: Boolean,
     acadYears: Array,
     prospectuses: Array,
-    teachers: Array
+    teachers: Array,
+    scheduleForm: Object
   },
   data: function data() {
     return {
-      form: new Form({
-        acad_year_id: '',
-        teacher_id: '',
-        section_id: this.section.id,
-        prospectus_id: '',
-        day: '',
-        time_start: '',
-        time_end: ''
-      })
+      form: new Form()
     };
+  },
+  beforeMount: function beforeMount() {
+    this.form = this.scheduleForm;
   },
   methods: {
     addSchedule: function addSchedule() {
@@ -2328,6 +2346,33 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.$Progress.fail();
+      });
+    },
+    updateSchedule: function updateSchedule() {
+      var _this2 = this;
+
+      this.$Progress.start();
+      this.form.post("/principal/api/schedules/".concat(this.form.id)).then(function () {
+        _this2.$emit('reload-schedules');
+
+        $("#schedule-modal-".concat(_this2.section.name)).modal('hide');
+        Toast.fire({
+          icon: 'success',
+          title: 'Schedule updated'
+        });
+
+        _this2.$Progress.finish();
+
+        _this2.form.reset();
+      })["catch"](function (error) {
+        var message = error.response.data.message;
+        console.log(message); // Swal.fire({
+        //     icon: 'error',
+        //     title: 'Oops...',
+        //     text: message
+        // });
+
+        _this2.$Progress.fail();
       });
     }
   }
@@ -78767,7 +78812,11 @@ var render = function() {
                               [
                                 _c("i", {
                                   staticClass: "fas fa-edit text-info mr-2",
-                                  on: { click: _vm.showEditScheduleModal }
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.showEditScheduleModal(sched)
+                                    }
+                                  }
                                 })
                               ]
                             ),
@@ -78818,7 +78867,8 @@ var render = function() {
           section: _vm.section,
           "acad-years": _vm.acadYears,
           prospectuses: _vm.prospectuses,
-          teachers: _vm.teachers
+          teachers: _vm.teachers,
+          scheduleForm: _vm.form
         },
         on: {
           "reload-schedules": function($event) {

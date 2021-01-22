@@ -7,3 +7,4 @@ Route::get('/', function () {
     return redirect()->route('enrollment_officer.home');
 });
 Route::get('home', [HomeController::class, 'enrollmentOfficer'])->name('home');
+Route::get('/{any}', [HomeController::class, 'enrollmentOfficer'])->where('any', '.*');

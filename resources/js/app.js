@@ -37,6 +37,8 @@ Vue.directive('focus', {
     }
 });
 
+Vue.component('enrollment-officer-sidebar', require('./components/enrollment-officer/sidebar.vue').default);
+
 new Vue({
     el: '#app',
     router,

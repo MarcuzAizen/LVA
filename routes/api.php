@@ -31,7 +31,6 @@ Route::delete('students/{student}/remove-guardian/{guardian}', [StudentControlle
 Route::apiResource('roles', RoleController::class);
 Route::apiResource('users', UserController::class);
 Route::apiResource('student-remarks', StudentRemarkController::class);
-Route::apiResource('students', StudentController::class);
 Route::apiResource('guardians', GuardianController::class);
 Route::apiResource('enrolls', EnrollController::class);
 Route::apiResource('grades', GradeController::class);

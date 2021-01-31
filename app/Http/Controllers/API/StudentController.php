@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Student;
 use App\Models\Guardian;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\StudentResource;
 use App\Http\Requests\StoreStudentRequest;
@@ -14,7 +15,20 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::with(['studentRemark', 'guardians'])->latest()->paginate(10);
+        $students = Student::with('studentRemark')
+            ->latest()
+            ->paginate(10, [
+                'id',
+                'lrn',
+                'last_name',
+                'first_name',
+                'middle_name',
+                'suffix',
+                'sex',
+                'religion',
+                'contact_number'
+            ]);
+
         return StudentResource::collection($students);
     }
 
@@ -82,5 +96,18 @@ class StudentController extends Controller
             'message' => $query ? 'Guardian successfully removed from the student!'
                                 : 'Guardian is not related to the student!'
         ], $query ? 200 : 404);
+    }
+
+    public function search(Request $request)
+    {
+        $subjects = Student::where('first_name', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('middle_name', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('last_name', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('suffix', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('religion', 'LIKE', '%'.$request->input('query').'%')
+            ->orWhere('contact_number', 'LIKE', '%'.$request->input('query').'%')
+            ->get();
+
+        return StudentResource::collection($subjects);
     }
 }

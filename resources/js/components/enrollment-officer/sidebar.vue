@@ -55,6 +55,17 @@
                         </ul>
                     </li>
                     <!-- /.Enroll -->
+
+                     <!-- Students -->
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'enrollment-officer.students' }" class="nav-link">
+                            <i class="nav-icon fas fa-user-graduate"></i>
+                            <p>
+                                Students
+                            </p>
+                        </router-link>
+                    </li>
+                    <!-- /.Students -->
                     
                 </ul>
             </nav><!-- /.sidebar-menu -->

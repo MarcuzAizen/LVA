@@ -2036,11 +2036,153 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Sidebar',
   methods: {
     test: function test() {
       console.log(this.$route.name);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'StudentListCard',
+  data: function data() {
+    return {
+      base_path: '/enrollment-officer/api',
+      students: {},
+      student_query: ''
+    };
+  },
+  created: function created() {
+    this.$Progress.start();
+    this.loadStudents();
+  },
+  mounted: function mounted() {
+    this.searchStudents = lodash__WEBPACK_IMPORTED_MODULE_0___default.a.debounce(this.searchStudents, 300);
+  },
+  methods: {
+    loadStudents: function loadStudents() {
+      var _this = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get("".concat(this.base_path, "/students?page=").concat(page)).then(function (response) {
+        _this.students = response.data;
+
+        _this.$Progress.finish();
+      })["catch"](function (error) {
+        console.log(error);
+
+        _this.$Progress.fail();
+
+        _this.loadingText = 'No data';
+      });
+    },
+    searchStudents: function searchStudents() {
+      var _this2 = this;
+
+      if (this.student_query) {
+        axios.get("".concat(this.base_path, "/students/search?query=").concat(this.student_query)).then(function (response) {
+          _this2.students = response.data;
+        })["catch"](function (error) {
+          return console.log(error);
+        });
+      } else {
+        this.loadStudents();
+      }
     }
   }
 });
@@ -4199,6 +4341,58 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.$Progress.finish();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/enrollment-officer/students/index.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/enrollment-officer/students/index.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_enrollment_officer_studentListCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/enrollment-officer/studentListCard */ "./resources/js/components/enrollment-officer/studentListCard.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Students',
+  components: {
+    StudentListCard: _components_enrollment_officer_studentListCard__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -79073,7 +79267,31 @@ var render = function() {
                     1
                   )
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                { staticClass: "nav-item" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "nav-link",
+                      attrs: { to: { name: "enrollment-officer.students" } }
+                    },
+                    [
+                      _c("i", { staticClass: "nav-icon fas fa-user-graduate" }),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                            Students\n                        "
+                        )
+                      ])
+                    ]
+                  )
+                ],
+                1
+              )
             ]
           )
         ])
@@ -79092,6 +79310,206 @@ var staticRenderFns = [
         "\n                            Enroll\n                            "
       ),
       _c("i", { staticClass: "right fas fa-angle-left" })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=template&id=936554dc&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=template&id=936554dc& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card card-danger card-outline" }, [
+    _c("div", { staticClass: "card-header" }, [
+      _c("div", { staticClass: "card-tools" }, [
+        _c(
+          "div",
+          { staticClass: "input-group", staticStyle: { width: "300px" } },
+          [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.student_query,
+                  expression: "student_query"
+                }
+              ],
+              staticClass: "form-control float-right",
+              attrs: { type: "text", placeholder: "Search" },
+              domProps: { value: _vm.student_query },
+              on: {
+                keyup: _vm.searchStudents,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.student_query = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _vm._m(0)
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-bordered table-hover table-head-fixed" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _vm.students.data != undefined && _vm.students.data.length >= 1
+              ? _c(
+                  "tbody",
+                  _vm._l(_vm.students.data, function(student) {
+                    return _c("tr", { key: student.id }, [
+                      _c("td", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(student.full_name) +
+                            "\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(student.sex) +
+                            "\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(student.religion) +
+                            "\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(student.contact_number) +
+                            "\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(2, true)
+                    ])
+                  }),
+                  0
+                )
+              : _c("tbody", [
+                  _c(
+                    "th",
+                    { staticClass: "text-center", attrs: { colspan: "5" } },
+                    [
+                      _vm._v(
+                        "\n                        No data\n                    "
+                      )
+                    ]
+                  )
+                ])
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card-footer" },
+      [
+        _c("pagination", {
+          attrs: { data: _vm.students, limit: 1 },
+          on: { "pagination-change-page": _vm.loadStudents }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-append" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-default", attrs: { type: "button" } },
+        [_c("i", { staticClass: "fas fa-search" })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Gender")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Religion")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Contact Number")]),
+      _vm._v(" "),
+      _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-center" }, [
+      _c(
+        "a",
+        {
+          staticStyle: { cursor: "pointer" },
+          attrs: {
+            role: "button",
+            "data-toggle": "tooltip",
+            "data-placement": "top",
+            title: "Edit"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-edit text-info mr-2" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticStyle: { cursor: "pointer" },
+          attrs: {
+            role: "button",
+            "data-toggle": "tooltip",
+            "data-placement": "top",
+            title: "Delete"
+          }
+        },
+        [_c("i", { staticClass: "fas fa-trash text-danger mr-2" })]
+      )
     ])
   }
 ]
@@ -82926,6 +83344,61 @@ var staticRenderFns = [
       _c("div", { staticClass: "content" }, [
         _c("div", { staticClass: "container-fluid" }, [
           _vm._v("\n            Add contents here\n        ")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/enrollment-officer/students/index.vue?vue&type=template&id=fa28f438&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/enrollment-officer/students/index.vue?vue&type=template&id=fa28f438& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "content" }, [
+      _c(
+        "div",
+        { staticClass: "container-fluid" },
+        [_c("student-list-card")],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content-header" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row mb-2" }, [
+          _c("div", { staticClass: "col-sm-6" }, [
+            _c("h1", { staticClass: "m-0 text-dark" }, [
+              _c("i", { staticClass: "nav-icon fas fa-user-graduate" }),
+              _vm._v("\n                        Students\n                    ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-6" })
         ])
       ])
     ])
@@ -100519,6 +100992,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/enrollment-officer/studentListCard.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/enrollment-officer/studentListCard.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _studentListCard_vue_vue_type_template_id_936554dc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./studentListCard.vue?vue&type=template&id=936554dc& */ "./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=template&id=936554dc&");
+/* harmony import */ var _studentListCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./studentListCard.vue?vue&type=script&lang=js& */ "./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _studentListCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _studentListCard_vue_vue_type_template_id_936554dc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _studentListCard_vue_vue_type_template_id_936554dc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/enrollment-officer/studentListCard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_studentListCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./studentListCard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_studentListCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=template&id=936554dc&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=template&id=936554dc& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_studentListCard_vue_vue_type_template_id_936554dc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./studentListCard.vue?vue&type=template&id=936554dc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/enrollment-officer/studentListCard.vue?vue&type=template&id=936554dc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_studentListCard_vue_vue_type_template_id_936554dc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_studentListCard_vue_vue_type_template_id_936554dc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/principal/Loading.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/principal/Loading.vue ***!
@@ -101622,6 +102164,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_2e15bfce___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_2e15bfce___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/enrollment-officer/students/index.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/pages/enrollment-officer/students/index.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _index_vue_vue_type_template_id_fa28f438___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=fa28f438& */ "./resources/js/pages/enrollment-officer/students/index.vue?vue&type=template&id=fa28f438&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/js/pages/enrollment-officer/students/index.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _index_vue_vue_type_template_id_fa28f438___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _index_vue_vue_type_template_id_fa28f438___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/enrollment-officer/students/index.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/enrollment-officer/students/index.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/pages/enrollment-officer/students/index.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/enrollment-officer/students/index.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/enrollment-officer/students/index.vue?vue&type=template&id=fa28f438&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/pages/enrollment-officer/students/index.vue?vue&type=template&id=fa28f438& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_fa28f438___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=fa28f438& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/enrollment-officer/students/index.vue?vue&type=template&id=fa28f438&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_fa28f438___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_fa28f438___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -102892,7 +103503,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["subject"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["track"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["section"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["schoolYear"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["principalHome"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["teachers"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["subjectOfferings"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["schedules"], _modules_teacher__WEBPACK_IMPORTED_MODULE_4__["teacherHome"], _modules_enrollment_officer__WEBPACK_IMPORTED_MODULE_5__["enrollmentOfficer"], _modules_enrollment_officer__WEBPACK_IMPORTED_MODULE_5__["newStudent"], _modules_enrollment_officer__WEBPACK_IMPORTED_MODULE_5__["oldStudent"]];
+var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["subject"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["track"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["section"], _modules_registrar__WEBPACK_IMPORTED_MODULE_2__["schoolYear"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["principalHome"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["teachers"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["subjectOfferings"], _modules_principal__WEBPACK_IMPORTED_MODULE_3__["schedules"], _modules_teacher__WEBPACK_IMPORTED_MODULE_4__["teacherHome"], _modules_enrollment_officer__WEBPACK_IMPORTED_MODULE_5__["enrollmentOfficer"], _modules_enrollment_officer__WEBPACK_IMPORTED_MODULE_5__["newStudent"], _modules_enrollment_officer__WEBPACK_IMPORTED_MODULE_5__["oldStudent"], _modules_enrollment_officer__WEBPACK_IMPORTED_MODULE_5__["students"]];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: routes,
@@ -102905,7 +103516,7 @@ var routes = [_modules_registrar__WEBPACK_IMPORTED_MODULE_2__["registrarHome"], 
 /*!***********************************************************!*\
   !*** ./resources/js/router/modules/enrollment-officer.js ***!
   \***********************************************************/
-/*! exports provided: enrollmentOfficer, newStudent, oldStudent */
+/*! exports provided: enrollmentOfficer, newStudent, oldStudent, students */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -102913,9 +103524,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "enrollmentOfficer", function() { return enrollmentOfficer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "newStudent", function() { return newStudent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "oldStudent", function() { return oldStudent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "students", function() { return students; });
 /* harmony import */ var _pages_enrollment_officer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../pages/enrollment-officer */ "./resources/js/pages/enrollment-officer/index.vue");
 /* harmony import */ var _pages_enrollment_officer_enroll_new_student__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../pages/enrollment-officer/enroll/new-student */ "./resources/js/pages/enrollment-officer/enroll/new-student.vue");
 /* harmony import */ var _pages_enrollment_officer_enroll_old_student__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../pages/enrollment-officer/enroll/old-student */ "./resources/js/pages/enrollment-officer/enroll/old-student.vue");
+/* harmony import */ var _pages_enrollment_officer_students__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../pages/enrollment-officer/students */ "./resources/js/pages/enrollment-officer/students/index.vue");
+
 
 
 
@@ -102934,6 +103548,11 @@ var oldStudent = {
   path: "/".concat(basePath, "/enroll/old-student"),
   name: "".concat(basePath, ".enroll.old"),
   component: _pages_enrollment_officer_enroll_old_student__WEBPACK_IMPORTED_MODULE_2__["default"]
+};
+var students = {
+  path: "/".concat(basePath, "/students"),
+  name: "".concat(basePath, ".students"),
+  component: _pages_enrollment_officer_students__WEBPACK_IMPORTED_MODULE_3__["default"]
 };
 
 /***/ }),

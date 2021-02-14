@@ -2,6 +2,7 @@ require('./bootstrap');
 
 import Vue from 'vue';
 import router from './router';
+import store from './store';
 import Swal from 'sweetalert2';
 import VueProgressBar from 'vue-progressbar';
 import { Form, HasError, AlertError } from 'vform';
@@ -42,6 +43,7 @@ Vue.component('enrollment-officer-sidebar', require('./components/enrollment-off
 new Vue({
     el: '#app',
     router,
+    store,
     mounted() {
         this.$nextTick(() => {
             $('[data-toggle="tooltip"]').tooltip();

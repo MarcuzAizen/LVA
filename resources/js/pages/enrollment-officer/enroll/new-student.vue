@@ -7,7 +7,8 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0 text-dark">
-                            <i class="nav-icon fas fa-chart-pie"></i> New Student
+                            <i class="nav-icon fas fa-chart-pie" />
+                            New Student
                         </h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
@@ -21,7 +22,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                Add contents here
+                <enroll-new-student />
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->
@@ -30,8 +31,14 @@
 </template>
 
 <script>
+import EnrollNewStudent from './../../../components/enrollment-officer/enrollNewStudent/index.vue';
+
 export default {
     name: 'NewStudent',
+
+    components: {
+        EnrollNewStudent
+    },
 
     created() {
         this.$Progress.start();

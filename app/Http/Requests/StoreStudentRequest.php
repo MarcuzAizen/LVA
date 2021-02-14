@@ -25,7 +25,6 @@ class StoreStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_remark_id' => ['nullable', 'integer', 'min:1'],
             'lrn' => ['required', 'integer', 'digits:12', Rule::unique('students')->whereNull('deleted_at')],
             'first_name' => ['required', 'string', 'min:3', 'max:45'],
             'middle_name' => ['nullable', 'string', 'min:3', 'max:45'],

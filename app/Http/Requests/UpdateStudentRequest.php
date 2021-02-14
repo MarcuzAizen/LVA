@@ -25,7 +25,6 @@ class UpdateStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_remark_id' => ['nullable', 'integer', 'min:1'],
             'lrn' => [
                 'required', 
                 'integer', 

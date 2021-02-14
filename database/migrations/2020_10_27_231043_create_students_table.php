@@ -15,7 +15,6 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_remark_id')->nullable()->constrained();
             $table->string('lrn', 12);
             $table->string('first_name', 45);
             $table->string('middle_name', 45)->nullable();

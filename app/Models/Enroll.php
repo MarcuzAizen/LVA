@@ -10,9 +10,16 @@ class Enroll extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillables = ['registrar_id', 'student_id', 'acad_year_id', 'section_id'];
+    protected $fillables = [
+        'enrollment_officer_id',
+        'student_id',
+        'acad_year_id',
+        'section_id',
+        'student_remark_id',
+        'semester'
+    ];
 
-    public function registrar()
+    public function enrollmentOfficer()
     {
         return $this->belongsTo(User::class);
     }
@@ -30,5 +37,10 @@ class Enroll extends Model
     public function section()
     {
         return $this->belongsTo(Section::class);
+    }
+
+    public function studentRemark()
+    {
+        return $this->belongsTo(StudentRemark::class);
     }
 }

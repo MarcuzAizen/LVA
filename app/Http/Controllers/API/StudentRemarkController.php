@@ -12,7 +12,7 @@ class StudentRemarkController extends Controller
 {
     public function index()
     {
-        $studentRemarks = StudentRemark::latest()->paginate(10);
+        $studentRemarks = StudentRemark::latest()->get();
         return StudentRemarkResource::collection($studentRemarks);
     }
 

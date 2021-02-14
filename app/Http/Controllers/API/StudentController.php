@@ -15,8 +15,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $students = Student::with('studentRemark')
-            ->latest()
+        $students = Student::latest()
             ->paginate(10, [
                 'id',
                 'lrn',
@@ -46,7 +45,7 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        return new StudentResource($student->load(['studentRemark', 'guardians']));
+        return new StudentResource($student->load('guardians'));
     }
 
     public function update(UpdateStudentRequest $request, Student $student)

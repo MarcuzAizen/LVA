@@ -22,7 +22,7 @@ class EnrollFactory extends Factory
     public function definition()
     {
         return [
-            'registrar_id' => 2,
+            'enrollment_officer_id' => 3,
             'student_id' => rand(1, 10),
             'acad_year_id' => rand(1, 10),
             'section_id' => rand(1, 10)

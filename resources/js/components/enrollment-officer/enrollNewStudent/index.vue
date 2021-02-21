@@ -68,7 +68,56 @@ export default {
     data() {
         return {
             step: 1,
-            width: 18,          
+            width: 18,
+            studentForm: new Form({
+                id: '',
+                lrn:'',
+                first_name:'',
+                middle_name:'',
+                last_name:'',
+                suffix:'',
+                sex:'',
+                birthdate:'',
+                mother_tongue:'',
+                contact_number:'',
+                previous_school:'',
+                ethnic:'',
+                religion:'',
+                purok:'',
+                barangay:'',
+                city:'',
+                province:'' 
+            }),
+            fatherForm: new Form({
+                first_name: '',
+                last_name: '',
+                suffix: '',
+                sex: '',
+                birthdate: '',
+                contact_number: '',
+                religion: '',
+                occupation: '',
+                relationship: 'father'
+            }),
+            motherForm: new Form({
+                first_name: '',
+                last_name: '',
+                suffix: '',
+                sex: '',
+                birthdate: '',
+                contact_number: '',
+                religion: '',
+                occupation: '',
+                relationship: 'mother'
+            }),
+            enrollmentForm: new Form({
+                enrollment_officer_id: '',
+                student_id: '',
+                acad_year_id: '',
+                section_id: '',
+                student_remark_id: '',
+                semester: ''
+            })
         }
     },
 
@@ -119,8 +168,74 @@ export default {
             return this.step === 6;
         },
 
+        fillStudentForm(data) {
+            this.studentForm.lrn = data.lrn,
+            this.studentForm.first_name = data.first_name,
+            this.studentForm.middle_name = data.middle_name,
+            this.studentForm.last_name = data.last_name,
+            this.studentForm.suffix = data.suffix,
+            this.studentForm.sex = data.sex,
+            this.studentForm.birthdate = data.birthdate,
+            this.studentForm.mother_tongue = data.mother_tongue,
+            this.studentForm.contact_number = data.contact_number,
+            this.studentForm.previous_school = data.previous_school,
+            this.studentForm.ethnic = data.ethnic,
+            this.studentForm.religion = data.religion,
+            this.studentForm.purok = data.purok,
+            this.studentForm.barangay = data.barangay,
+            this.studentForm.city = data.city,
+            this.studentForm.province = data.province
+        },
+
+        fillGuardianForm(form, data) {
+            form.first_name = data.first_name;
+            form.last_name = data.last_name;
+            form.suffix = data.suffix;
+            form.sex = data.sex;
+            form.birthdate = data.birthdate;
+            form.contact_number = data.contact_number;
+            form.religion = data.religion;
+            form.occupation = data.occupation;
+        },
+
+        fillEnrollmentForm(form, data) {
+            form.enrollment_officer_id = data.enrollment_officer_id;
+            form.acad_year_id = data.acad_year_id;
+            form.section_id = data.section_id;
+            form.student_remark_id = data.student_remark_id;
+            form.semester = data.semester;
+        },
+
+        async submitForms(studentForm, fatherForm, motherForm, enrollmentForm, url) {
+            try {
+                const res = await studentForm.post(`${url}/students`);
+                this.enrollmentForm.student_id = this.studentForm.id = res.data.id;
+                await fatherForm.post(`${url}/students/${this.studentForm.id}/add-guardian`);
+                await motherForm.post(`${url}/students/${this.studentForm.id}/add-guardian`);
+                await enrollmentForm.post(`${url}/enrolls`);
+            } catch (err) {
+                console.log(err);
+            }
+        },
+
         submit() {
-            if (!this.isSixth()) {
+            if (this.isSixth()) {
+                // TODO: Sweet Alert Loading Screen
+                let studentUrl = '/enrollment-officer/api';
+                this.fillStudentForm(this.$store.state.student);
+                this.fillGuardianForm(this.fatherForm, this.$store.state.guardianFather);
+                this.fillGuardianForm(this.motherForm, this.$store.state.guardianMother);
+                this.fillEnrollmentForm(this.enrollmentForm, this.$store.state.enroll);
+
+                this.submitForms(
+                    this.studentForm,
+                    this.fatherForm,
+                    this.motherForm,
+                    this.enrollmentForm,
+                    studentUrl
+                );
+                // TODO: Sweet Alert Confirm Screen
+            } else {
                 this.next();
             }
         }

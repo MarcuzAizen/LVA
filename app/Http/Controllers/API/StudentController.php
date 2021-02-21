@@ -36,10 +36,11 @@ class StudentController extends Controller
         $data = $request->validated();
         $data['username'] = "{$request->first_name}.{$request->last_name}";
         $data['password'] = 'password';
-        Student::create($data);
+        $student = Student::create($data);
         return response()->json([
             'success' => true,
-            'message' => 'Student successfully created!'
+            'message' => 'Student successfully created!',
+            'id' => $student->id
         ], 201);
     }
 

@@ -25,6 +25,7 @@
                             type="submit"
                             class="btn btn-primary"
                             v-show="!isSixth()"
+                            :disabled="lrnExists && isFirst()"
                         >
                             Next
                         </button>
@@ -67,9 +68,20 @@ export default {
     data() {
         return {
             step: 1,
-            width: 18,
-            lrnExists: false,            
+            width: 18,          
         }
+    },
+
+    computed: {
+        lrnExists: {
+            get() {
+                return this.$store.state.student.lrnExists;
+            },
+
+            set(value) {
+                this.$store.commit('student/setLrnExists', value)
+            }
+        },
     },
 
     methods: {

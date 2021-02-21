@@ -4,6 +4,7 @@ export default {
 
     state: {
         lrn: '',
+        lrnExists: false,
         first_name: '',
         middle_name: '',
         last_name: '',
@@ -24,6 +25,10 @@ export default {
     mutations: {
         setLrn(state, lrn) {
             state.lrn = lrn;
+        },
+
+        setLrnExists(state, lrnExists) {
+            state.lrnExists = lrnExists
         },
         
         setFirstName(state, first_name) {

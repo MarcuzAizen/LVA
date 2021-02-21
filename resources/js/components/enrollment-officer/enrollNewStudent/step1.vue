@@ -62,13 +62,17 @@ import _ from 'lodash';
 export default {
     name: 'Step1',
 
-    data() {
-        return {
-            lrnExists: false
-        }
-    },
-
     computed: {
+        lrnExists: {
+            get() {
+                return this.$store.state.student.lrnExists;
+            },
+
+            set(value) {
+                this.$store.commit('student/setLrnExists', value)
+            }
+        },
+
         lrn: {
             get() {
                 return this.$store.state.student.lrn;

@@ -2046,6 +2046,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2067,9 +2068,18 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       step: 1,
-      width: 18,
-      lrnExists: false
+      width: 18
     };
+  },
+  computed: {
+    lrnExists: {
+      get: function get() {
+        return this.$store.state.student.lrnExists;
+      },
+      set: function set(value) {
+        this.$store.commit('student/setLrnExists', value);
+      }
+    }
   },
   methods: {
     next: function next() {
@@ -2180,12 +2190,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Step1',
-  data: function data() {
-    return {
-      lrnExists: false
-    };
-  },
   computed: {
+    lrnExists: {
+      get: function get() {
+        return this.$store.state.student.lrnExists;
+      },
+      set: function set(value) {
+        this.$store.commit('student/setLrnExists', value);
+      }
+    },
     lrn: {
       get: function get() {
         return this.$store.state.student.lrn;
@@ -85529,7 +85542,10 @@ var render = function() {
                               }
                             ],
                             staticClass: "btn btn-primary",
-                            attrs: { type: "submit" }
+                            attrs: {
+                              type: "submit",
+                              disabled: _vm.lrnExists && _vm.isFirst()
+                            }
                           },
                           [
                             _vm._v(
@@ -114690,6 +114706,7 @@ __webpack_require__.r(__webpack_exports__);
   namespaced: true,
   state: {
     lrn: '',
+    lrnExists: false,
     first_name: '',
     middle_name: '',
     last_name: '',
@@ -114709,6 +114726,9 @@ __webpack_require__.r(__webpack_exports__);
   mutations: {
     setLrn: function setLrn(state, lrn) {
       state.lrn = lrn;
+    },
+    setLrnExists: function setLrnExists(state, lrnExists) {
+      state.lrnExists = lrnExists;
     },
     setFirstName: function setFirstName(state, first_name) {
       state.first_name = first_name;

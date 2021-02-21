@@ -24,7 +24,7 @@ class StoreEnrollRequest extends FormRequest
     public function rules()
     {
         return [
-            'registrar_id' => ['required', 'integer', 'min:1'],
+            'enrollment_officer_id' => ['required', 'integer', 'min:1'],
             'student_id' => ['required', 'integer', 'min:1'],
             'acad_year_id' => ['required', 'integer', 'min:1'],
             'section_id' => ['required', 'integer', 'min:1']

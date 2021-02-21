@@ -10,14 +10,7 @@ class Enroll extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillables = [
-        'enrollment_officer_id',
-        'student_id',
-        'acad_year_id',
-        'section_id',
-        'student_remark_id',
-        'semester'
-    ];
+    protected $guarded = ['id'];
 
     public function enrollmentOfficer()
     {

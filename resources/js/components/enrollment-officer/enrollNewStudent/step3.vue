@@ -7,68 +7,92 @@
         <hr>
         <div class="row">
             <div class="col-3">
-                <div class="form-group">
-                    <label>
-                        Purok
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="e.g. Purok 1"
-                        v-model="purok"
-                    />
-                </div>
+                <ValidationProvider name="purok" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Purok
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g. Purok 1"
+                            v-model="purok"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-3">
-                <div class="form-group">
-                    <label>
-                        Barangay
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="e.g. Poblacion"
-                        v-model="barangay"
-                    />
-                </div>
+                <ValidationProvider name="barangay" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Barangay
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g. Poblacion"
+                            v-model="barangay"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-3">
-                <div class="form-group">
-                    <label>
-                        City/Municipality
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="e.g. Don Carlos"
-                        v-model="city"
-                    />
-                </div>
+                <ValidationProvider name="city/municipality" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            City/Municipality
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g. Don Carlos"
+                            v-model="city"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-3">
-                <div class="form-group">
-                    <label>
-                        Province
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="e.g. Bukidnon"
-                        v-model="province"
-                    />
-                </div>
+                <ValidationProvider name="province" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Province
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g. Bukidnon"
+                            v-model="province"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
         </div>
     </div>

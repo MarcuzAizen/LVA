@@ -8,36 +8,48 @@
         <h5><b>Mother</b></h5>
         <div class="row">
             <div class="col-3">
-                <div class="form-group">
-                    <label>
-                        First Name
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input 
-                        type="text"
-                        class="form-control"
-                        placeholder="e.g. Elda"
-                        v-model="first_name"
-                    />
-                </div>
+                <ValidationProvider name="first_name" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            First Name
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input 
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g. Elda"
+                            v-model="first_name"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-3">
-                <div class="form-group">
-                    <label>
-                        Last Name
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input 
-                        type="text"
-                        class="form-control"
-                        placeholder="e.g. Greenfelder"
-                        v-model="last_name"
-                    />
-                </div>
+                <ValidationProvider name="last_name" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Last Name
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input 
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g. Greenfelder"
+                            v-model="last_name"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-3">
                 <div class="form-group">
@@ -50,75 +62,99 @@
                     <input
                         type="text"
                         class="form-control"
-                        name="suffix"
-                        placeholder="e.g. Jr"
+                        placeholder="e.g. II"
                         v-model="suffix"
                     />
                 </div>
             </div>
             <div class="col-3">
-                <div class="form-group">
-                    <label>
-                        Birthdate
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input
-                        type="date"
-                        class="form-control"
-                        v-model="birthdate"
-                    />
+                <ValidationProvider name="birthdate" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Birthdate
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input
+                            type="date"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            v-model="birthdate"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
                 </div>
+                </ValidationProvider>
             </div>
         </div>
         <div class="row">
             <div class="col-4">
-                <div class="form-group">
-                    <label>
-                        Contact Number
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input type="tel" 
-                        class="form-control"
-                        placeholder="e.g 09123456789"
-                        maxlength="11"
-                        v-model="contact_number"
-                    />
-                </div>
+                <ValidationProvider name="contact_number" rules="required|digits:11" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Contact Number
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input 
+                            type="tel" 
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g 09123456789"
+                            maxlength="11"
+                            v-model="contact_number"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-4">
-                <div class="form-group">
-                    <label>
-                        Religion
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="e.g. Seventh-day Adventist"
-                        v-model="religion"
-                    />
-                </div>
+                <ValidationProvider name="religion" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Religion
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            placeholder="e.g. Seventh-day Adventist"
+                            v-model="religion"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-4">
-                <div class="form-group">
-                    <label>
-                        Occupation
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        v-model="occupation"
-                    />
-                </div>
+                <ValidationProvider name="occupation" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Occupation
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            v-model="occupation"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
         </div>
     </div>

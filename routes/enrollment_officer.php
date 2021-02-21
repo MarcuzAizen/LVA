@@ -10,6 +10,7 @@ use App\Http\Controllers\API\UserController;
 
 Route::prefix('api')->group(function() {
     Route::get('students/search', [StudentController::class, 'search'])->name('students.search');
+    Route::post('students/check-lrn', [StudentController::class, 'checkLrn'])->name('students.checkLrn');
     Route::get('acad-years/all', [AcadYearController::class, 'getAllAcadYears'])->name('acad_years.all');
     Route::get('sections/all', [SectionController::class, 'getAllSections'])->name('sections.all');
     Route::get('student-remarks', [StudentRemarkController::class, 'index'])->name('student_remarks.index');

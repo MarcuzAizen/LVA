@@ -109,4 +109,11 @@ class StudentController extends Controller
 
         return StudentResource::collection($subjects);
     }
+
+    public function checkLrn(Request $request)
+    {
+        return response()->json([
+            'exists' => Student::where('lrn', $request->lrn)->exists()
+        ]);
+    }
 }

@@ -6,6 +6,8 @@ import store from './store';
 import Swal from 'sweetalert2';
 import VueProgressBar from 'vue-progressbar';
 import { Form, HasError, AlertError } from 'vform';
+import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
+import { ValidationObserver } from 'vee-validate';
 
 window.Form = Form;
 window.Swal = Swal;
@@ -24,6 +26,8 @@ window.Toast = Swal.mixin({
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
 
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',

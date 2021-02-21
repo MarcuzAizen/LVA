@@ -7,44 +7,62 @@
         <hr>
         <div class="row">
             <div class="col-6">
-                <div class="form-group">
-                    <label>
-                        School Year
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <select class="form-control" v-model="acad_year_id">
-                        <option value=""></option>
-                        <option 
-                            v-for="acad_year in acad_years"
-                            :key="acad_year.id"
-                            :value="acad_year.id"
+                <ValidationProvider name="school_year" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            School Year
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <select
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            v-model="acad_year_id"
                         >
-                            {{ acad_year.start }} - {{ acad_year.end }}
-                        </option>
-                    </select>
-                </div>
+                            <option value=""></option>
+                            <option 
+                                v-for="acad_year in acad_years"
+                                :key="acad_year.id"
+                                :value="acad_year.id"
+                            >
+                                {{ acad_year.start }} - {{ acad_year.end }}
+                            </option>
+                        </select>
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
             <div class="col-6">
-                <div class="form-group">
-                    <label>
-                        Grade Level &amp; Section
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <select class="form-control" v-model="section_id">
-                        <option value=""></option>
-                        <option 
-                            v-for="section in sections"
-                            :key="section.id"
-                            :value="section.id"
+                <ValidationProvider name="section" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Grade Level &amp; Section
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <select
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            v-model="section_id"
                         >
-                            Grade {{ section.track.grade_level }} {{ section.track.name }} - {{ section.name }}
-                        </option>
-                    </select>
-                </div>
+                            <option value=""></option>
+                            <option 
+                                v-for="section in sections"
+                                :key="section.id"
+                                :value="section.id"
+                            >
+                                Grade {{ section.track.grade_level }} {{ section.track.name }} - {{ section.name }}
+                            </option>
+                        </select>
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
         </div>
         <div class="row">

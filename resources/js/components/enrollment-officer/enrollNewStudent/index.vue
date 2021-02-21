@@ -3,38 +3,41 @@
         <div class="card-body">
             <progress-bar :step="step" :width="width" />
 
-            <step-1 v-show="isFirst()" />
-            <step-2 v-show="isSecond()" />
-            <step-3 v-show="isThird()" />
-            <step-4 v-show="isFourth()" />
-            <step-5 v-show="isFifth()" />
-            <step-6 v-show="isSixth()" />
+            <ValidationObserver v-slot="{ handleSubmit }">
+                <form @submit.prevent="handleSubmit(submit)">
+                    <step-1 v-if="isFirst()" />
+                    <step-2 v-if="isSecond()" />
+                    <step-3 v-if="isThird()" />
+                    <step-4 v-if="isFourth()" />
+                    <step-5 v-if="isFifth()" />
+                    <step-6 v-if="isSixth()" />
 
-            <div class="float-right">
-                <button
-                    type="button" 
-                    class="btn btn-primary" 
-                    v-show="!isFirst()"
-                    @click="previous()"
-                >
-                    Previous
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-primary"
-                    v-show="!isSixth()"
-                    @click="next()"
-                >
-                    Next
-                </button>
-                <button
-                    type="button"
-                    class="btn btn-success"
-                    v-show="isSixth()"
-                >
-                    Submit
-                </button>
-            </div>
+                    <div class="float-right">
+                        <button
+                            type="button" 
+                            class="btn btn-primary"
+                            v-show="!isFirst()"
+                            @click="previous()"
+                        >
+                            Previous
+                        </button>
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            v-show="!isSixth()"
+                        >
+                            Next
+                        </button>
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                            v-show="isSixth()"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </ValidationObserver>
         </div>
     </div>
 </template>
@@ -64,7 +67,8 @@ export default {
     data() {
         return {
             step: 1,
-            width: 18
+            width: 18,
+            lrnExists: false,            
         }
     },
 
@@ -102,6 +106,12 @@ export default {
         isSixth() {
             return this.step === 6;
         },
+
+        submit() {
+            if (!this.isSixth()) {
+                this.next();
+            }
+        }
     }
 }
 </script>

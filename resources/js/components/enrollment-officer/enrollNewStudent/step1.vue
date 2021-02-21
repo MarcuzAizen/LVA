@@ -7,44 +7,66 @@
         <hr>
         <div class="row">
             <div class="col-6">
-                <div class="form-group">
-                    <label>
-                        Learner's Reference Number
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input 
-                        type="text"
-                        class="form-control"
-                        pattern="\d*"
-                        maxlength="12"
-                        v-model="lrn"
-                    />
-                </div>
+                <ValidationProvider name="LRN" rules="required|digits:12" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Learner's Reference Number
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input 
+                            type="number"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] || lrnExists }"
+                            v-model="lrn"
+                            @keyup="checkLrn"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                        <span v-if="lrnExists" class="text-danger">
+                            LRN already exists
+                        </span>
+                    </div>                    
+                </ValidationProvider>
             </div>
             <div class="col-6">
-                <div class="form-group">
-                    <label>
-                        Last School Attended
-                        <sup>
-                            <i class="fas fa-star-of-life text-danger" />
-                        </sup>
-                    </label>
-                    <input 
-                        type="text"
-                        class="form-control"
-                        v-model="previous_school"
-                    />
-                </div>
+                <ValidationProvider name="Last School Attended" rules="required" v-slot="{ errors }">
+                    <div class="form-group">
+                        <label>
+                            Last School Attended
+                            <sup>
+                                <i class="fas fa-star-of-life text-danger" />
+                            </sup>
+                        </label>
+                        <input 
+                            type="text"
+                            class="form-control"
+                            :class="{ 'is-invalid' : errors[0] }"
+                            v-model="previous_school"
+                        />
+                        <span class="text-danger">
+                            {{ errors[0] }}
+                        </span>
+                    </div>
+                </ValidationProvider>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import _ from 'lodash';
+
 export default {
     name: 'Step1',
+
+    data() {
+        return {
+            lrnExists: false
+        }
+    },
 
     computed: {
         lrn: {
@@ -64,6 +86,19 @@ export default {
 
             set(value) {
                 this.$store.commit('student/setPreviousSchool', value)
+            }
+        }
+    },
+
+    mounted() {
+        this.checkLrn = _.debounce(this.checkLrn, 300);
+    },
+
+    methods: {
+        checkLrn() {
+            if (this.lrn) {
+                axios.post(`/enrollment-officer/api/students/check-lrn`, { lrn: this.lrn })
+                    .then(response => this.lrnExists = response.data.exists);
             }
         }
     }

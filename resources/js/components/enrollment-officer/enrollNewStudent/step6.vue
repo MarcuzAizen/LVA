@@ -5,100 +5,103 @@
             <b>Enroll</b>
         </h4>
         <hr>
-        <div class="row">
-            <div class="col-6">
-                <ValidationProvider name="school_year" rules="required" v-slot="{ errors }">
-                    <div class="form-group">
-                        <label>
-                            School Year
-                            <sup>
-                                <i class="fas fa-star-of-life text-danger" />
-                            </sup>
-                        </label>
-                        <select
-                            class="form-control"
-                            :class="{ 'is-invalid' : errors[0] }"
-                            v-model="acad_year_id"
-                        >
-                            <option value=""></option>
-                            <option 
-                                v-for="acad_year in acad_years"
-                                :key="acad_year.id"
-                                :value="acad_year.id"
+        <Loading v-if="isLoading" />
+        <div v-else>
+            <div class="row">
+                <div class="col-6">
+                    <ValidationProvider name="school_year" rules="required" v-slot="{ errors }">
+                        <div class="form-group">
+                            <label>
+                                School Year
+                                <sup>
+                                    <i class="fas fa-star-of-life text-danger" />
+                                </sup>
+                            </label>
+                            <select
+                                class="form-control"
+                                :class="{ 'is-invalid' : errors[0] }"
+                                v-model="acad_year_id"
                             >
-                                {{ acad_year.start }} - {{ acad_year.end }}
-                            </option>
-                        </select>
-                        <span class="text-danger">
-                            {{ errors[0] }}
-                        </span>
-                    </div>
-                </ValidationProvider>
-            </div>
-            <div class="col-6">
-                <ValidationProvider name="section" rules="required" v-slot="{ errors }">
-                    <div class="form-group">
-                        <label>
-                            Grade Level &amp; Section
-                            <sup>
-                                <i class="fas fa-star-of-life text-danger" />
-                            </sup>
-                        </label>
-                        <select
-                            class="form-control"
-                            :class="{ 'is-invalid' : errors[0] }"
-                            v-model="section_id"
-                        >
-                            <option value=""></option>
-                            <option 
-                                v-for="section in sections"
-                                :key="section.id"
-                                :value="section.id"
+                                <option value=""></option>
+                                <option 
+                                    v-for="acad_year in acad_years"
+                                    :key="acad_year.id"
+                                    :value="acad_year.id"
+                                >
+                                    {{ acad_year.start }} - {{ acad_year.end }}
+                                </option>
+                            </select>
+                            <span class="text-danger">
+                                {{ errors[0] }}
+                            </span>
+                        </div>
+                    </ValidationProvider>
+                </div>
+                <div class="col-6">
+                    <ValidationProvider name="section" rules="required" v-slot="{ errors }">
+                        <div class="form-group">
+                            <label>
+                                Grade Level &amp; Section
+                                <sup>
+                                    <i class="fas fa-star-of-life text-danger" />
+                                </sup>
+                            </label>
+                            <select
+                                class="form-control"
+                                :class="{ 'is-invalid' : errors[0] }"
+                                v-model="section_id"
                             >
-                                Grade {{ section.track.grade_level }} {{ section.track.name }} - {{ section.name }}
-                            </option>
-                        </select>
-                        <span class="text-danger">
-                            {{ errors[0] }}
-                        </span>
-                    </div>
-                </ValidationProvider>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <div class="form-group">
-                    <label>
-                        Semester
-                        <small class="text-info">
-                            <em>(optional)</em>
-                        </small>
-                    </label>
-                    <select class="form-control" v-model="semester">
-                        <option value=""></option>
-                        <option value="1">First Semester</option>
-                        <option value="2">Second Semester</option>
-                    </select>
+                                <option value=""></option>
+                                <option 
+                                    v-for="section in sections"
+                                    :key="section.id"
+                                    :value="section.id"
+                                >
+                                    Grade {{ section.track.grade_level }} {{ section.track.name }} - {{ section.name }}
+                                </option>
+                            </select>
+                            <span class="text-danger">
+                                {{ errors[0] }}
+                            </span>
+                        </div>
+                    </ValidationProvider>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <label>
-                        Additional Remarks
-                        <small class="text-info">
-                            <em>(optional)</em>
-                        </small>
-                    </label>
-                    <select class="form-control" v-model="student_remark_id">
-                        <option value=""></option>
-                        <option 
-                            v-for="student_remark in student_remarks"
-                            :key="student_remark.id"
-                            :value="student_remark.id"
-                        >
-                            {{ student_remark.indicator }}
-                        </option>
-                    </select>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>
+                            Semester
+                            <small class="text-info">
+                                <em>(optional)</em>
+                            </small>
+                        </label>
+                        <select class="form-control" v-model="semester">
+                            <option value=""></option>
+                            <option value="1">First Semester</option>
+                            <option value="2">Second Semester</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label>
+                            Additional Remarks
+                            <small class="text-info">
+                                <em>(optional)</em>
+                            </small>
+                        </label>
+                        <select class="form-control" v-model="student_remark_id">
+                            <option value=""></option>
+                            <option 
+                                v-for="student_remark in student_remarks"
+                                :key="student_remark.id"
+                                :value="student_remark.id"
+                            >
+                                {{ student_remark.indicator }}
+                            </option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,8 +109,14 @@
 </template>
 
 <script>
+import Loading from './../../Loading';
+
 export default {
     name: 'Step6',
+
+    components: {
+        Loading
+    },
 
     computed: {
         student_remark_id: {
@@ -175,7 +184,8 @@ export default {
         return {
             acad_years: [],
             sections: [],
-            student_remarks: []
+            student_remarks: [],
+            isLoading: false
         }
     },
 
@@ -188,6 +198,7 @@ export default {
 
     methods: {
         loadAcadYears() {
+            this.isLoading = true;
             axios.get(`/enrollment-officer/api/acad-years/all`)
                 .then(response => {
                     this.acad_years = response.data.data;
@@ -224,6 +235,7 @@ export default {
             axios.get(`/enrollment-officer/api/user`)
                 .then(response => {
                     this.enrollment_officer_id = response.data.id;
+                    this.isLoading = false;
                 })
                 .catch(error => {
                     this.$Progress.fail();

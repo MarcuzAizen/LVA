@@ -7,7 +7,7 @@
         <hr>
         <div class="row">
             <div class="col-3">
-                <ValidationProvider name="purok" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="purok" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Purok
@@ -29,7 +29,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-3">
-                <ValidationProvider name="barangay" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="barangay" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Barangay
@@ -51,7 +51,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-3">
-                <ValidationProvider name="city/municipality" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="city/municipality" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             City/Municipality
@@ -73,7 +73,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-3">
-                <ValidationProvider name="province" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="province" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Province

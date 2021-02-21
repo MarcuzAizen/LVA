@@ -16,9 +16,11 @@
                             </sup>
                         </label>
                         <input 
-                            type="number"
+                            type="text"
                             class="form-control"
                             :class="{ 'is-invalid' : errors[0] || lrnExists }"
+                            pattern="\d*"
+                            maxlength="12"
                             v-model="lrn"
                             @keyup="checkLrn"
                         />
@@ -32,7 +34,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-6">
-                <ValidationProvider name="Last School Attended" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="Last School Attended" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Last School Attended

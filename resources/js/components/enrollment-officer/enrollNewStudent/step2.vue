@@ -7,7 +7,7 @@
         <hr>
         <div class="row">
             <div class="col-3">
-                <ValidationProvider name="first_name" rules="required|alpha_spaces" v-slot="{ errors }">
+                <ValidationProvider name="first_name" rules="required|alpha_spaces|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             First Name
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="col-3">
-                <ValidationProvider name="last_name" rules="required|alpha_spaces" v-slot="{ errors }">
+                <ValidationProvider name="last_name" rules="required|alpha_spaces|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Last Name
@@ -130,7 +130,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-3">
-                <ValidationProvider name="mother_tongue" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="mother_tongue" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Mother Tongue
@@ -177,7 +177,7 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <ValidationProvider name="ethnic" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="ethnic" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Ethnic
@@ -199,7 +199,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-6">
-                <ValidationProvider name="religion" rules="required" v-slot="{ errors }">
+                <ValidationProvider name="religion" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Religion

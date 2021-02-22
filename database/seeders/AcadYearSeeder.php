@@ -14,6 +14,6 @@ class AcadYearSeeder extends Seeder
      */
     public function run()
     {
-        AcadYear::factory()->count(10)->create();
+        AcadYear::factory()->create();
     }
 }

@@ -24,8 +24,8 @@ class EnrollFactory extends Factory
         return [
             'enrollment_officer_id' => 3,
             'student_id' => rand(1, 10),
-            'acad_year_id' => rand(1, 10),
-            'section_id' => rand(1, 10)
+            'acad_year_id' => 1,
+            'section_id' => rand(1, 12)
         ];
     }
 }

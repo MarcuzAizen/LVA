@@ -12,7 +12,7 @@ class AttendanceFactory extends Factory
     public function definition()
     {
         return [
-            'schedule_id' => rand(1, 4),
+            'schedule_id' => rand(1, 10),
             'remarks' => $this->faker->randomElement(['present', 'late', 'absent']),
         ];
     }

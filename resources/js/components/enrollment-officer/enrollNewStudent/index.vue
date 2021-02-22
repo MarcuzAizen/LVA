@@ -213,14 +213,22 @@ export default {
                 await fatherForm.post(`${url}/students/${this.studentForm.id}/add-guardian`);
                 await motherForm.post(`${url}/students/${this.studentForm.id}/add-guardian`);
                 await enrollmentForm.post(`${url}/enrolls`);
+                this.resetState();
+                Swal.fire({ 
+                    title: 'Success!',
+                    icon: 'success',
+                    timer: 1500,
+                    showConfirmButton: false
+                })
             } catch (err) {
-                console.log(err);
+                console.log(err.response.data);
             }
         },
 
         submit() {
             if (this.isSixth()) {
-                // TODO: Sweet Alert Loading Screen
+                this.showLoading();
+
                 let studentUrl = '/enrollment-officer/api';
                 this.fillStudentForm(this.$store.state.student);
                 this.fillGuardianForm(this.fatherForm, this.$store.state.guardianFather);
@@ -234,10 +242,29 @@ export default {
                     this.enrollmentForm,
                     studentUrl
                 );
-                // TODO: Sweet Alert Confirm Screen
             } else {
                 this.next();
             }
+        },
+
+        resetState() {
+            this.$store.commit('student/resetState');
+            this.$store.commit('guardianFather/resetState');
+            this.$store.commit('guardianMother/resetState');
+            this.$store.commit('enroll/resetState');
+            this.step = 1;
+            this.width = 18;
+        },
+
+        showLoading() {
+            Swal.fire({
+                title: 'Processing...',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                didOpen() {
+                    Swal.showLoading();
+                }
+            });
         }
     }
 }

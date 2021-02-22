@@ -1,9 +1,5 @@
-// TODO: Reset Vuex Module State
-
-export default {
-    namespaced: true,
-
-    state: {
+const getDefaultState = () => {
+    return {
         lrn: '',
         lrnExists: false,
         first_name: '',
@@ -20,8 +16,14 @@ export default {
         purok: '',
         barangay: '',
         city: '',
-        province: ''    
-    },
+        province: ''
+    }
+};
+
+export default {
+    namespaced: true,
+
+    state: getDefaultState(),
 
     mutations: {
         setLrn(state, lrn) {
@@ -91,5 +93,9 @@ export default {
         setProvince(state, province) {
             state.province = province;
         },
+
+        resetState(state) {
+            Object.assign(state, getDefaultState())
+        }
     }
 }

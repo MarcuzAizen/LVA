@@ -1,9 +1,5 @@
-// TODO: Reset Vuex Module State
-
-export default {
-    namespaced: true,
-
-    state: {
+const getDefaultState = () => {
+    return {
         first_name: '',
         last_name: '',
         suffix: '',
@@ -12,7 +8,13 @@ export default {
         contact_number: '',
         religion: '',
         occupation: ''
-    },
+    }
+}
+
+export default {
+    namespaced: true,
+
+    state: getDefaultState(),
 
     mutations: {
         setFirstName(state, first_name) {
@@ -41,6 +43,10 @@ export default {
 
         setOccupation(state, occupation) {
             state.occupation = occupation;
+        },
+
+        resetState(state) {
+            Object.assign(state, getDefaultState())
         }
     }
 }

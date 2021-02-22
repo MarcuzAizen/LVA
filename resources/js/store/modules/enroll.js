@@ -1,16 +1,18 @@
-// TODO: Reset Vuex Module State
-
-export default {
-    namespaced: true,
-
-    state: {
+const getDefaultState = () => {
+    return {
         enrollment_officer_id: '',
         student_id: '',
         acad_year_id: '',
         section_id: '',
         student_remark_id: '',
         semester: ''
-    },
+    };
+};
+
+export default {
+    namespaced: true,
+
+    state: getDefaultState(),
 
     mutations: {
         setEnrollmentOfficerId(state, enrollment_officer_id) {
@@ -35,6 +37,10 @@ export default {
 
         setSemester(state, semester) {
             state.semester = semester;
+        },
+
+        resetState(state) {
+            Object.assign(state, getDefaultState())
         }
     }
 }

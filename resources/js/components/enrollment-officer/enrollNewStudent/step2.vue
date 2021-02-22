@@ -7,7 +7,7 @@
         <hr>
         <div class="row">
             <div class="col-3">
-                <ValidationProvider name="first_name" rules="required|alpha_spaces|max:45" v-slot="{ errors }">
+                <ValidationProvider name="first_name" rules="required|alpha_spaces|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             First Name
@@ -40,6 +40,7 @@
                         type="text"
                         class="form-control"
                         placeholder="e.g. Macapagal"
+                        maxlength="45"
                         v-model="middle_name"
                     />
                 </div>
@@ -78,6 +79,7 @@
                         type="text"
                         class="form-control"
                         placeholder="e.g. Jr"
+                        maxlength="10"
                         v-model="suffix"
                     />
                 </div>

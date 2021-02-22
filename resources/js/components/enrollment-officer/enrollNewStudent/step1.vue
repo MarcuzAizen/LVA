@@ -46,6 +46,7 @@
                             type="text"
                             class="form-control"
                             :class="{ 'is-invalid' : errors[0] }"
+                            maxlength="45"
                             v-model="previous_school"
                         />
                         <span class="text-danger">

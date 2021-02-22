@@ -2225,34 +2225,60 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return enrollmentForm.post("".concat(url, "/enrolls"));
 
               case 11:
-                _context.next = 16;
+                _this.resetState();
+
+                Swal.fire({
+                  title: 'Success!',
+                  icon: 'success',
+                  timer: 1500,
+                  showConfirmButton: false
+                });
+                _context.next = 18;
                 break;
 
-              case 13:
-                _context.prev = 13;
+              case 15:
+                _context.prev = 15;
                 _context.t0 = _context["catch"](0);
-                console.log(_context.t0);
+                console.log(_context.t0.response.data);
 
-              case 16:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 13]]);
+        }, _callee, null, [[0, 15]]);
       }))();
     },
     submit: function submit() {
       if (this.isSixth()) {
-        // TODO: Sweet Alert Loading Screen
+        this.showLoading();
         var studentUrl = '/enrollment-officer/api';
         this.fillStudentForm(this.$store.state.student);
         this.fillGuardianForm(this.fatherForm, this.$store.state.guardianFather);
         this.fillGuardianForm(this.motherForm, this.$store.state.guardianMother);
         this.fillEnrollmentForm(this.enrollmentForm, this.$store.state.enroll);
-        this.submitForms(this.studentForm, this.fatherForm, this.motherForm, this.enrollmentForm, studentUrl); // TODO: Sweet Alert Confirm Screen
+        this.submitForms(this.studentForm, this.fatherForm, this.motherForm, this.enrollmentForm, studentUrl);
       } else {
         this.next();
       }
+    },
+    resetState: function resetState() {
+      this.$store.commit('student/resetState');
+      this.$store.commit('guardianFather/resetState');
+      this.$store.commit('guardianMother/resetState');
+      this.$store.commit('enroll/resetState');
+      this.step = 1;
+      this.width = 18;
+    },
+    showLoading: function showLoading() {
+      Swal.fire({
+        title: 'Processing...',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        didOpen: function didOpen() {
+          Swal.showLoading();
+        }
+      });
     }
   }
 });
@@ -2270,6 +2296,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+//
 //
 //
 //
@@ -2388,6 +2415,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3022,6 +3051,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Step4',
   computed: {
@@ -3095,6 +3125,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -86633,7 +86664,7 @@ var render = function() {
                         ],
                         staticClass: "form-control",
                         class: { "is-invalid": errors[0] },
-                        attrs: { type: "text" },
+                        attrs: { type: "text", maxlength: "45" },
                         domProps: { value: _vm.previous_school },
                         on: {
                           input: function($event) {
@@ -86710,7 +86741,7 @@ var render = function() {
           _c("ValidationProvider", {
             attrs: {
               name: "first_name",
-              rules: "required|alpha_spaces|max:45"
+              rules: "required|alpha_spaces|min:3|max:45"
             },
             scopedSlots: _vm._u([
               {
@@ -86784,7 +86815,11 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "e.g. Macapagal" },
+            attrs: {
+              type: "text",
+              placeholder: "e.g. Macapagal",
+              maxlength: "45"
+            },
             domProps: { value: _vm.middle_name },
             on: {
               input: function($event) {
@@ -86879,7 +86914,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "e.g. Jr" },
+            attrs: { type: "text", placeholder: "e.g. Jr", maxlength: "10" },
             domProps: { value: _vm.suffix },
             on: {
               input: function($event) {
@@ -87677,7 +87712,7 @@ var render = function() {
         { staticClass: "col-3" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "first_name", rules: "required|min:4|max:45" },
+            attrs: { name: "first_name", rules: "required|min:2|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -87741,7 +87776,7 @@ var render = function() {
         { staticClass: "col-3" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "last_name", rules: "required|min:4|max:45" },
+            attrs: { name: "last_name", rules: "required|min:2|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -87814,7 +87849,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "e.g. Jr" },
+            attrs: { type: "text", placeholder: "e.g. Jr", maxlength: "10" },
             domProps: { value: _vm.suffix },
             on: {
               input: function($event) {
@@ -87967,7 +88002,7 @@ var render = function() {
         { staticClass: "col-4" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "religion", rules: "required|min:4|max:45" },
+            attrs: { name: "religion", rules: "required|min:3|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -88034,7 +88069,7 @@ var render = function() {
         { staticClass: "col-4" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "occupation", rules: "required|min:4|max:45" },
+            attrs: { name: "occupation", rules: "required|min:3|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -88158,7 +88193,7 @@ var render = function() {
         { staticClass: "col-3" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "first_name", rules: "required|min:4|max:45" },
+            attrs: { name: "first_name", rules: "required|min:2|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -88222,7 +88257,7 @@ var render = function() {
         { staticClass: "col-3" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "last_name", rules: "required|min:4|max:45" },
+            attrs: { name: "last_name", rules: "required|min:2|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -88298,7 +88333,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "e.g. II" },
+            attrs: { type: "text", placeholder: "e.g. II", maxlength: "10" },
             domProps: { value: _vm.suffix },
             on: {
               input: function($event) {
@@ -88451,7 +88486,7 @@ var render = function() {
         { staticClass: "col-4" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "religion", rules: "required|min:4|max:45" },
+            attrs: { name: "religion", rules: "required|min:3|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -88518,7 +88553,7 @@ var render = function() {
         { staticClass: "col-4" },
         [
           _c("ValidationProvider", {
-            attrs: { name: "occupation", rules: "required|min:4|max:45" },
+            attrs: { name: "occupation", rules: "required|min:3|max:45" },
             scopedSlots: _vm._u([
               {
                 key: "default",
@@ -115481,17 +115516,20 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// TODO: Reset Vuex Module State
-/* harmony default export */ __webpack_exports__["default"] = ({
-  namespaced: true,
-  state: {
+var getDefaultState = function getDefaultState() {
+  return {
     enrollment_officer_id: '',
     student_id: '',
     acad_year_id: '',
     section_id: '',
     student_remark_id: '',
     semester: ''
-  },
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: getDefaultState(),
   mutations: {
     setEnrollmentOfficerId: function setEnrollmentOfficerId(state, enrollment_officer_id) {
       state.enrollment_officer_id = enrollment_officer_id;
@@ -115510,6 +115548,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     setSemester: function setSemester(state, semester) {
       state.semester = semester;
+    },
+    resetState: function resetState(state) {
+      Object.assign(state, getDefaultState());
     }
   }
 });
@@ -115525,10 +115566,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// TODO: Reset Vuex Module State
-/* harmony default export */ __webpack_exports__["default"] = ({
-  namespaced: true,
-  state: {
+var getDefaultState = function getDefaultState() {
+  return {
     first_name: '',
     last_name: '',
     suffix: '',
@@ -115537,7 +115576,12 @@ __webpack_require__.r(__webpack_exports__);
     contact_number: '',
     religion: '',
     occupation: ''
-  },
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: getDefaultState(),
   mutations: {
     setFirstName: function setFirstName(state, first_name) {
       state.first_name = first_name;
@@ -115559,6 +115603,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     setOccupation: function setOccupation(state, occupation) {
       state.occupation = occupation;
+    },
+    resetState: function resetState(state) {
+      Object.assign(state, getDefaultState());
     }
   }
 });
@@ -115574,10 +115621,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// TODO: Reset Vuex Module State
-/* harmony default export */ __webpack_exports__["default"] = ({
-  namespaced: true,
-  state: {
+var getDefaultState = function getDefaultState() {
+  return {
     first_name: '',
     last_name: '',
     suffix: '',
@@ -115586,7 +115631,12 @@ __webpack_require__.r(__webpack_exports__);
     contact_number: '',
     religion: '',
     occupation: ''
-  },
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: getDefaultState(),
   mutations: {
     setFirstName: function setFirstName(state, first_name) {
       state.first_name = first_name;
@@ -115608,6 +115658,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     setOccupation: function setOccupation(state, occupation) {
       state.occupation = occupation;
+    },
+    resetState: function resetState(state) {
+      Object.assign(state, getDefaultState());
     }
   }
 });
@@ -115623,10 +115676,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// TODO: Reset Vuex Module State
-/* harmony default export */ __webpack_exports__["default"] = ({
-  namespaced: true,
-  state: {
+var getDefaultState = function getDefaultState() {
+  return {
     lrn: '',
     lrnExists: false,
     first_name: '',
@@ -115644,7 +115695,12 @@ __webpack_require__.r(__webpack_exports__);
     barangay: '',
     city: '',
     province: ''
-  },
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  namespaced: true,
+  state: getDefaultState(),
   mutations: {
     setLrn: function setLrn(state, lrn) {
       state.lrn = lrn;
@@ -115696,6 +115752,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     setProvince: function setProvince(state, province) {
       state.province = province;
+    },
+    resetState: function resetState(state) {
+      Object.assign(state, getDefaultState());
     }
   }
 });

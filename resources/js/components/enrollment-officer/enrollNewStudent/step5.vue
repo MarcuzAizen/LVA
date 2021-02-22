@@ -8,7 +8,7 @@
         <h5><b>Mother</b></h5>
         <div class="row">
             <div class="col-3">
-                <ValidationProvider name="first_name" rules="required|min:4|max:45" v-slot="{ errors }">
+                <ValidationProvider name="first_name" rules="required|min:2|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             First Name
@@ -30,7 +30,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-3">
-                <ValidationProvider name="last_name" rules="required|min:4|max:45" v-slot="{ errors }">
+                <ValidationProvider name="last_name" rules="required|min:2|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Last Name
@@ -63,6 +63,7 @@
                         type="text"
                         class="form-control"
                         placeholder="e.g. II"
+                        maxlength="10"
                         v-model="suffix"
                     />
                 </div>
@@ -114,7 +115,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-4">
-                <ValidationProvider name="religion" rules="required|min:4|max:45" v-slot="{ errors }">
+                <ValidationProvider name="religion" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Religion
@@ -136,7 +137,7 @@
                 </ValidationProvider>
             </div>
             <div class="col-4">
-                <ValidationProvider name="occupation" rules="required|min:4|max:45" v-slot="{ errors }">
+                <ValidationProvider name="occupation" rules="required|min:3|max:45" v-slot="{ errors }">
                     <div class="form-group">
                         <label>
                             Occupation

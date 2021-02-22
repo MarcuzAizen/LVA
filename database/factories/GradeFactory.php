@@ -12,9 +12,9 @@ class GradeFactory extends Factory
     public function definition()
     {
         return [
-            'enroll_id' => rand(1, 4),
-            'schedule_id' => rand(1, 4),
-            'mark' => $this->faker->randomElement([rand(1, 4)]),
+            'enroll_id' => rand(1, 10),
+            'schedule_id' => rand(1, 10),
+            'mark' => rand(70, 99),
             'quarter_sem' => $this->faker->randomElement([rand(1, 4)]),
         ];
     }

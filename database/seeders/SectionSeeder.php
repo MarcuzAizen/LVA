@@ -9,6 +9,10 @@ class SectionSeeder extends Seeder
 {
     public function run()
     {
-        Section::factory()->count(10)->create();
+        for($i = 1; $i <= 6; $i++) {
+            Section::factory()->count(2)->create([
+                'track_id' => $i
+            ]);
+        }
     }
 }

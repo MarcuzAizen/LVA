@@ -22,7 +22,7 @@ class AcadYearFactory extends Factory
     public function definition()
     {
         return [
-            'start' => $this->faker->unique()->year(),
+            'start' => date('Y'),
         ];
     }
 }

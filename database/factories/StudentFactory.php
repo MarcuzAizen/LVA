@@ -23,7 +23,6 @@ class StudentFactory extends Factory
     public function definition()
     {
         return [
-            'student_remark_id' => $this->faker->randomElement([null, rand(1, 4)]),
             'lrn' => rand(000000000001, 999999999999),
             'first_name' => $this->faker->firstName(),
             'middle_name' => $this->faker->randomElement([null, $this->faker->lastName]),

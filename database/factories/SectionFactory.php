@@ -13,7 +13,7 @@ class SectionFactory extends Factory
     {
         return [
             'track_id' => rand(1, 4),
-            'name' => $this->faker->name,
+            'name' => ucfirst($this->faker->word),
             'capacity' => rand(45, 50),
         ];
     }

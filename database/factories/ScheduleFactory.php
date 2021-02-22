@@ -22,9 +22,9 @@ class ScheduleFactory extends Factory
     public function definition()
     {
         return [
-            'acad_year_id' => rand(1, 10),
+            'acad_year_id' => 1,
             'teacher_id' => 5,
-            'section_id' => rand(1, 10),
+            'section_id' => rand(1, 12),
             'prospectus_id' => rand(1, 10),
             'day' => $this->faker->randomElement(['M', 'T', 'W', 'H', 'F']),
             'time_start' => $this->faker->time(),

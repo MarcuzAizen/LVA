@@ -10,8 +10,8 @@ class Enroll extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillables = ['registrar_id', 'student_id', 'acad_year_id', 'section_id'];
-
+    protected $guarded = ['id'];
+    
     public function registrar()
     {
         return $this->belongsTo(User::class);

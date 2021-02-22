@@ -34,18 +34,15 @@ class TrackSeeder extends Seeder
         ]);
         
         Track::factory()->create([
-            'name' => 'HUMMS',
-            'grade_level' => '12'
+            'name' => 'GAS',
+            'description' => 'General Academic Strand',
+            'grade_level' => 11
         ]);
 
         Track::factory()->create([
             'name' => 'GAS',
-            'grade_level' => '11'
-        ]);
-
-        Track::factory()->create([
-            'name' => 'STEM',
-            'grade_level' => '11'
+            'description' => 'General Academic Strand',
+            'grade_level' => 12
         ]);
     }
 }

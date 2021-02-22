@@ -12,8 +12,8 @@ class ProspectusFactory extends Factory
     public function definition()
     {
         return [
-            'track_id' => rand(1, 4),
-            'subject_id' => rand(1, 4),
+            'track_id' => rand(1, 6),
+            'subject_id' => rand(1, 49),
             'sem_to_offer' => $this->faker->randomElement([null, rand(1, 2)]),
         ];
     }

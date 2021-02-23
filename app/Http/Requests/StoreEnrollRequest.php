@@ -28,7 +28,7 @@ class StoreEnrollRequest extends FormRequest
             'student_id' => ['required', 'integer', 'min:1'],
             'acad_year_id' => ['required', 'integer', 'min:1'],
             'section_id' => ['required', 'integer', 'min:1'],
-            'student_remark_id' => ['required', 'integer', 'min:1'],
+            'student_remark_id' => ['nullable', 'integer', 'min:1'],
             'semester' => ['required', 'integer', 'min:1']
         ];
     }

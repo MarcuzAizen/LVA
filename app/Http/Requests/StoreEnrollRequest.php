@@ -29,7 +29,7 @@ class StoreEnrollRequest extends FormRequest
             'acad_year_id' => ['required', 'integer', 'min:1'],
             'section_id' => ['required', 'integer', 'min:1'],
             'student_remark_id' => ['nullable', 'integer', 'min:1'],
-            'semester' => ['required', 'integer', 'min:1']
+            'semester' => ['nullable', 'integer', 'min:1']
         ];
     }
 }

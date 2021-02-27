@@ -13,7 +13,7 @@ class EnrollController extends Controller
 {
     public function index()
     {
-        $enrolls = Enroll::with(['registrar', 'student', 'acadYear', 'section'])
+        $enrolls = Enroll::with(['enrollmentOfficer', 'student', 'acadYear', 'section'])
             ->latest()->paginate(10);
         return EnrollResource::collection($enrolls);
     }

@@ -11,8 +11,8 @@ class Enroll extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = ['id'];
-    
-    public function registrar()
+
+    public function enrollmentOfficer()
     {
         return $this->belongsTo(User::class);
     }
@@ -30,5 +30,10 @@ class Enroll extends Model
     public function section()
     {
         return $this->belongsTo(Section::class);
+    }
+
+    public function studentRemark()
+    {
+        return $this->belongsTo(StudentRemark::class);
     }
 }

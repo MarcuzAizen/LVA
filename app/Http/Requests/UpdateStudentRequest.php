@@ -25,16 +25,15 @@ class UpdateStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'student_remark_id' => ['nullable', 'integer', 'min:1'],
             'lrn' => [
                 'required', 
                 'integer', 
                 'digits:12', 
                 Rule::unique('students')->ignore($this->student)->whereNull('deleted_at')
             ],
-            'first_name' => ['required', 'string', 'min:3', 'max:45'],
-            'middle_name' => ['nullable', 'string', 'min:3', 'max:45'],
-            'last_name' => ['required', 'string', 'min:3', 'max:45'],
+            'first_name' => ['required', 'string', 'min:2', 'max:45'],
+            'middle_name' => ['nullable', 'string', 'min:2', 'max:45'],
+            'last_name' => ['required', 'string', 'min:2', 'max:45'],
             'suffix' => ['nullable', 'string', 'min:1', 'max:10'],
             'sex' => ['required', 'string', 'min:1', 'max:1', Rule::in(['M', 'F'])],
             'birthdate' => ['required', 'date'],

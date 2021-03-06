@@ -64,4 +64,10 @@ class SectionController extends Controller
         
         return SectionResource::collection($sections);
     }
+
+    public function getAllSections()
+    {
+        $sections = Section::with('track')->latest()->get();
+        return SectionResource::collection($sections);
+    }
 }

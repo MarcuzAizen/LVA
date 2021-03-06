@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import Loading from '../../../../components/principal/Loading';
+import Loading from './../../../../components/Loading';
 import ScheduleCard from '../../../../components/principal/ScheduleCard';
 
 export default {

@@ -18,11 +18,6 @@ class Student extends Authenticatable
 
     protected $hidden = ['password', 'remember_token', 'created_at', 'updated_at', 'deleted_at'];
 
-    public function studentRemark()
-    {
-        return $this->belongsTo(StudentRemark::class);
-    }
-
     public function guardians()
     {
         return $this->belongsToMany(Guardian::class)

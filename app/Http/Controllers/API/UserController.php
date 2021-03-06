@@ -95,4 +95,8 @@ class UserController extends Controller
 
         return UserResource::collection($teachers);
     }
+
+    public function getCurrentUser(Request $request) {
+        return $request->user()->load('role');
+    }
 }

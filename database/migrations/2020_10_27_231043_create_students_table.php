@@ -36,7 +36,7 @@ class CreateStudentsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
-            $table->unique(['LRN', 'username', 'deleted_at']);
+            $table->unique(['lrn', 'username', 'deleted_at']);
         });
     }
 
